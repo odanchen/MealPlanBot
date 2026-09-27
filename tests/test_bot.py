@@ -34,7 +34,7 @@ async def test_scheduled_send_skips_missing_then_sends(settings, catalog, write_
     write_records([1, 2, 3, 4, 5])
     await service.shopping(ctx)
     text = ctx.bot.send_message.call_args.kwargs["text"]
-    assert "2026-09-27 – 2026-10-01" in text
+    assert "2026-09-27 - 2026-10-01" in text
     assert "tomato paste: 5 tin(s), 156 ml each" in text
     assert "dry chickpeas: 2500 g" in text
     assert ctx.bot.send_message.call_args.kwargs["chat_id"] == 42
@@ -144,3 +144,103 @@ async def test_missing_data_prevents_broadcast_to_all_chats(settings, catalog):
     ctx = context()
     await service.shopping(ctx)
     ctx.bot.send_message.assert_not_called()
+
+
+@pytest.mark.parametrize(
+    "instant,start,end,first_id",
+    [
+        ("2026-09-26T08:00:00-04:00", "2026-09-27", "2026-10-01", 1),
+        ("2026-09-27T12:00:00-04:00", "2026-09-27", "2026-10-01", 1),
+        ("2026-09-30T12:00:00-04:00", "2026-09-27", "2026-10-01", 1),
+        ("2026-10-03T03:59:00+00:00", "2026-09-27", "2026-10-01", 1),
+        ("2026-10-03T04:00:00+00:00", "2026-10-04", "2026-10-08", 6),
+        ("2026-10-17T12:00:00-04:00", "2026-10-18", "2026-10-22", 1),
+        ("2026-11-01T07:00:00+00:00", "2026-11-01", "2026-11-05", 11),
+    ],
+)
+async def test_requested_shopping_week(
+    settings, catalog, write_records, instant, start, end, first_id
+):
+    from dataclasses import replace
+
+    write_records(range(first_id, first_id + 5))
+    service = BotService(
+        replace(settings, chat_ids=(42, -1001234567890)),
+        catalog,
+        lambda: datetime.fromisoformat(instant),
+    )
+    ctx = context()
+    await service.shopping_list(SimpleNamespace(effective_chat=SimpleNamespace(id=42)), ctx)
+    ctx.bot.send_message.assert_awaited_once()
+    assert ctx.bot.send_message.call_args.kwargs["chat_id"] == 42
+    assert f"{start} - {end}" in ctx.bot.send_message.call_args.kwargs["text"]
+    assert "dry chickpeas: 2500 g" in ctx.bot.send_message.call_args.kwargs["text"]
+
+
+async def test_requested_shopping_ignores_other_chats(settings, catalog, monkeypatch):
+    from unittest.mock import Mock
+
+    render = Mock()
+    monkeypatch.setattr("mealplan.bot.shopping_text", render)
+    service = BotService(settings, catalog)
+    ctx = context()
+    for chat in (None, SimpleNamespace(id=99)):
+        await service.shopping_list(SimpleNamespace(effective_chat=chat), ctx)
+    render.assert_not_called()
+    ctx.bot.send_message.assert_not_called()
+
+
+@pytest.mark.parametrize("invalid", [False, True])
+async def test_requested_shopping_unavailable(settings, catalog, write_records, invalid):
+    if invalid:
+        write_records(range(1, 6))
+        catalog.path(catalog.recipes[4].ingredients, ".json").write_text("invalid")
+    service = BotService(settings, catalog, lambda: datetime(2026, 9, 27, tzinfo=TORONTO))
+    ctx = context()
+    await service.shopping_list(SimpleNamespace(effective_chat=SimpleNamespace(id=42)), ctx)
+    ctx.bot.send_message.assert_awaited_once()
+    assert ctx.bot.send_message.call_args.kwargs["text"].startswith("Shopping list unavailable:")
+
+
+@pytest.mark.parametrize("command", ["/shoppingList", "/shoppinglist", "/shoppingList@MealPlanBot"])
+async def test_shopping_command_dispatch(settings, write_records, command):
+    from telegram import Update
+
+    write_records(range(1, 6))
+    app = build_application(settings, lambda: datetime(2026, 9, 27, tzinfo=TORONTO))
+    update = Update.de_json(
+        {
+            "update_id": 1,
+            "message": {
+                "message_id": 1,
+                "date": 1790500000,
+                "chat": {"id": 42, "type": "group", "title": "Household"},
+                "text": command,
+                "entities": [{"type": "bot_command", "offset": 0, "length": len(command)}],
+            },
+        },
+        SimpleNamespace(username="MealPlanBot"),
+    )
+    matches = [handler for handler in app.handlers[0] if handler.check_update(update)]
+    assert len(matches) == 1
+    ctx = context()
+    await matches[0].callback(update, ctx)
+    assert "2026-09-27 - 2026-10-01" in ctx.bot.send_message.call_args.kwargs["text"]
+
+
+async def test_requested_shopping_splits_for_requesting_chat(settings, catalog, monkeypatch):
+    from dataclasses import replace
+
+    from mealplan.shopping import split_messages
+
+    text = "purchase line\n" * 900
+    monkeypatch.setattr("mealplan.bot.shopping_text", lambda *args: text)
+    service = BotService(replace(settings, chat_ids=(42, -1001234567890)), catalog)
+    ctx = context()
+    await service.shopping_list(
+        SimpleNamespace(effective_chat=SimpleNamespace(id=-1001234567890)), ctx
+    )
+    calls = ctx.bot.send_message.call_args_list
+    assert len(calls) > 1
+    assert all(call.kwargs["chat_id"] == -1001234567890 for call in calls)
+    assert [call.kwargs["text"] for call in calls] == split_messages(text)

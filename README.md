@@ -2,7 +2,7 @@
 
 A small household meal planner for Raspberry Pi OS Lite (Python 3.11+). FastAPI
 serves existing HTML pages and a read-only API. A separate Telegram polling
-process replies to `/help` and schedules a Saturday shopping message. No database,
+process replies to `/help` and `/shoppingList` and schedules a Saturday shopping message. No database,
 recipe editor, Markdown runtime, external assets or cloud hosting.
 
 ## Quick start
@@ -44,12 +44,21 @@ Whitespace around IDs is allowed; duplicates are removed in first-seen order.
 Empty entries, non-integers and zero are rejected. An empty list permits the
 website and dry-run commands but prevents the bot from starting.
 
-Only `/help` from an allowed chat is acted on, and the reply goes only to that
+Only `/help` and `/shoppingList` from an allowed chat are acted on, and the reply goes only to that
 requesting chat. Other commands and chats are ignored. The Saturday shopping
 list goes to every configured chat; a delivery failure in one chat does not
 prevent attempts for the remaining chats. Each private-chat recipient must first
 open the bot and send a message; group recipients must have the bot added with
 permission to send messages.
+
+`/shoppingList` regenerates the list associated with the most recent Saturday,
+including today if it is Saturday, using the America/Toronto calendar date.
+It covers that Saturday's following Sunday–Thursday, even if requested before
+Saturday's scheduled send time. On Sunday–Friday this means the current meal
+week, not the next one. It uses current ingredient files, not a saved copy of a
+previous delivery. Missing or invalid data produces an unavailable message,
+never a partial list. `/shoppinglist` also works; in groups you can address the
+bot explicitly with `/shoppingList@YourBotUsername`.
 
 The former `TELEGRAM_CHAT_ID` environment variable remains a fallback if
 `TELEGRAM_CHAT_IDS` is absent. If both are present, the plural variable wins,
