@@ -42,3 +42,9 @@ def next_week(day: date, anchor: date) -> list[Day]:
     """The strictly next Sunday (even when today is Sunday), through Thursday."""
     sunday = day + timedelta(days=7 - (day.weekday() + 1) % 7)
     return [scheduled_day(sunday + timedelta(days=i), anchor) for i in range(5)]
+
+
+def latest_shopping_week(day: date, anchor: date) -> list[Day]:
+    """Meals for the latest Saturday on or before day, even before shopping time."""
+    saturday = day - timedelta(days=(day.weekday() - 5) % 7)
+    return next_week(saturday, anchor)

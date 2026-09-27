@@ -11,7 +11,7 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 from .catalog import Catalog
 from .config import Settings
 from .ingredients import IngredientDataError
-from .schedule import Clock, local_date, next_week, now
+from .schedule import Clock, latest_shopping_week, local_date, next_week, now
 from .shopping import shopping_text, split_messages
 
 log = logging.getLogger(__name__)
@@ -58,8 +58,27 @@ class BotService:
             update.effective_chat.id,
             "Your meal planner has a three-week Sunday-Thursday cycle. "
             "Friday and Saturday are rest days. A shopping list arrives Saturday "
-            "when ingredient data is ready. Today's meal: " + self.settings.lan_url,
+            "when ingredient data is ready. Use /shoppingList to resend the list for "
+            "the most recent Saturday (including today). Today's meal: " + self.settings.lan_url,
         )
+
+    async def shopping_list(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+        if update.effective_chat is None or update.effective_chat.id not in self.settings.chat_ids:
+            return
+        days = latest_shopping_week(local_date(self.clock), self.settings.anchor)
+        try:
+            text = shopping_text(self.catalog, days)
+        except IngredientDataError as error:
+            log.error("Requested shopping list unavailable: %s", error)
+            await send_with_retry(
+                context.bot,
+                update.effective_chat.id,
+                "Shopping list unavailable: ingredient data is missing or invalid. "
+                "Please check the recipe data and try again.",
+            )
+            return
+        for part in split_messages(text):
+            await send_with_retry(context.bot, update.effective_chat.id, part)
 
     async def shopping(self, context: ContextTypes.DEFAULT_TYPE) -> None:
         days = next_week(local_date(self.clock), self.settings.anchor)
@@ -101,6 +120,7 @@ def build_application(settings: Settings, clock: Clock = now) -> Application:
         .build()
     )
     app.add_handler(CommandHandler("help", service.help))
+    app.add_handler(CommandHandler("shoppinglist", service.shopping_list))
     app.add_error_handler(error_handler)
     # PTB 22.x uses Sunday=0 ... Saturday=6, unlike datetime.weekday().
     app.job_queue.run_daily(
