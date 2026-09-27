@@ -1,0 +1,90 @@
+{
+  "recipe_id": 7,
+  "ingredients": [
+    {
+      "name": "ground beef",
+      "quantity": 850,
+      "unit": "g"
+    },
+    {
+      "name": "dry black beans",
+      "quantity": 200,
+      "unit": "g"
+    },
+    {
+      "name": "onions",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "carrots",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "bell peppers",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "garlic cloves",
+      "quantity": 4,
+      "unit": "each"
+    },
+    {
+      "name": "fresh tomatoes",
+      "quantity": 750,
+      "unit": "g"
+    },
+    {
+      "name": "tomato paste",
+      "quantity": 1,
+      "unit": "tin_156ml"
+    },
+    {
+      "name": "dried chipotle peppers",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "ground cumin",
+      "quantity": 4,
+      "unit": "g"
+    },
+    {
+      "name": "smoked paprika",
+      "quantity": 4,
+      "unit": "g"
+    },
+    {
+      "name": "dried oregano",
+      "quantity": 1,
+      "unit": "g"
+    },
+    {
+      "name": "chili flakes",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "name": "dry rice",
+      "quantity": 275,
+      "unit": "g"
+    },
+    {
+      "name": "neutral oil",
+      "quantity": 25,
+      "unit": "ml"
+    },
+    {
+      "name": "salt",
+      "quantity": 7,
+      "unit": "g"
+    },
+    {
+      "name": "limes",
+      "quantity": 1,
+      "unit": "each"
+    }
+  ]
+}

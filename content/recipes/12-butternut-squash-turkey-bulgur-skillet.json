@@ -1,0 +1,70 @@
+{
+  "recipe_id": 12,
+  "ingredients": [
+    {
+      "name": "ground turkey",
+      "quantity": 850,
+      "unit": "g"
+    },
+    {
+      "name": "raw peeled butternut squash",
+      "quantity": 900,
+      "unit": "g"
+    },
+    {
+      "name": "dry bulgur",
+      "quantity": 300,
+      "unit": "g"
+    },
+    {
+      "name": "onions",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "garlic cloves",
+      "quantity": 3,
+      "unit": "each"
+    },
+    {
+      "name": "fresh spinach",
+      "quantity": 200,
+      "unit": "g"
+    },
+    {
+      "name": "ground cumin",
+      "quantity": 4,
+      "unit": "g"
+    },
+    {
+      "name": "smoked paprika",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "name": "ground cinnamon",
+      "quantity": 1,
+      "unit": "g"
+    },
+    {
+      "name": "lemons",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "olive oil",
+      "quantity": 25,
+      "unit": "ml"
+    },
+    {
+      "name": "salt",
+      "quantity": 7,
+      "unit": "g"
+    },
+    {
+      "name": "black pepper",
+      "quantity": 2,
+      "unit": "g"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "recipe_id": 6,
+  "ingredients": [
+    {
+      "name": "boneless beef",
+      "quantity": 1.4,
+      "unit": "kg"
+    },
+    {
+      "name": "mushrooms",
+      "quantity": 800,
+      "unit": "g"
+    },
+    {
+      "name": "onions",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "carrots",
+      "quantity": 500,
+      "unit": "g"
+    },
+    {
+      "name": "potatoes",
+      "quantity": 1.3,
+      "unit": "kg"
+    },
+    {
+      "name": "fresh rosemary sprigs",
+      "quantity": 3,
+      "unit": "each"
+    },
+    {
+      "name": "garlic cloves",
+      "quantity": 4,
+      "unit": "each"
+    },
+    {
+      "name": "beef bouillon cubes",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "cornstarch",
+      "quantity": 8,
+      "unit": "g"
+    },
+    {
+      "name": "butter",
+      "quantity": 40,
+      "unit": "g"
+    },
+    {
+      "name": "neutral oil",
+      "quantity": 25,
+      "unit": "ml"
+    },
+    {
+      "name": "salt",
+      "quantity": 7,
+      "unit": "g"
+    },
+    {
+      "name": "black pepper",
+      "quantity": 3,
+      "unit": "g"
+    }
+  ]
+}

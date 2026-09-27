@@ -1,0 +1,80 @@
+{
+  "recipe_id": 15,
+  "ingredients": [
+    {
+      "name": "boneless chicken",
+      "quantity": 900,
+      "unit": "g"
+    },
+    {
+      "name": "dry rice",
+      "quantity": 320,
+      "unit": "g"
+    },
+    {
+      "name": "fresh tomatoes",
+      "quantity": 600,
+      "unit": "g"
+    },
+    {
+      "name": "cucumbers",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "bell peppers",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "salad greens",
+      "quantity": 100,
+      "unit": "g"
+    },
+    {
+      "name": "lemons",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "olive oil",
+      "quantity": 30,
+      "unit": "ml"
+    },
+    {
+      "name": "paprika",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "name": "dried oregano",
+      "quantity": 1,
+      "unit": "g"
+    },
+    {
+      "name": "plain yogurt",
+      "quantity": 200,
+      "unit": "g"
+    },
+    {
+      "name": "garlic cloves",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "fresh dill",
+      "quantity": 1,
+      "unit": "bunch"
+    },
+    {
+      "name": "salt",
+      "quantity": 7,
+      "unit": "g"
+    },
+    {
+      "name": "black pepper",
+      "quantity": 2,
+      "unit": "g"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "recipe_id": 4,
+  "ingredients": [
+    {
+      "name": "stir-fry beef",
+      "quantity": 900,
+      "unit": "g"
+    },
+    {
+      "name": "dry rice",
+      "quantity": 320,
+      "unit": "g"
+    },
+    {
+      "name": "onions",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "mushrooms",
+      "quantity": 350,
+      "unit": "g"
+    },
+    {
+      "name": "bell peppers",
+      "quantity": 3,
+      "unit": "each"
+    },
+    {
+      "name": "garlic cloves",
+      "quantity": 3,
+      "unit": "each"
+    },
+    {
+      "name": "soy sauce",
+      "quantity": 75,
+      "unit": "ml"
+    },
+    {
+      "name": "cornstarch",
+      "quantity": 8,
+      "unit": "g"
+    },
+    {
+      "name": "eggs",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "vinegar",
+      "quantity": 15,
+      "unit": "ml"
+    },
+    {
+      "name": "sugar",
+      "quantity": 5,
+      "unit": "g"
+    },
+    {
+      "name": "neutral oil",
+      "quantity": 30,
+      "unit": "ml"
+    },
+    {
+      "name": "black pepper",
+      "quantity": 2,
+      "unit": "g"
+    }
+  ]
+}

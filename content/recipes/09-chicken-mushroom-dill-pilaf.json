@@ -1,0 +1,85 @@
+{
+  "recipe_id": 9,
+  "ingredients": [
+    {
+      "name": "boneless chicken",
+      "quantity": 850,
+      "unit": "g"
+    },
+    {
+      "name": "dry rice",
+      "quantity": 370,
+      "unit": "g"
+    },
+    {
+      "name": "onions",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "carrots",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "mushrooms",
+      "quantity": 500,
+      "unit": "g"
+    },
+    {
+      "name": "garlic cloves",
+      "quantity": 4,
+      "unit": "each"
+    },
+    {
+      "name": "fresh tomatoes",
+      "quantity": 200,
+      "unit": "g"
+    },
+    {
+      "name": "fresh dill",
+      "quantity": 1,
+      "unit": "bunch"
+    },
+    {
+      "name": "paprika",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "name": "ground cumin",
+      "quantity": 3,
+      "unit": "g"
+    },
+    {
+      "name": "ground hot pepper",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "name": "whole cloves",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "whole star anise",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "neutral oil",
+      "quantity": 30,
+      "unit": "ml"
+    },
+    {
+      "name": "salt",
+      "quantity": 7,
+      "unit": "g"
+    },
+    {
+      "name": "black pepper",
+      "quantity": 2,
+      "unit": "g"
+    }
+  ]
+}

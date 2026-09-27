@@ -1,0 +1,75 @@
+{
+  "recipe_id": 13,
+  "ingredients": [
+    {
+      "name": "pork tenderloin",
+      "quantity": 1.1,
+      "unit": "kg"
+    },
+    {
+      "name": "potatoes",
+      "quantity": 1.2,
+      "unit": "kg"
+    },
+    {
+      "name": "butter",
+      "quantity": 60,
+      "unit": "g"
+    },
+    {
+      "name": "milk",
+      "quantity": 175,
+      "unit": "ml"
+    },
+    {
+      "name": "onions",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "carrots",
+      "quantity": 3,
+      "unit": "each"
+    },
+    {
+      "name": "fresh green beans",
+      "quantity": 650,
+      "unit": "g"
+    },
+    {
+      "name": "Dijon mustard",
+      "quantity": 45,
+      "unit": "ml"
+    },
+    {
+      "name": "honey",
+      "quantity": 42,
+      "unit": "g"
+    },
+    {
+      "name": "stock",
+      "quantity": 350,
+      "unit": "ml"
+    },
+    {
+      "name": "cornstarch",
+      "quantity": 8,
+      "unit": "g"
+    },
+    {
+      "name": "neutral oil",
+      "quantity": 25,
+      "unit": "ml"
+    },
+    {
+      "name": "salt",
+      "quantity": 7,
+      "unit": "g"
+    },
+    {
+      "name": "black pepper",
+      "quantity": 2,
+      "unit": "g"
+    }
+  ]
+}

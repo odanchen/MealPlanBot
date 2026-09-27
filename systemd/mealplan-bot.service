@@ -1,0 +1,23 @@
+[Unit]
+Description=Household meal planner Telegram bot and Saturday scheduler
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=mealplan
+Group=mealplan
+WorkingDirectory=/opt/mealplan
+EnvironmentFile=/etc/mealplan/mealplan.env
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/opt/mealplan/.venv/bin/mealplan bot
+Restart=on-failure
+RestartSec=10
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

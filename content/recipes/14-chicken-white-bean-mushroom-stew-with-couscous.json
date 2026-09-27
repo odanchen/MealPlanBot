@@ -1,0 +1,85 @@
+{
+  "recipe_id": 14,
+  "ingredients": [
+    {
+      "name": "boneless chicken",
+      "quantity": 850,
+      "unit": "g"
+    },
+    {
+      "name": "dry white beans",
+      "quantity": 200,
+      "unit": "g"
+    },
+    {
+      "name": "onions",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "carrots",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "mushrooms",
+      "quantity": 500,
+      "unit": "g"
+    },
+    {
+      "name": "garlic cloves",
+      "quantity": 3,
+      "unit": "each"
+    },
+    {
+      "name": "tomato paste",
+      "quantity": 1,
+      "unit": "tin_156ml"
+    },
+    {
+      "name": "chicken bouillon cubes",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "dried thyme",
+      "quantity": 1,
+      "unit": "g"
+    },
+    {
+      "name": "dried rosemary",
+      "quantity": 1,
+      "unit": "g"
+    },
+    {
+      "name": "fresh parsley",
+      "quantity": 1,
+      "unit": "bunch"
+    },
+    {
+      "name": "dry couscous",
+      "quantity": 300,
+      "unit": "g"
+    },
+    {
+      "name": "neutral oil",
+      "quantity": 25,
+      "unit": "ml"
+    },
+    {
+      "name": "salt",
+      "quantity": 7,
+      "unit": "g"
+    },
+    {
+      "name": "black pepper",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "name": "lemons",
+      "quantity": 1,
+      "unit": "each"
+    }
+  ]
+}

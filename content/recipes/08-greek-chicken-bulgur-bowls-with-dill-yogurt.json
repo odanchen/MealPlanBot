@@ -1,0 +1,75 @@
+{
+  "recipe_id": 8,
+  "ingredients": [
+    {
+      "name": "boneless chicken",
+      "quantity": 900,
+      "unit": "g"
+    },
+    {
+      "name": "dry bulgur",
+      "quantity": 300,
+      "unit": "g"
+    },
+    {
+      "name": "cucumbers",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "fresh tomatoes",
+      "quantity": 500,
+      "unit": "g"
+    },
+    {
+      "name": "bell peppers",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "salad greens",
+      "quantity": 100,
+      "unit": "g"
+    },
+    {
+      "name": "plain yogurt",
+      "quantity": 250,
+      "unit": "g"
+    },
+    {
+      "name": "lemons",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "garlic cloves",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "fresh dill",
+      "quantity": 1,
+      "unit": "bunch"
+    },
+    {
+      "name": "dried oregano",
+      "quantity": 1,
+      "unit": "g"
+    },
+    {
+      "name": "olive oil",
+      "quantity": 30,
+      "unit": "ml"
+    },
+    {
+      "name": "salt",
+      "quantity": 7,
+      "unit": "g"
+    },
+    {
+      "name": "black pepper",
+      "quantity": 2,
+      "unit": "g"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "recipe_id": 2,
+  "ingredients": [
+    {
+      "name": "boneless chicken",
+      "quantity": 900,
+      "unit": "g"
+    },
+    {
+      "name": "dry chickpeas",
+      "quantity": 200,
+      "unit": "g"
+    },
+    {
+      "name": "onions",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "carrots",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "potatoes",
+      "quantity": 500,
+      "unit": "g"
+    },
+    {
+      "name": "garlic cloves",
+      "quantity": 3,
+      "unit": "each"
+    },
+    {
+      "name": "ginger",
+      "quantity": 15,
+      "unit": "g"
+    },
+    {
+      "name": "curry powder",
+      "quantity": 20,
+      "unit": "g"
+    },
+    {
+      "name": "ground cumin",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "name": "whole cloves",
+      "quantity": 4,
+      "unit": "each"
+    },
+    {
+      "name": "bay leaves",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "ground cinnamon",
+      "quantity": 1,
+      "unit": "g"
+    },
+    {
+      "name": "ground hot pepper",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "name": "coconut milk",
+      "quantity": 400,
+      "unit": "ml"
+    },
+    {
+      "name": "dry rice",
+      "quantity": 320,
+      "unit": "g"
+    },
+    {
+      "name": "neutral oil",
+      "quantity": 25,
+      "unit": "ml"
+    },
+    {
+      "name": "salt",
+      "quantity": 7,
+      "unit": "g"
+    },
+    {
+      "name": "lemons",
+      "quantity": 1,
+      "unit": "each"
+    }
+  ]
+}

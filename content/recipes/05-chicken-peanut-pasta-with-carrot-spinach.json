@@ -1,0 +1,65 @@
+{
+  "recipe_id": 5,
+  "ingredients": [
+    {
+      "name": "boneless chicken",
+      "quantity": 800,
+      "unit": "g"
+    },
+    {
+      "name": "dry pasta",
+      "quantity": 500,
+      "unit": "g"
+    },
+    {
+      "name": "onions",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "garlic cloves",
+      "quantity": 3,
+      "unit": "each"
+    },
+    {
+      "name": "carrots",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "fresh spinach",
+      "quantity": 175,
+      "unit": "g"
+    },
+    {
+      "name": "smooth peanut butter",
+      "quantity": 120,
+      "unit": "g"
+    },
+    {
+      "name": "soy sauce",
+      "quantity": 45,
+      "unit": "ml"
+    },
+    {
+      "name": "vinegar",
+      "quantity": 15,
+      "unit": "ml"
+    },
+    {
+      "name": "honey",
+      "quantity": 7,
+      "unit": "g"
+    },
+    {
+      "name": "neutral oil",
+      "quantity": 25,
+      "unit": "ml"
+    },
+    {
+      "name": "salt",
+      "quantity": 5,
+      "unit": "g"
+    }
+  ]
+}
