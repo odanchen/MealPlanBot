@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Red Wine Beef Stew with Mashed Potatoes",
+    "html": "recipes/01_red_wine_beef_stew_with_mashed_potatoes.html",
+    "ingredients": "recipes/01-red-wine-beef-stew-with-mashed-potatoes.json"
+  },
+  {
+    "id": 2,
+    "title": "Chicken Chickpea and Potato Coconut Curry with Rice",
+    "html": "recipes/02_chicken_chickpea_potato_coconut_curry_with_rice.html",
+    "ingredients": "recipes/02-chicken-chickpea-potato-coconut-curry-with-rice.json"
+  },
+  {
+    "id": 3,
+    "title": "Beet Turkey and Buckwheat Skillet",
+    "html": "recipes/03_beet_turkey_buckwheat_skillet.html",
+    "ingredients": "recipes/03-beet-turkey-buckwheat-skillet.json"
+  },
+  {
+    "id": 4,
+    "title": "Beef Mushroom and Pepper Stir-Fry with Rice",
+    "html": "recipes/04_beef_mushroom_pepper_stir_fry_with_rice.html",
+    "ingredients": "recipes/04-beef-mushroom-pepper-stir-fry-with-rice.json"
+  },
+  {
+    "id": 5,
+    "title": "Chicken Peanut Pasta with Carrot and Spinach",
+    "html": "recipes/05_chicken_peanut_pasta_with_carrot_spinach.html",
+    "ingredients": "recipes/05-chicken-peanut-pasta-with-carrot-spinach.json"
+  },
+  {
+    "id": 6,
+    "title": "Rosemary Beef, Mushroom and Potato Casserole",
+    "html": "recipes/06_rosemary_beef_mushroom_potato_casserole.html",
+    "ingredients": "recipes/06-rosemary-beef-mushroom-potato-casserole.json"
+  },
+  {
+    "id": 7,
+    "title": "Beef Black Bean and Chipotle Chili",
+    "html": "recipes/07_beef_black_bean_chipotle_chili.html",
+    "ingredients": "recipes/07-beef-black-bean-chipotle-chili.json"
+  },
+  {
+    "id": 8,
+    "title": "Greek Chicken Bulgur Bowls with Dill Yogurt",
+    "html": "recipes/08_greek_chicken_bulgur_bowls_with_dill_yogurt.html",
+    "ingredients": "recipes/08-greek-chicken-bulgur-bowls-with-dill-yogurt.json"
+  },
+  {
+    "id": 9,
+    "title": "Chicken Mushroom and Dill Pilaf",
+    "html": "recipes/09_chicken_mushroom_dill_pilaf.html",
+    "ingredients": "recipes/09-chicken-mushroom-dill-pilaf.json"
+  },
+  {
+    "id": 10,
+    "title": "Broccoli Shrimp and Pepper Noodles",
+    "html": "recipes/10_broccoli_shrimp_pepper_noodles.html",
+    "ingredients": "recipes/10-broccoli-shrimp-pepper-noodles.json"
+  },
+  {
+    "id": 11,
+    "title": "Chicken Biryani with Boiled Eggs",
+    "html": "recipes/11_chicken_biryani_with_boiled_eggs.html",
+    "ingredients": "recipes/11-chicken-biryani-with-boiled-eggs.json"
+  },
+  {
+    "id": 12,
+    "title": "Butternut Squash Turkey and Bulgur Skillet",
+    "html": "recipes/12_butternut_squash_turkey_bulgur_skillet.html",
+    "ingredients": "recipes/12-butternut-squash-turkey-bulgur-skillet.json"
+  },
+  {
+    "id": 13,
+    "title": "Honey Mustard Pork with Mash and Green Beans",
+    "html": "recipes/13_honey_mustard_pork_with_mash_green_beans.html",
+    "ingredients": "recipes/13-honey-mustard-pork-with-mash-green-beans.json"
+  },
+  {
+    "id": 14,
+    "title": "Chicken White Bean and Mushroom Stew with Couscous",
+    "html": "recipes/14_chicken_white_bean_mushroom_stew_with_couscous.html",
+    "ingredients": "recipes/14-chicken-white-bean-mushroom-stew-with-couscous.json"
+  },
+  {
+    "id": 15,
+    "title": "Skillet Chicken Rice Bowls with Tomato Cucumber Salad",
+    "html": "recipes/15_skillet_chicken_rice_bowls_with_tomato_cucumber_salad.html",
+    "ingredients": "recipes/15-skillet-chicken-rice-bowls-with-tomato-cucumber-salad.json"
+  }
+]

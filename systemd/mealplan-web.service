@@ -1,0 +1,22 @@
+[Unit]
+Description=Household meal planner website
+After=network.target
+
+[Service]
+Type=simple
+User=mealplan
+Group=mealplan
+WorkingDirectory=/opt/mealplan
+EnvironmentFile=/etc/mealplan/mealplan.env
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/opt/mealplan/.venv/bin/mealplan web
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

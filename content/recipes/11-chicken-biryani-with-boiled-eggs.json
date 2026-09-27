@@ -1,0 +1,110 @@
+{
+  "recipe_id": 11,
+  "ingredients": [
+    {
+      "name": "boneless chicken thighs",
+      "quantity": 1.3,
+      "unit": "kg"
+    },
+    {
+      "name": "plain yogurt",
+      "quantity": 500,
+      "unit": "g"
+    },
+    {
+      "name": "onions",
+      "quantity": 3,
+      "unit": "each"
+    },
+    {
+      "name": "garlic cloves",
+      "quantity": 5,
+      "unit": "each"
+    },
+    {
+      "name": "ginger",
+      "quantity": 30,
+      "unit": "g"
+    },
+    {
+      "name": "dry basmati rice",
+      "quantity": 555,
+      "unit": "g"
+    },
+    {
+      "name": "eggs",
+      "quantity": 6,
+      "unit": "each"
+    },
+    {
+      "name": "garam masala",
+      "quantity": 4,
+      "unit": "g"
+    },
+    {
+      "name": "ground turmeric",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "name": "ground cumin",
+      "quantity": 4,
+      "unit": "g"
+    },
+    {
+      "name": "ground coriander",
+      "quantity": 4,
+      "unit": "g"
+    },
+    {
+      "name": "cinnamon sticks",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "cardamom pods",
+      "quantity": 5,
+      "unit": "each"
+    },
+    {
+      "name": "whole cloves",
+      "quantity": 3,
+      "unit": "each"
+    },
+    {
+      "name": "bay leaves",
+      "quantity": 3,
+      "unit": "each"
+    },
+    {
+      "name": "fresh cilantro",
+      "quantity": 1,
+      "unit": "bunch"
+    },
+    {
+      "name": "lemons",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "cucumbers",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "fresh tomatoes",
+      "quantity": 300,
+      "unit": "g"
+    },
+    {
+      "name": "neutral oil",
+      "quantity": 45,
+      "unit": "ml"
+    },
+    {
+      "name": "salt",
+      "quantity": 12,
+      "unit": "g"
+    }
+  ]
+}

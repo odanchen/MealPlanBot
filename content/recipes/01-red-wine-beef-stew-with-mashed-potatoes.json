@@ -1,0 +1,85 @@
+{
+  "recipe_id": 1,
+  "ingredients": [
+    {
+      "name": "boneless beef",
+      "quantity": 1.4,
+      "unit": "kg"
+    },
+    {
+      "name": "onions",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "carrots",
+      "quantity": 400,
+      "unit": "g"
+    },
+    {
+      "name": "celery",
+      "quantity": 400,
+      "unit": "g"
+    },
+    {
+      "name": "garlic cloves",
+      "quantity": 4,
+      "unit": "each"
+    },
+    {
+      "name": "tomato paste",
+      "quantity": 1,
+      "unit": "tin_156ml"
+    },
+    {
+      "name": "bay leaves",
+      "quantity": 4,
+      "unit": "each"
+    },
+    {
+      "name": "dry red wine",
+      "quantity": 500,
+      "unit": "ml"
+    },
+    {
+      "name": "beef bouillon cubes",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "cornstarch",
+      "quantity": 8,
+      "unit": "g"
+    },
+    {
+      "name": "potatoes",
+      "quantity": 1.5,
+      "unit": "kg"
+    },
+    {
+      "name": "butter",
+      "quantity": 60,
+      "unit": "g"
+    },
+    {
+      "name": "milk",
+      "quantity": 200,
+      "unit": "ml"
+    },
+    {
+      "name": "neutral oil",
+      "quantity": 30,
+      "unit": "ml"
+    },
+    {
+      "name": "salt",
+      "quantity": 8,
+      "unit": "g"
+    },
+    {
+      "name": "black pepper",
+      "quantity": 3,
+      "unit": "g"
+    }
+  ]
+}

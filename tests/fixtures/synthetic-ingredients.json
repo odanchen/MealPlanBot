@@ -1,0 +1,8 @@
+{
+  "recipe_id": 1,
+  "ingredients": [
+    {"name": "dry chickpeas", "quantity": 0.5, "unit": "kg"},
+    {"name": "onion", "quantity": 2, "unit": "each"},
+    {"name": "tomato paste", "quantity": 1, "unit": "tin_156ml"}
+  ]
+}

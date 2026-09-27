@@ -1,0 +1,75 @@
+{
+  "recipe_id": 3,
+  "ingredients": [
+    {
+      "name": "ground turkey",
+      "quantity": 800,
+      "unit": "g"
+    },
+    {
+      "name": "dry buckwheat groats",
+      "quantity": 340,
+      "unit": "g"
+    },
+    {
+      "name": "beets",
+      "quantity": 550,
+      "unit": "g"
+    },
+    {
+      "name": "onions",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "cabbage",
+      "quantity": 350,
+      "unit": "g"
+    },
+    {
+      "name": "garlic cloves",
+      "quantity": 2,
+      "unit": "each"
+    },
+    {
+      "name": "smoked paprika",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "name": "ground coriander",
+      "quantity": 2,
+      "unit": "g"
+    },
+    {
+      "name": "lemons",
+      "quantity": 1,
+      "unit": "each"
+    },
+    {
+      "name": "fresh dill",
+      "quantity": 1,
+      "unit": "bunch"
+    },
+    {
+      "name": "plain yogurt",
+      "quantity": 200,
+      "unit": "g"
+    },
+    {
+      "name": "olive oil",
+      "quantity": 25,
+      "unit": "ml"
+    },
+    {
+      "name": "salt",
+      "quantity": 7,
+      "unit": "g"
+    },
+    {
+      "name": "black pepper",
+      "quantity": 2,
+      "unit": "g"
+    }
+  ]
+}

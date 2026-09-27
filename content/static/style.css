@@ -1,0 +1,20 @@
+:root { color-scheme: light; font-family: system-ui, sans-serif; color: #253a31; background: #f5f3eb; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 24px; }
+main { max-width: 720px; margin: 8vh auto; }
+nav { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 48px; }
+a { color: #325d45; text-underline-offset: 4px; }
+a:focus-visible { outline: 3px solid #b66a32; outline-offset: 4px; }
+.eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .8rem; font-weight: 650; }
+h1 { font-family: Georgia, serif; font-weight: 400; font-size: clamp(2.4rem, 8vw, 4rem); line-height: 1.1; margin: 18px 0; }
+p { line-height: 1.7; max-width: 56ch; }
+.card { border: 1px solid #d7ddcf; border-radius: 16px; background: #fffdf7; padding: 24px; margin: 32px 0; }
+footer { border-top: 1px solid #d7ddcf; margin-top: 48px; padding-top: 16px; font-size: .9rem; }
+img { max-width: 100%; height: auto; }
+@media (max-width: 480px) { body { padding: 20px; } main { margin-top: 32px; } nav { margin-bottom: 32px; } }
+
+.menu { list-style: none; padding: 0; margin: 0; }
+.menu li + li { border-top: 1px solid #d7ddcf; }
+.menu a { display: block; padding: 16px 0; text-decoration: none; line-height: 1.5; }
+.menu a:hover { text-decoration: underline; }
+.menu span { display: block; font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: #64736a; margin-bottom: 4px; }
