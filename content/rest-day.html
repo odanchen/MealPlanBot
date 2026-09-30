@@ -1,2 +1,516 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A little room to pause · MealPlanBot</title><link rel="stylesheet" href="/static/style.css"></head><body><main><nav aria-label="Main"><a href="/today">Today's plan</a><a href="/static/recipes.html">The three-week menu</a></nav><img src="/static/rest.svg" alt="A cup beside a leafy sprig" width="180" height="130"><p class="eyebrow">Friday &amp; Saturday · Rest days</p><h1>A little room<br>to pause.</h1><p>There’s no planned recipe today. Enjoy something simple, revisit a favourite, or take the evening as it comes.</p><div class="card"><p>The cooking week runs Sunday through Thursday. Your next planned meal will be here on Sunday.</p></div><footer>At home, around the table.</footer></main></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rest Day · Three-Week Kitchen</title>
+  <meta name="description" content="No cooking scheduled for today. Friday and Saturday are rest days in the three-week household rotation.">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #27332d;
+      --muted: #57655e;
+      --bg: #f7f4ed;
+      --card: #fffdf8;
+      --accent: #2d523e;
+      --accent-hover: #1e382a;
+      --line: #dce0d4;
+      --warm: #d99a5c;
+      --warm-subtle: #fcf6ee;
+      --pill-bg: #edf1ea;
+      --shadow-sm: 0 2px 5px rgba(39, 51, 45, 0.08), 0 1px 2px rgba(39, 51, 45, 0.04);
+      --shadow-md: 0 6px 20px rgba(39, 51, 45, 0.06), 0 2px 5px rgba(39, 51, 45, 0.04);
+      --shadow-hover: 0 8px 24px rgba(39, 51, 45, 0.12), 0 2px 6px rgba(39, 51, 45, 0.06);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.62 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    a { color: var(--accent); }
+    a:focus-visible { outline: 3px solid var(--warm); outline-offset: 4px; }
+    
+    .shell {
+      max-width: 920px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    /* Top Sticky Header */
+    .top {
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      box-shadow: 0 1px 3px rgba(39, 51, 45, 0.03);
+    }
+    .top-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 68px;
+    }
+    .brand {
+      text-decoration: none;
+      font-weight: 750;
+      letter-spacing: .02em;
+      color: var(--ink);
+      font-size: 1.05rem;
+      transition: color .15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand:hover { color: var(--accent); }
+    .brand-mark {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+    }
+    .cycle {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* Interactive Header Button */
+    .catalog-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 8px 18px;
+      font-size: .88rem;
+      font-weight: 650;
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+      transition: all .18s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .catalog-link:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-hover);
+    }
+    .catalog-link:active {
+      transform: translateY(0);
+    }
+    .catalog-link svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Main Rest Card Container */
+    .rest-container {
+      padding: 48px 0 64px;
+    }
+
+    .rest-panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Atmospheric Hero Image */
+    .rest-hero-media {
+      position: relative;
+      width: 100%;
+      height: 340px;
+      background: #e6dfd3;
+      overflow: hidden;
+    }
+    .rest-hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .media-badge {
+      position: absolute;
+      bottom: 18px;
+      left: 24px;
+      background: rgba(39, 51, 45, 0.85);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 650;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      letter-spacing: .02em;
+    }
+    .media-badge svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* Content Area */
+    .rest-body {
+      padding: 42px 48px 48px;
+    }
+
+    .eyebrow {
+      color: var(--warm);
+      font-weight: 750;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: .8rem;
+      margin-bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .rest-body h1 {
+      font: 700 clamp(2.2rem, 4.5vw, 3.4rem)/1.12 Georgia, serif;
+      letter-spacing: -.035em;
+      margin: 10px 0 18px;
+      color: var(--ink);
+    }
+
+    /* Static Non-Interactive Metadata Badges */
+    .facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .fact {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--pill-bg);
+      border: 1px solid #d5ded2;
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: .86rem;
+      color: var(--muted);
+      user-select: none;
+      cursor: default;
+    }
+    .fact svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--muted);
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* Editorial Message Note */
+    .rest-message {
+      padding: 22px 26px;
+      background: var(--warm-subtle);
+      border-left: 4px solid var(--warm);
+      border-radius: 12px;
+      margin-bottom: 34px;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: #38423b;
+    }
+    .rest-message strong {
+      color: #24352b;
+    }
+
+    /* Suggestions / Ideas Grid */
+    .ideas-heading {
+      font: 700 1.25rem Georgia, serif;
+      color: var(--ink);
+      margin: 0 0 16px;
+    }
+    .ideas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .idea-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .idea-title {
+      font-weight: 700;
+      font-size: .94rem;
+      color: var(--accent);
+      margin: 0 0 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .idea-title svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+    .idea-desc {
+      margin: 0;
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Action Nav Buttons */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-top: 1px solid var(--line);
+      padding-top: 30px;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: #ffffff;
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 20px;
+      text-decoration: none;
+      flex: 1;
+      max-width: 48%;
+      color: var(--ink);
+      box-shadow: var(--shadow-sm);
+      transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-btn:hover {
+      border-color: var(--accent);
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    .nav-btn:active {
+      transform: translateY(0);
+    }
+    .nav-btn.primary {
+      background: var(--accent);
+      color: #ffffff !important;
+      border-color: var(--accent);
+    }
+    .nav-btn.primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+    .nav-btn.primary .nav-arrow {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+    }
+    .nav-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--pill-bg);
+      color: var(--accent);
+      flex-shrink: 0;
+      transition: all .2s ease;
+    }
+    .nav-arrow svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .nav-btn:hover .nav-arrow {
+      background: var(--accent);
+      color: #ffffff;
+    }
+    .nav-btn.primary:hover .nav-arrow {
+      background: #ffffff;
+      color: var(--accent);
+    }
+    .nav-content small {
+      display: block;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: .74rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .nav-btn.primary .nav-content small {
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .nav-content span {
+      display: block;
+      font-family: Georgia, serif;
+      font-weight: 700;
+      font-size: .98rem;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+    .nav-btn.primary .nav-content span {
+      color: #ffffff;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 42px;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    @media (max-width: 768px) {
+      .shell { padding: 0 16px; }
+      .rest-container { padding: 24px 0 40px; }
+      .rest-hero-media { height: 220px; }
+      .rest-body { padding: 26px 20px 30px; }
+      .ideas-grid { grid-template-columns: 1fr; gap: 12px; }
+      .nav-actions { flex-direction: column; gap: 12px; }
+      .nav-btn { max-width: 100%; width: 100%; }
+      .top-inner { min-height: 58px; }
+      .cycle { display: none; }
+    }
+    @media print {
+      body { background: white; font-size: 11pt; }
+      .top, .nav-actions, footer { display: none; }
+      .rest-panel { box-shadow: none; border: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="shell top-inner">
+      <a class="brand" href="/static/recipes.html">
+        <span class="brand-mark"></span>
+        Three-Week Kitchen
+      </a>
+      <span class="cycle">Weekend Interval · Kitchen Pause</span>
+      <a class="catalog-link" href="/static/recipes.html">
+        <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+        Full 3-Week Menu
+      </a>
+    </div>
+  </header>
+
+  <main class="shell rest-container">
+    <article class="rest-panel">
+      <!-- Atmospheric Warm Kitchen Still Life -->
+      <div class="rest-hero-media">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvTIU4nNODZeJJ0lASlXouxl0VwF4D2H33gVeJElboVgiVtIqHVrRM-aj172CFJLe1fg0S7-d508jYs_0YN11ZA5zPD6J9NPVBETjQ9lGaej4_VeJ_habfylow0GZAnyI88O_5wj-bJ1NCcD93FQeJYqFgGAdLSHhSiBZBlBEY8pMo8x72F1fzudgj6WpJoCNfPrfdYTJsaiCWqrlYDofehZ3r9IfCFnrnaBTtPh8OW217caFfCrT6Jg" alt="Cozy warm kitchen still life illustration on a wooden table with morning tea and notes, soft sunlight">
+        <div class="media-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+          Rest Day · No Meal Scheduled
+        </div>
+      </div>
+
+      <div class="rest-body">
+        <div class="eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+          Friday &amp; Saturday Pause
+        </div>
+        <h1>No recipe scheduled for today</h1>
+
+        <!-- Static Non-Interactive Metadata Badges -->
+        <div class="facts">
+          <span class="fact">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            Prep Time: 0 minutes
+          </span>
+          <span class="fact">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            Friday &amp; Saturday Rest Cycle
+          </span>
+          <span class="fact">
+            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            Rotation Resumes Sunday
+          </span>
+        </div>
+
+        <!-- Descriptive Notice Box -->
+        <div class="rest-message">
+          <strong>The kitchen is officially off duty!</strong> Friday and Saturday are built into the three-week household rotation as intentional rest days. There is no designated shopping list or cook method for today. Take time to enjoy batch leftovers, order takeout, or share a spontaneous meal.
+        </div>
+
+        <!-- Rest Day Inspiration Grid -->
+        <h2 class="ideas-heading">Three good ways to spend a rest day</h2>
+        <div class="ideas-grid">
+          <div class="idea-card">
+            <div class="idea-title">
+              <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+              Enjoy Leftovers
+            </div>
+            <p class="idea-desc">Reheat portions from Thursday's batch cook or pair extra stew with toasted country bread.</p>
+          </div>
+          <div class="idea-card">
+            <div class="idea-title">
+              <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+              Dine Out or Order
+            </div>
+            <p class="idea-desc">Take a break from pots and pans. Explore a neighborhood bistro or support your favorite local spot.</p>
+          </div>
+          <div class="idea-card">
+            <div class="idea-title">
+              <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              Plan Ahead
+            </div>
+            <p class="idea-desc">Browse upcoming week recipes in the directory to check pantry staples before Sunday’s rotation begins.</p>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons with Explicit Interactive Affordance -->
+        <nav class="nav-actions" aria-label="Rest day navigation">
+          <a class="nav-btn" href="/static/recipes.html">
+            <span class="nav-arrow">
+              <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </span>
+            <div class="nav-content">
+              <small>Directory</small>
+              <span>Back to 3-Week Menu</span>
+            </div>
+          </a>
+
+          <a class="nav-btn primary" href="/recipes/1">
+            <div class="nav-content">
+              <small>Next Up · Sunday</small>
+              <span>Week 1 · Day 01: Red Wine Beef Stew</span>
+            </div>
+            <span class="nav-arrow">
+              <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </a>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="shell">
+      Three-Week Kitchen · Friday and Saturday are rest days. The rotation resumes Sunday.
+    </div>
+  </footer>
+</body>
+</html>

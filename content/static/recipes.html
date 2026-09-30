@@ -1,2 +1,812 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The three-week menu · Three-Week Kitchen</title><link rel="stylesheet" href="/static/style.css"></head><body><main><nav aria-label="Main"><a href="/today">Today’s dish</a></nav><p class="eyebrow">Three-Week Kitchen</p><h1>The three-week menu</h1><p>Five cooking days, then a little room to pause. Choose any dish below, or open today’s plan.</p><section class="card" aria-labelledby="week-1"><h2 id="week-1">Week 1</h2><ul class="menu"><li><a href="/recipes/1"><span>Sunday</span>Red Wine Beef Stew with Mashed Potatoes</a></li><li><a href="/recipes/2"><span>Monday</span>Chicken Chickpea and Potato Coconut Curry with Rice</a></li><li><a href="/recipes/3"><span>Tuesday</span>Beet Turkey and Buckwheat Skillet</a></li><li><a href="/recipes/4"><span>Wednesday</span>Beef Mushroom and Pepper Stir-Fry with Rice</a></li><li><a href="/recipes/5"><span>Thursday</span>Chicken Peanut Pasta with Carrot and Spinach</a></li></ul></section><section class="card" aria-labelledby="week-2"><h2 id="week-2">Week 2</h2><ul class="menu"><li><a href="/recipes/6"><span>Sunday</span>Rosemary Beef, Mushroom and Potato Casserole</a></li><li><a href="/recipes/7"><span>Monday</span>Beef Black Bean and Chipotle Chili</a></li><li><a href="/recipes/8"><span>Tuesday</span>Greek Chicken Bulgur Bowls with Dill Yogurt</a></li><li><a href="/recipes/9"><span>Wednesday</span>Chicken Mushroom and Dill Pilaf</a></li><li><a href="/recipes/10"><span>Thursday</span>Broccoli Shrimp and Pepper Noodles</a></li></ul></section><section class="card" aria-labelledby="week-3"><h2 id="week-3">Week 3</h2><ul class="menu"><li><a href="/recipes/11"><span>Sunday</span>Chicken Biryani with Boiled Eggs</a></li><li><a href="/recipes/12"><span>Monday</span>Butternut Squash Turkey and Bulgur Skillet</a></li><li><a href="/recipes/13"><span>Tuesday</span>Honey Mustard Pork with Mash and Green Beans</a></li><li><a href="/recipes/14"><span>Wednesday</span>Chicken White Bean and Mushroom Stew with Couscous</a></li><li><a href="/recipes/15"><span>Thursday</span>Skillet Chicken Rice Bowls with Tomato Cucumber Salad</a></li></ul></section><footer>Friday and Saturday are rest days. The rotation starts again after week three.</footer></main></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Three-Week Menu · Three-Week Kitchen</title>
+  <meta name="description" content="Five cooking days, then a little room to pause. Complete three-week rotation recipe directory.">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #27332d;
+      --muted: #57655e;
+      --bg: #f7f4ed;
+      --card: #fffdf8;
+      --accent: #2d523e;
+      --accent-hover: #1e382a;
+      --line: #dce0d4;
+      --warm: #d99a5c;
+      --warm-soft: #fcf4eb;
+      --pill-bg: #edf1ea;
+      --shadow-sm: 0 2px 5px rgba(39, 51, 45, 0.08), 0 1px 2px rgba(39, 51, 45, 0.04);
+      --shadow-md: 0 4px 14px rgba(39, 51, 45, 0.07), 0 1px 3px rgba(39, 51, 45, 0.04);
+      --shadow-hover: 0 8px 24px rgba(39, 51, 45, 0.12), 0 2px 6px rgba(39, 51, 45, 0.06);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.62 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    a { color: var(--accent); }
+    a:focus-visible { outline: 3px solid var(--warm); outline-offset: 4px; }
+    
+    .shell {
+      max-width: 1080px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    /* Top Sticky Header */
+    .top {
+      border-bottom: 1px solid var(--line);
+      background: var(--card);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      box-shadow: 0 1px 3px rgba(39, 51, 45, 0.03);
+    }
+    .top-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 68px;
+    }
+    .brand {
+      text-decoration: none;
+      font-weight: 750;
+      letter-spacing: .02em;
+      color: var(--ink);
+      font-size: 1.05rem;
+      transition: color .15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand:hover { color: var(--accent); }
+    .brand-mark {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+    }
+    .cycle-tag {
+      color: var(--muted);
+      font-size: .88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Interactive Header Button */
+    .today-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 8px 18px;
+      font-size: .88rem;
+      font-weight: 650;
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+      transition: all .18s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .today-link:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-hover);
+    }
+    .today-link:active {
+      transform: translateY(0);
+    }
+    .today-link svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 56px 0 36px;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 750;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      margin-bottom: 8px;
+    }
+    .hero h1 {
+      font: 700 clamp(2.3rem, 5vw, 3.8rem)/1.1 Georgia, serif;
+      letter-spacing: -.035em;
+      max-width: 900px;
+      margin: 8px 0 16px;
+      color: var(--ink);
+    }
+    .hero-lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 0 24px;
+      line-height: 1.55;
+    }
+
+    /* Quick Overview Badges */
+    .overview-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--pill-bg);
+      border: 1px solid #d5ded2;
+      border-radius: 6px;
+      padding: 6px 13px;
+      font-size: .86rem;
+      color: var(--muted);
+      user-select: none;
+      cursor: default;
+    }
+    .badge svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--muted);
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* Weeks Section */
+    .weeks-container {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      padding-bottom: 52px;
+    }
+    .week-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+    .week-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+    .week-title {
+      font: 700 1.75rem Georgia, serif;
+      margin: 0;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .week-tag {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--accent);
+      background: var(--pill-bg);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid #d5ded2;
+    }
+    .week-count {
+      font-size: .88rem;
+      color: var(--muted);
+    }
+
+    /* Distinct Interactive Recipe Buttons / Row Cards */
+    .menu-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .recipe-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      background: #ffffff;
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 20px;
+      text-decoration: none;
+      color: var(--ink);
+      box-shadow: var(--shadow-sm);
+      transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .recipe-btn:hover {
+      border-color: var(--accent);
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    .recipe-btn:active {
+      transform: translateY(0);
+    }
+    .recipe-main {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+    .recipe-day {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 96px;
+      flex-shrink: 0;
+    }
+    .day-name {
+      color: var(--accent);
+      font-size: .76rem;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .day-index {
+      color: var(--muted);
+      font-size: .75rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .recipe-title {
+      font-family: Georgia, serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--ink);
+      line-height: 1.35;
+      text-decoration: none;
+      transition: color .15s ease;
+    }
+    .recipe-btn:hover .recipe-title {
+      color: var(--accent-hover);
+    }
+    .recipe-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .action-label {
+      font-size: .82rem;
+      font-weight: 650;
+      color: var(--accent);
+      opacity: 0;
+      transform: translateX(4px);
+      transition: all .2s ease;
+    }
+    .recipe-btn:hover .action-label {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .action-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--pill-bg);
+      color: var(--accent);
+      transition: all .2s ease;
+    }
+    .action-arrow svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .recipe-btn:hover .action-arrow {
+      background: var(--accent);
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    /* Rest Days Callout Card */
+    .rest-card {
+      background: linear-gradient(135deg, #fdfbf7 0%, #f4ede2 100%);
+      border: 1.5px dashed #cfd6c8;
+      border-radius: 18px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 8px;
+    }
+    .rest-content {
+      max-width: 680px;
+    }
+    .rest-eyebrow {
+      color: var(--warm);
+      font-weight: 750;
+      font-size: .76rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .rest-eyebrow svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+    .rest-title {
+      font: 700 1.25rem Georgia, serif;
+      margin: 0 0 4px;
+      color: var(--ink);
+    }
+    .rest-desc {
+      margin: 0;
+      font-size: .92rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .rest-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #ffffff;
+      border: 1.5px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 20px;
+      color: var(--ink);
+      font-weight: 650;
+      font-size: .88rem;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+      transition: all .2s ease;
+      flex-shrink: 0;
+    }
+    .rest-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-hover);
+    }
+    .rest-link svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 0 48px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .shell { padding: 0 16px; }
+      .hero { padding: 36px 0 24px; }
+      .week-card { padding: 22px 18px; }
+      .top-inner { min-height: 58px; }
+      .recipe-btn { padding: 14px 16px; }
+      .recipe-main { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .recipe-day { min-width: auto; }
+      .action-label { display: none; }
+      .rest-card { flex-direction: column; align-items: flex-start; }
+      .rest-link { width: 100%; justify-content: center; }
+    }
+    @media print {
+      body { background: white; font-size: 11pt; }
+      .top, .rest-link, .today-link, footer { display: none; }
+      .hero { padding: 0 0 16px; }
+      .week-card { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+      .recipe-btn { box-shadow: none; border-bottom: 1px solid #eee; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="shell top-inner">
+      <a class="brand" href="/static/recipes.html">
+        <span class="brand-mark"></span>
+        Three-Week Kitchen
+      </a>
+      <span class="cycle-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        15 Curated Meals · 3-Week Cycle
+      </span>
+      <a class="today-link" href="/today">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        Today’s dish
+      </a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="hero">
+      <div class="eyebrow">Household Culinary Rotation</div>
+      <h1>The three-week menu</h1>
+      <p class="hero-lead">Five cooking days, then a little room to pause. Choose any dish below, or open today’s plan.</p>
+      
+      <div class="overview-badges">
+        <span class="badge">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          3 Weeks · 15 Scheduled Recipes
+        </span>
+        <span class="badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+          Fridays &amp; Saturdays Rest
+        </span>
+        <span class="badge">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+          Batch Cooked: 5–8 Servings
+        </span>
+      </div>
+    </div>
+
+    <div class="weeks-container">
+      <!-- Week 1 -->
+      <section class="week-card" aria-labelledby="week-1">
+        <div class="week-header">
+          <h2 id="week-1" class="week-title">
+            Week 1
+            <span class="week-tag">Days 1 – 5</span>
+          </h2>
+          <span class="week-count">5 dishes</span>
+        </div>
+        <ul class="menu-grid">
+          <li>
+            <a class="recipe-btn" href="/recipes/1">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Sunday</span>
+                  <span class="day-index">Day 01</span>
+                </div>
+                <span class="recipe-title">Red Wine Beef Stew with Mashed Potatoes</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="recipe-btn" href="/recipes/2">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Monday</span>
+                  <span class="day-index">Day 02</span>
+                </div>
+                <span class="recipe-title">Chicken Chickpea and Potato Coconut Curry with Rice</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="recipe-btn" href="/recipes/3">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Tuesday</span>
+                  <span class="day-index">Day 03</span>
+                </div>
+                <span class="recipe-title">Beet Turkey and Buckwheat Skillet</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="recipe-btn" href="/recipes/4">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Wednesday</span>
+                  <span class="day-index">Day 04</span>
+                </div>
+                <span class="recipe-title">Beef Mushroom and Pepper Stir-Fry with Rice</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="recipe-btn" href="/recipes/5">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Thursday</span>
+                  <span class="day-index">Day 05</span>
+                </div>
+                <span class="recipe-title">Chicken Peanut Pasta with Carrot and Spinach</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Week 2 -->
+      <section class="week-card" aria-labelledby="week-2">
+        <div class="week-header">
+          <h2 id="week-2" class="week-title">
+            Week 2
+            <span class="week-tag">Days 6 – 10</span>
+          </h2>
+          <span class="week-count">5 dishes</span>
+        </div>
+        <ul class="menu-grid">
+          <li>
+            <a class="recipe-btn" href="/recipes/6">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Sunday</span>
+                  <span class="day-index">Day 06</span>
+                </div>
+                <span class="recipe-title">Rosemary Beef, Mushroom and Potato Casserole</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="recipe-btn" href="/recipes/7">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Monday</span>
+                  <span class="day-index">Day 07</span>
+                </div>
+                <span class="recipe-title">Beef Black Bean and Chipotle Chili</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="recipe-btn" href="/recipes/8">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Tuesday</span>
+                  <span class="day-index">Day 08</span>
+                </div>
+                <span class="recipe-title">Greek Chicken Bulgur Bowls with Dill Yogurt</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="recipe-btn" href="/recipes/9">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Wednesday</span>
+                  <span class="day-index">Day 09</span>
+                </div>
+                <span class="recipe-title">Chicken Mushroom and Dill Pilaf</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="recipe-btn" href="/recipes/10">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Thursday</span>
+                  <span class="day-index">Day 10</span>
+                </div>
+                <span class="recipe-title">Broccoli Shrimp and Pepper Noodles</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Week 3 -->
+      <section class="week-card" aria-labelledby="week-3">
+        <div class="week-header">
+          <h2 id="week-3" class="week-title">
+            Week 3
+            <span class="week-tag">Days 11 – 15</span>
+          </h2>
+          <span class="week-count">5 dishes</span>
+        </div>
+        <ul class="menu-grid">
+          <li>
+            <a class="recipe-btn" href="/recipes/11">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Sunday</span>
+                  <span class="day-index">Day 11</span>
+                </div>
+                <span class="recipe-title">Chicken Biryani with Boiled Eggs</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="recipe-btn" href="/recipes/12">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Monday</span>
+                  <span class="day-index">Day 12</span>
+                </div>
+                <span class="recipe-title">Butternut Squash Turkey and Bulgur Skillet</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="recipe-btn" href="/recipes/13">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Tuesday</span>
+                  <span class="day-index">Day 13</span>
+                </div>
+                <span class="recipe-title">Honey Mustard Pork with Mash and Green Beans</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="recipe-btn" href="/recipes/14">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Wednesday</span>
+                  <span class="day-index">Day 14</span>
+                </div>
+                <span class="recipe-title">Chicken White Bean and Mushroom Stew with Couscous</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="recipe-btn" href="/recipes/15">
+              <div class="recipe-main">
+                <div class="recipe-day">
+                  <span class="day-name">Thursday</span>
+                  <span class="day-index">Day 15</span>
+                </div>
+                <span class="recipe-title">Skillet Chicken Rice Bowls with Tomato Cucumber Salad</span>
+              </div>
+              <div class="recipe-action">
+                <span class="action-label">View Recipe</span>
+                <span class="action-arrow">
+                  <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Rest Days Callout Card with link to rest-day.html -->
+      <aside class="rest-card">
+        <div class="rest-content">
+          <div class="rest-eyebrow">
+            <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+            Weekend Interval
+          </div>
+          <h3 class="rest-title">Friday and Saturday are kitchen rest days</h3>
+          <p class="rest-desc">Room to enjoy leftovers, dine out, or take a pause from meal prep. The three-week cycle restarts seamlessly on Sunday.</p>
+        </div>
+        <a class="rest-link" href="/rest-day">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Rest Day Guide
+        </a>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>Three-Week Kitchen · 15-dish rotation cycle</span>
+      <span>Friday and Saturday are rest days. The rotation starts again after week three.</span>
+    </div>
+  </footer>
+</body>
+</html>
