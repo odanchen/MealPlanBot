@@ -1,0 +1,16 @@
+{
+  "name": "mealplan-tooling",
+  "private": true,
+  "engines": {
+    "node": "24.22.0"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "3.9.10",
+    "prettier-plugin-java": "2.11.0",
+    "prettier-plugin-sh": "0.20.2"
+  }
+}

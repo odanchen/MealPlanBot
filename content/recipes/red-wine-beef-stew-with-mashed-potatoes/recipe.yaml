@@ -9,183 +9,135 @@ timing:
 preparationGuidance: "Use beef suitable for stewing, cut into 3–4 cm cubes. Start with 600–750 ml water and adjust during the braise. Use the cornstarch only if the gravy needs thickening. Add the measured seasoning gradually, to taste."
 images: []
 ingredients:
-  -
-    ingredientId: "boneless-beef"
+  - ingredientId: "boneless-beef"
     quantity: "1.4"
     unit: "kg"
     optional: false
     note: ""
-  -
-    ingredientId: "onions"
+  - ingredientId: "onions"
     quantity: "2"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "carrots"
+  - ingredientId: "carrots"
     quantity: "400"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "celery"
+  - ingredientId: "celery"
     quantity: "400"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "garlic-cloves"
+  - ingredientId: "garlic-cloves"
     quantity: "4"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "tomato-paste"
+  - ingredientId: "tomato-paste"
     quantity: "1"
     unit: "tin-156ml"
     optional: false
     note: ""
-  -
-    ingredientId: "bay-leaves"
+  - ingredientId: "bay-leaves"
     quantity: "4"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "dry-red-wine"
+  - ingredientId: "dry-red-wine"
     quantity: "500"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "beef-bouillon-cubes"
+  - ingredientId: "beef-bouillon-cubes"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "cornstarch"
+  - ingredientId: "cornstarch"
     quantity: "8"
     unit: "g"
     optional: true
     note: ""
-  -
-    ingredientId: "potatoes"
+  - ingredientId: "potatoes"
     quantity: "1.5"
     unit: "kg"
     optional: false
     note: ""
-  -
-    ingredientId: "butter"
+  - ingredientId: "butter"
     quantity: "60"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "milk"
+  - ingredientId: "milk"
     quantity: "200"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "neutral-oil"
+  - ingredientId: "neutral-oil"
     quantity: "30"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "salt"
+  - ingredientId: "salt"
     quantity: "8"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "black-pepper"
+  - ingredientId: "black-pepper"
     quantity: "3"
     unit: "g"
     optional: false
     note: ""
 sections:
-  -
-    id: "method"
+  - id: "method"
     title: "Method"
     steps:
-      -
-        id: "step-1"
+      - id: "step-1"
         content:
-          -
-            text: "Prep and brown. Pat the beef dry, season it with salt and generous black pepper, and brown it in batches in an oiled Dutch oven. Avoid crowding the pot. Transfer the beef to a plate. Cut the carrots and celery into a "
-          -
-            term: "medium-dice"
+          - text: "Prep and brown. Pat the beef dry, season it with salt and generous black pepper, and brown it in batches in an oiled Dutch oven. Avoid crowding the pot. Transfer the beef to a plate. Cut the carrots and celery into a "
+          - term: "medium-dice"
             label: "medium dice"
-          -
-            text: "—½-inch (about 1.2 cm) cubes—so the pieces remain distinct in the finished stew. Dice the onions similarly."
-      -
-        id: "step-2"
+          - text: "—½-inch (about 1.2 cm) cubes—so the pieces remain distinct in the finished stew. Dice the onions similarly."
+      - id: "step-2"
         content:
-          -
-            text: "Build the base and reserve the vegetables. Cook the onions, carrots and celery in the pot until the onions soften and the vegetables pick up a little colour. Lift out all the vegetables with a slotted spoon and set aside. Add minced garlic and tomato paste to the pot; stir for about 2 minutes. Pour in the wine, scrape up the browned bits ("
-          -
-            term: "deglaze"
+          - text: "Build the base and reserve the vegetables. Cook the onions, carrots and celery in the pot until the onions soften and the vegetables pick up a little colour. Lift out all the vegetables with a slotted spoon and set aside. Add minced garlic and tomato paste to the pot; stir for about 2 minutes. Pour in the wine, scrape up the browned bits ("
+          - term: "deglaze"
             label: "deglaze"
-          -
-            text: "), and let the wine "
-          -
-            term: "reduce"
+          - text: "), and let the wine "
+          - term: "reduce"
             label: "reduce"
-          -
-            text: " for several minutes."
-      -
-        id: "step-3"
+          - text: " for several minutes."
+      - id: "step-3"
         content:
-          -
-            text: "Start the "
-          -
-            term: "braise"
+          - text: "Start the "
+          - term: "braise"
             label: "braise"
             explanation: "For this stew, keep the covered beef at a gentle simmer in its small amount of liquid until tender."
-          -
-            text: " (cook gently in a small amount of liquid). Return the beef and its juices to the pot. Add bay leaves, the bouillon cube, and enough water to almost cover the beef. Bring the liquid just to a light "
-          -
-            term: "simmer"
+          - text: " (cook gently in a small amount of liquid). Return the beef and its juices to the pot. Add bay leaves, the bouillon cube, and enough water to almost cover the beef. Bring the liquid just to a light "
+          - term: "simmer"
             label: "simmer"
-          -
-            text: ": occasional small bubbles should break the surface, without a rolling boil. Cover, leaving the lid slightly ajar if needed to maintain that gentle movement."
-      -
-        id: "step-4"
+          - text: ": occasional small bubbles should break the surface, without a rolling boil. Cover, leaving the lid slightly ajar if needed to maintain that gentle movement."
+      - id: "step-4"
         content:
-          -
-            term: "braise"
+          - term: "braise"
             label: "Braise"
-          -
-            text: " until nearly tender. Check the liquid occasionally and add a little hot water if it drops too far. Allow roughly 2½–3½ hours of gentle braising in total, but judge it by the beef: a fork should slide in easily. Different cuts will take different times; lean cuts can become drier even when tender."
-      -
-        id: "step-5"
+          - text: " until nearly tender. Check the liquid occasionally and add a little hot water if it drops too far. Allow roughly 2½–3½ hours of gentle braising in total, but judge it by the beef: a fork should slide in easily. Different cuts will take different times; lean cuts can become drier even when tender."
+      - id: "step-5"
         content:
-          -
-            text: "Final 40 minutes. Return the reserved vegetables for the last 40 minutes of the "
-          -
-            term: "braise"
+          - text: "Final 40 minutes. Return the reserved vegetables for the last 40 minutes of the "
+          - term: "braise"
             label: "braise"
-          -
-            text: " so they soften while retaining some texture. Meanwhile, peel the potatoes and cut them into even chunks. Boil in salted water until a fork passes through easily, then drain thoroughly and mash with butter and warm milk."
-      -
-        id: "step-6"
+          - text: " so they soften while retaining some texture. Meanwhile, peel the potatoes and cut them into even chunks. Boil in salted water until a fork passes through easily, then drain thoroughly and mash with butter and warm milk."
+      - id: "step-6"
         content:
-          -
-            text: "Finish. Remove the bay leaves. If the gravy needs body, "
-          -
-            term: "reduce"
+          - text: "Finish. Remove the bay leaves. If the gravy needs body, "
+          - term: "reduce"
             label: "reduce"
-          -
-            text: " it ("
-          -
-            term: "simmer"
+          - text: " it ("
+          - term: "simmer"
             label: "simmer"
-          -
-            text: " uncovered to concentrate it) briefly or add a cornstarch slurry (starch mixed with cold water) and "
-          -
-            term: "simmer"
+          - text: " uncovered to concentrate it) briefly or add a cornstarch slurry (starch mixed with cold water) and "
+          - term: "simmer"
             label: "simmer"
-          -
-            text: " until glossy. Taste and adjust salt and black pepper."
+          - text: " until glossy. Taste and adjust salt and black pepper."

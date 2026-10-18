@@ -1,14 +1,71 @@
-import { test, expect } from '@playwright/test';
-import axe from 'axe-core';
-test('explanations work by hover, pin, keyboard and touch within a narrow viewport; rice references return to their parent', async ({ page, browser }) => {
- await page.goto('/recipes/red-wine-beef-stew-with-mashed-potatoes'); const deglaze=page.getByRole('button',{name:'deglaze',exact:true}).first();
- await deglaze.hover(); await expect(page.getByRole('tooltip')).toContainText('scrape up the browned bits'); await page.getByRole('tooltip').hover(); await expect(page.getByRole('tooltip')).toBeVisible();
- await deglaze.click(); await page.mouse.move(0,0); await expect(page.getByRole('tooltip')).toBeVisible(); await page.keyboard.press('Escape'); await expect(page.getByRole('tooltip')).toHaveCount(0); await expect(deglaze).toBeFocused();
- await page.keyboard.press('Tab'); await page.keyboard.press('Shift+Tab'); await expect(page.getByRole('tooltip')).toBeVisible();
- const braise=page.getByRole('button',{name:'braise',exact:true}).first(); await braise.hover(); await expect(page.getByRole('tooltip')).toHaveCount(1); await expect(page.getByRole('tooltip')).toContainText('For this stew');
- await braise.click(); await page.getByRole('heading',{name:'Red Wine Beef Stew with Mashed Potatoes',exact:true}).click(); await expect(page.getByRole('tooltip')).toHaveCount(0);
- await page.setViewportSize({width:320,height:600}); await deglaze.scrollIntoViewIfNeeded(); await deglaze.click(); const box=await page.getByRole('tooltip').boundingBox(); expect(box).not.toBeNull(); expect(box!.x).toBeGreaterThanOrEqual(0); expect(box!.x+box!.width).toBeLessThanOrEqual(320); expect(box!.y).toBeGreaterThanOrEqual(0); expect(box!.y+box!.height).toBeLessThanOrEqual(600);
- await page.addScriptTag({content:axe.source}); const violations=await page.evaluate(async()=>{const result=await (window as unknown as {axe:{run:()=>Promise<{violations:{id:string}[]}>}}).axe.run();return result.violations.map(v=>v.id);}); expect(violations).toEqual([]); await page.screenshot({path:'test-results/us5-cooking-term-mobile.png',fullPage:false});
- await page.goto('/recipes/chicken-chickpea-potato-coconut-curry-with-rice'); await page.locator('a[href="/recipes/simple-rice#method"]').click(); await expect(page.getByRole('heading',{name:'Simple rice',exact:true})).toBeVisible(); await expect(page).toHaveURL(/simple-rice#method$/); await page.getByRole('button',{name:'Back to previous recipe',exact:true}).click(); await expect(page.getByRole('heading',{name:'Chicken Chickpea and Potato Coconut Curry with Rice',exact:true})).toBeVisible();
- const touch=await browser.newContext({hasTouch:true,viewport:{width:320,height:640}}); try{const mobile=await touch.newPage();await mobile.goto('/recipes/simple-rice');await mobile.getByRole('button',{name:'fluff',exact:true}).tap();await expect(mobile.getByRole('tooltip')).toBeVisible();await mobile.getByRole('heading',{name:'Simple rice',exact:true}).tap();await expect(mobile.getByRole('tooltip')).toHaveCount(0);}finally{await touch.close();}
+import { test, expect } from "@playwright/test";
+import axe from "axe-core";
+test("explanations work by hover, pin, keyboard and touch within a narrow viewport; rice references return to their parent", async ({
+  page,
+  browser,
+}) => {
+  await page.goto("/recipes/red-wine-beef-stew-with-mashed-potatoes");
+  const deglaze = page.getByRole("button", { name: "deglaze", exact: true }).first();
+  await deglaze.hover();
+  await expect(page.getByRole("tooltip")).toContainText("scrape up the browned bits");
+  await page.getByRole("tooltip").hover();
+  await expect(page.getByRole("tooltip")).toBeVisible();
+  await deglaze.click();
+  await page.mouse.move(0, 0);
+  await expect(page.getByRole("tooltip")).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("tooltip")).toHaveCount(0);
+  await expect(deglaze).toBeFocused();
+  await page.keyboard.press("Tab");
+  await page.keyboard.press("Shift+Tab");
+  await expect(page.getByRole("tooltip")).toBeVisible();
+  const braise = page.getByRole("button", { name: "braise", exact: true }).first();
+  await braise.hover();
+  await expect(page.getByRole("tooltip")).toHaveCount(1);
+  await expect(page.getByRole("tooltip")).toContainText("For this stew");
+  await braise.click();
+  await page
+    .getByRole("heading", { name: "Red Wine Beef Stew with Mashed Potatoes", exact: true })
+    .click();
+  await expect(page.getByRole("tooltip")).toHaveCount(0);
+  await page.setViewportSize({ width: 320, height: 600 });
+  await deglaze.scrollIntoViewIfNeeded();
+  await deglaze.click();
+  const box = await page.getByRole("tooltip").boundingBox();
+  expect(box).not.toBeNull();
+  expect(box!.x).toBeGreaterThanOrEqual(0);
+  expect(box!.x + box!.width).toBeLessThanOrEqual(320);
+  expect(box!.y).toBeGreaterThanOrEqual(0);
+  expect(box!.y + box!.height).toBeLessThanOrEqual(600);
+  await page.addScriptTag({ content: axe.source });
+  const violations = await page.evaluate(async () => {
+    const result = await (
+      window as unknown as { axe: { run: () => Promise<{ violations: { id: string }[] }> } }
+    ).axe.run();
+    return result.violations.map((v) => v.id);
+  });
+  expect(violations).toEqual([]);
+  await page.screenshot({ path: "test-results/us5-cooking-term-mobile.png", fullPage: false });
+  await page.goto("/recipes/chicken-chickpea-potato-coconut-curry-with-rice");
+  await page.locator('a[href="/recipes/simple-rice#method"]').click();
+  await expect(page.getByRole("heading", { name: "Simple rice", exact: true })).toBeVisible();
+  await expect(page).toHaveURL(/simple-rice#method$/);
+  await page.getByRole("button", { name: "Back to previous recipe", exact: true }).click();
+  await expect(
+    page.getByRole("heading", {
+      name: "Chicken Chickpea and Potato Coconut Curry with Rice",
+      exact: true,
+    }),
+  ).toBeVisible();
+  const touch = await browser.newContext({ hasTouch: true, viewport: { width: 320, height: 640 } });
+  try {
+    const mobile = await touch.newPage();
+    await mobile.goto("/recipes/simple-rice");
+    await mobile.getByRole("button", { name: "fluff", exact: true }).tap();
+    await expect(mobile.getByRole("tooltip")).toBeVisible();
+    await mobile.getByRole("heading", { name: "Simple rice", exact: true }).tap();
+    await expect(mobile.getByRole("tooltip")).toHaveCount(0);
+  } finally {
+    await touch.close();
+  }
 });

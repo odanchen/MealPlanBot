@@ -9,122 +9,95 @@ timing:
 preparationGuidance: "Use chicken breast or boneless thigh. Cook bulgur with water according to its package. Divide the fresh dill between the yogurt sauce and vegetables. Add salt and pepper to taste."
 images: []
 ingredients:
-  -
-    ingredientId: "boneless-chicken"
+  - ingredientId: "boneless-chicken"
     quantity: "900"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "dry-bulgur"
+  - ingredientId: "dry-bulgur"
     quantity: "300"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "cucumbers"
+  - ingredientId: "cucumbers"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "fresh-tomatoes"
+  - ingredientId: "fresh-tomatoes"
     quantity: "500"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "bell-peppers"
+  - ingredientId: "bell-peppers"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "salad-greens"
+  - ingredientId: "salad-greens"
     quantity: "100"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "plain-yogurt"
+  - ingredientId: "plain-yogurt"
     quantity: "250"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "lemons"
+  - ingredientId: "lemons"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "garlic-cloves"
+  - ingredientId: "garlic-cloves"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "fresh-dill"
+  - ingredientId: "fresh-dill"
     quantity: "1"
     unit: "bunch"
     optional: false
     note: ""
-  -
-    ingredientId: "dried-oregano"
+  - ingredientId: "dried-oregano"
     quantity: "1"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "olive-oil"
+  - ingredientId: "olive-oil"
     quantity: "30"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "salt"
+  - ingredientId: "salt"
     quantity: "7"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "black-pepper"
+  - ingredientId: "black-pepper"
     quantity: "2"
     unit: "g"
     optional: false
     note: ""
 sections:
-  -
-    id: "method"
+  - id: "method"
     title: "Method"
     steps:
-      -
-        id: "step-1"
+      - id: "step-1"
         content:
-          -
-            text: "0:00–0:10 — Start grain and sauce. Cook bulgur in salted water as directed. Stir yogurt with lemon juice, grated garlic, half the chopped dill and salt; refrigerate."
-      -
-        id: "step-2"
+          - text: "0:00–0:10 — Start grain and sauce. Cook bulgur in salted water as directed. Stir yogurt with lemon juice, grated garlic, half the chopped dill and salt; refrigerate."
+      - id: "step-2"
         content:
-          -
-            text: "0:10–0:22 — Prep. Cut chicken into an émincé (even, thin strips); season with oregano, salt, pepper, oil and lemon zest. Dice the cucumber, tomatoes and pepper (cut into small, even cubes); toss with greens, remaining dill and a little olive oil."
-      -
-        id: "step-3"
+          - text: "0:10–0:22 — Prep. Cut chicken into an émincé (even, thin strips); season with oregano, salt, pepper, oil and lemon zest. Dice the cucumber, tomatoes and pepper (cut into small, even cubes); toss with greens, remaining dill and a little olive oil."
+      - id: "step-3"
         content:
-          -
-            text: "0:22–0:35 — "
-          -
-            term: "sear"
+          - text: "0:22–0:35 — "
+          - term: "sear"
             label: "Sear"
-          -
-            text: ". Sear means brown rapidly in a hot pan. Heat a wide skillet and cook chicken in batches, turning, until browned and 74°C. Rest 3 minutes."
-      -
-        id: "step-4"
+          - text: ". Sear means brown rapidly in a hot pan. Heat a wide skillet and cook chicken in batches, turning, until browned and 74°C. Rest 3 minutes."
+      - id: "step-4"
         content:
-          -
-            text: "0:35–0:45 — Finish. "
-          -
-            term: "fluff"
+          - text: "0:35–0:45 — Finish. "
+          - term: "fluff"
             label: "Fluff"
-          -
-            text: " the bulgur with a fork. Serve with chicken, cool vegetables and dill yogurt sauce."
+          - text: " the bulgur with a fork. Serve with chicken, cool vegetables and dill yogurt sauce."

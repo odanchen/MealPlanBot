@@ -27,7 +27,9 @@ frontend/playwright-report/
 *.tmp
 *.swp
 .idea/
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 Thumbs.db
 credentials*.json
 *.pem

@@ -24,10 +24,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "estimate",
-        "note"
-      ],
+      "required": ["estimate", "note"],
       "additionalProperties": false
     },
     "timing": {
@@ -67,10 +64,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "path",
-          "alt"
-        ],
+        "required": ["path", "alt"],
         "additionalProperties": false
       }
     },
@@ -114,11 +108,7 @@
             "type": "string"
           }
         },
-        "required": [
-          "ingredientId",
-          "quantity",
-          "unit"
-        ],
+        "required": ["ingredientId", "quantity", "unit"],
         "additionalProperties": false
       },
       "minItems": 1
@@ -156,9 +146,7 @@
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "text"
-                        ],
+                        "required": ["text"],
                         "additionalProperties": false
                       },
                       {
@@ -177,9 +165,7 @@
                             "minLength": 1
                           }
                         },
-                        "required": [
-                          "term"
-                        ],
+                        "required": ["term"],
                         "additionalProperties": false
                       },
                       {
@@ -194,10 +180,7 @@
                             "minLength": 1
                           }
                         },
-                        "required": [
-                          "label",
-                          "explanation"
-                        ],
+                        "required": ["label", "explanation"],
                         "additionalProperties": false
                       },
                       {
@@ -216,9 +199,7 @@
                             "pattern": "^[a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*$"
                           }
                         },
-                        "required": [
-                          "recipe"
-                        ],
+                        "required": ["recipe"],
                         "additionalProperties": false
                       }
                     ]
@@ -226,20 +207,13 @@
                   "minItems": 1
                 }
               },
-              "required": [
-                "id",
-                "content"
-              ],
+              "required": ["id", "content"],
               "additionalProperties": false
             },
             "minItems": 1
           }
         },
-        "required": [
-          "id",
-          "title",
-          "steps"
-        ],
+        "required": ["id", "title", "steps"],
         "additionalProperties": false
       },
       "minItems": 1

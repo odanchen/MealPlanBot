@@ -10,15 +10,15 @@ SQLite uses two connections with foreign keys, WAL, synchronous=FULL and a 3-sec
 
 ## Verification results
 
-| Check | Result |
-| --- | --- |
-| Requirements checklist | 16 checked, 0 unchecked; file unchanged |
-| `./scripts/check.sh` | PASS: npm locked install, lint, TypeScript, components/accessibility, browser checks, backend check |
-| Backend suites | 28 tests, zero failures/errors, actual SQLite JDBC engine |
-| Frontend suites | 8 component/client tests and 2 Chromium browser tests passed |
+| Check                                                  | Result                                                                                                            |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| Requirements checklist                                 | 16 checked, 0 unchecked; file unchanged                                                                           |
+| `./scripts/check.sh`                                   | PASS: npm locked install, lint, TypeScript, components/accessibility, browser checks, backend check               |
+| Backend suites                                         | 28 tests, zero failures/errors, actual SQLite JDBC engine                                                         |
+| Frontend suites                                        | 8 component/client tests and 2 Chromium browser tests passed                                                      |
 | `./scripts/build.sh` and final wrapper `check bootJar` | PASS; executable `backend/build/libs/mealplan-0.1.0.jar` contains generated `static/index.html` and hashed assets |
-| Dependency metadata | Gradle lockfile, verification metadata and npm lockfile SHA-256 unchanged during ordinary checks/builds |
-| Source whitespace and scope | `git diff --check` passes; legacy runtime/content/service paths unchanged |
+| Dependency metadata                                    | Gradle lockfile, verification metadata and npm lockfile SHA-256 unchanged during ordinary checks/builds           |
+| Source whitespace and scope                            | `git diff --check` passes; legacy runtime/content/service paths unchanged                                         |
 
 Backend checks cover both SQLite connections' durability settings, populated persistence/reopen, exact TEXT amounts and integer epoch milliseconds, migration idempotence/checksums, failed-migration/write rollback preserving prior rows, foreign-key rejection, concurrent first sign-ins, stable UUIDs across profile changes/restart, distinct subjects with the same email, unauthenticated denial, CSRF, logout, safe errors and version conflicts. Quantity cases cover metric/US weight and volume, fractional sums, counts, distinct products and explicit package sizes without inferred conversion.
 

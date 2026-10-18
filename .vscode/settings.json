@@ -1,0 +1,8 @@
+{
+  "prettier.requireConfig": true,
+  "prettier.documentSelectors": ["**/*.java", "**/*.sh"],
+  "[java][javascript][javascriptreact][typescript][typescriptreact][css][html][json][jsonc][yaml][markdown][shellscript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  }
+}

@@ -9,128 +9,100 @@ timing:
 preparationGuidance: "Use whole chicken breasts or boneless thighs. Cook rice with water according to its package. Reserve part of the olive oil for the salad dressing. Yogurt, garlic and dill make the optional sauce and are included in the shopping list. Add salt and pepper to taste."
 images: []
 ingredients:
-  -
-    ingredientId: "boneless-chicken"
+  - ingredientId: "boneless-chicken"
     quantity: "900"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "dry-rice"
+  - ingredientId: "dry-rice"
     quantity: "320"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "fresh-tomatoes"
+  - ingredientId: "fresh-tomatoes"
     quantity: "600"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "cucumbers"
+  - ingredientId: "cucumbers"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "bell-peppers"
+  - ingredientId: "bell-peppers"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "salad-greens"
+  - ingredientId: "salad-greens"
     quantity: "100"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "lemons"
+  - ingredientId: "lemons"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "olive-oil"
+  - ingredientId: "olive-oil"
     quantity: "30"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "paprika"
+  - ingredientId: "paprika"
     quantity: "2"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "dried-oregano"
+  - ingredientId: "dried-oregano"
     quantity: "1"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "plain-yogurt"
+  - ingredientId: "plain-yogurt"
     quantity: "200"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "garlic-cloves"
+  - ingredientId: "garlic-cloves"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "fresh-dill"
+  - ingredientId: "fresh-dill"
     quantity: "1"
     unit: "bunch"
     optional: false
     note: ""
-  -
-    ingredientId: "salt"
+  - ingredientId: "salt"
     quantity: "7"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "black-pepper"
+  - ingredientId: "black-pepper"
     quantity: "2"
     unit: "g"
     optional: false
     note: ""
 sections:
-  -
-    id: "method"
+  - id: "method"
     title: "Method"
     steps:
-      -
-        id: "step-1"
+      - id: "step-1"
         content:
-          -
-            text: "0:00 — Start rice and oven. Heat the oven to 200°C. Rinse and cook rice according to the package; let it rest covered."
-      -
-        id: "step-2"
+          - text: "0:00 — Start rice and oven. Heat the oven to 200°C. Rinse and cook rice according to the package; let it rest covered."
+      - id: "step-2"
         content:
-          -
-            text: "0:05–0:18 — Prep. Leave the chicken breasts or boneless thighs whole. Pat them dry and season with paprika, oregano, salt, pepper and a little oil. Dice the tomatoes, cucumber and pepper (cut into even cubes), and wash and dry the greens."
-      -
-        id: "step-3"
+          - text: "0:05–0:18 — Prep. Leave the chicken breasts or boneless thighs whole. Pat them dry and season with paprika, oregano, salt, pepper and a little oil. Dice the tomatoes, cucumber and pepper (cut into even cubes), and wash and dry the greens."
+      - id: "step-3"
         content:
-          -
-            text: "0:18–0:35 — "
-          -
-            term: "sear"
+          - text: "0:18–0:35 — "
+          - term: "sear"
             label: "Sear"
-          -
-            text: " and finish. Heat a large oven-safe cast-iron skillet. Sear the chicken (brown the surface quickly in a hot pan) for about 2–3 minutes per side. Transfer the skillet to the oven for a few minutes, checking the thickest piece with a thermometer. Remove it as soon as it reaches 74°C; thicker pieces may need longer. Rest the chicken for 3–5 minutes, then slice it into strips."
-      -
-        id: "step-4"
+          - text: " and finish. Heat a large oven-safe cast-iron skillet. Sear the chicken (brown the surface quickly in a hot pan) for about 2–3 minutes per side. Transfer the skillet to the oven for a few minutes, checking the thickest piece with a thermometer. Remove it as soon as it reaches 74°C; thicker pieces may need longer. Rest the chicken for 3–5 minutes, then slice it into strips."
+      - id: "step-4"
         content:
-          -
-            text: "Finish. Whisk lemon juice and the reserved olive oil for the salad. If using the optional sauce, stir yogurt with grated garlic and dill. "
-          -
-            term: "fluff"
+          - text: "Finish. Whisk lemon juice and the reserved olive oil for the salad. If using the optional sauce, stir yogurt with grated garlic and dill. "
+          - term: "fluff"
             label: "Fluff"
-          -
-            text: " the rice, dress the salad (toss it with the lemon dressing), and serve with the sliced chicken and sauce."
+          - text: " the rice, dress the salad (toss it with the lemon dressing), and serve with the sliced chicken and sauce."

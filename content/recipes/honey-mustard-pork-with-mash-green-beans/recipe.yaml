@@ -9,137 +9,104 @@ timing:
 preparationGuidance: "Slice pork into 2 cm medallions. Trim the green beans and cut carrots on the bias. The stock is purchased ready-to-use stock; no bouillon-cube yield is assumed. Add salt and pepper to taste."
 images: []
 ingredients:
-  -
-    ingredientId: "pork-tenderloin"
+  - ingredientId: "pork-tenderloin"
     quantity: "1.1"
     unit: "kg"
     optional: false
     note: ""
-  -
-    ingredientId: "potatoes"
+  - ingredientId: "potatoes"
     quantity: "1.2"
     unit: "kg"
     optional: false
     note: ""
-  -
-    ingredientId: "butter"
+  - ingredientId: "butter"
     quantity: "60"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "milk"
+  - ingredientId: "milk"
     quantity: "175"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "onions"
+  - ingredientId: "onions"
     quantity: "2"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "carrots"
+  - ingredientId: "carrots"
     quantity: "3"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "fresh-green-beans"
+  - ingredientId: "fresh-green-beans"
     quantity: "650"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "dijon-mustard"
+  - ingredientId: "dijon-mustard"
     quantity: "45"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "honey"
+  - ingredientId: "honey"
     quantity: "42"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "stock"
+  - ingredientId: "stock"
     quantity: "350"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "cornstarch"
+  - ingredientId: "cornstarch"
     quantity: "8"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "neutral-oil"
+  - ingredientId: "neutral-oil"
     quantity: "25"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "salt"
+  - ingredientId: "salt"
     quantity: "7"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "black-pepper"
+  - ingredientId: "black-pepper"
     quantity: "2"
     unit: "g"
     optional: false
     note: ""
 sections:
-  -
-    id: "method"
+  - id: "method"
     title: "Method"
     steps:
-      -
-        id: "step-1"
+      - id: "step-1"
         content:
-          -
-            text: "0:00–0:15 — Potatoes and prep. Put salted potato water on high heat. Peel and cut potatoes into even chunks; boil until tender, about 18–22 minutes after boiling starts. Cut pork into medallions (thick, round slices), slice onions, cut carrots on the bias (diagonally), and trim beans."
-      -
-        id: "step-2"
+          - text: "0:00–0:15 — Potatoes and prep. Put salted potato water on high heat. Peel and cut potatoes into even chunks; boil until tender, about 18–22 minutes after boiling starts. Cut pork into medallions (thick, round slices), slice onions, cut carrots on the bias (diagonally), and trim beans."
+      - id: "step-2"
         content:
-          -
-            text: "0:15–0:30 — "
-          -
-            term: "sear"
+          - text: "0:15–0:30 — "
+          - term: "sear"
             label: "Sear"
-          -
-            text: " pork. Sear means brown the surface quickly in a hot pan. Cook pork in a large skillet in batches, 2–3 minutes per side. Transfer to a plate. Cook onions and carrots in the same skillet for 5–6 minutes."
-      -
-        id: "step-3"
+          - text: " pork. Sear means brown the surface quickly in a hot pan. Cook pork in a large skillet in batches, 2–3 minutes per side. Transfer to a plate. Cook onions and carrots in the same skillet for 5–6 minutes."
+      - id: "step-3"
         content:
-          -
-            text: "0:30–0:43 — "
-          -
-            term: "simmer"
+          - text: "0:30–0:43 — "
+          - term: "simmer"
             label: "Simmer"
-          -
-            text: " sauce and beans. Add stock, mustard and honey to skillet. Return pork and "
-          -
-            term: "simmer"
+          - text: " sauce and beans. Add stock, mustard and honey to skillet. Return pork and "
+          - term: "simmer"
             label: "simmer"
-          -
-            text: " gently until cooked to a safe temperature (71°C measured in the centre of each piece, following Health Canada guidance; follow any stricter package directions). Steam or boil beans 5–7 minutes until tender-crisp."
-      -
-        id: "step-4"
+          - text: " gently until cooked to a safe temperature (71°C measured in the centre of each piece, following Health Canada guidance; follow any stricter package directions). Steam or boil beans 5–7 minutes until tender-crisp."
+      - id: "step-4"
         content:
-          -
-            text: "0:43–0:53 — Finish mash. Drain potatoes; mash with butter and warm milk. Make a slurry (cornstarch mixed with cold water), stir it into the pork sauce and "
-          -
-            term: "simmer"
+          - text: "0:43–0:53 — Finish mash. Drain potatoes; mash with butter and warm milk. Make a slurry (cornstarch mixed with cold water), stir it into the pork sauce and "
+          - term: "simmer"
             label: "simmer"
-          -
-            text: " until the sauce reaches nappe consistency (a thin, even coating on the back of a spoon). Taste for salt and mustard balance."
-      -
-        id: "step-5"
+          - text: " until the sauce reaches nappe consistency (a thin, even coating on the back of a spoon). Taste for salt and mustard balance."
+      - id: "step-5"
         content:
-          -
-            text: "Serve. Spoon the pork and sauce over mash, with green beans alongside."
+          - text: "Serve. Spoon the pork and sauce over mash, with green beans alongside."

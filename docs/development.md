@@ -5,6 +5,7 @@ The Java/React foundation is the only application runtime in this checkout. The 
 From the repository root:
 
 ```sh
+npm ci
 npm ci --prefix frontend
 cd frontend
 npx playwright install chromium
@@ -35,3 +36,43 @@ database, for example:
 java -jar backend/build/libs/mealplan-0.1.0.jar preview-meals --template-id three-week --anchor-date 2026-10-20 --start-date 2026-10-20 --days 21
 java -jar backend/build/libs/mealplan-0.1.0.jar preview-shopping --template-id three-week --anchor-date 2026-10-20 --start-date 2026-10-20 --days 21
 ```
+
+## Formatting
+
+Run these commands from the repository root using the pinned Node version (`nvm use`):
+
+```sh
+npm ci
+npm run format       # Rewrite supported source, configuration and documentation files.
+npm run format:check # Read-only check; exits nonzero when formatting differs.
+```
+
+Prettier and its Java and shell plugins are exact-version development dependencies
+in the root `package.json`, with transitive versions and integrity hashes committed
+in the root `package-lock.json`. Frontend dependencies remain in `frontend/`.
+The same `.prettierrc.json` applies to Java, TypeScript/TSX, JavaScript, CSS, HTML,
+JSON, YAML, Markdown and shell scripts. Java uses four spaces; other formatted
+files use two. All use LF line endings and a 100-column target. `.editorconfig`
+provides matching indentation and line endings for editors.
+
+For automatic formatting on save in VS Code, open the repository root and install
+the recommended Prettier extension (`esbenp.prettier-vscode`). The committed
+`.vscode/settings.json` enables format on save for the supported languages,
+requires a shared configuration, and registers Java and shell file selectors.
+EditorConfig is also recommended. Personal VS Code files remain ignored.
+
+Use the repository-local Prettier installation so editors and command-line checks
+agree. Other editors can invoke the local `node_modules/.bin/prettier` with
+`--write` or `--stdin-filepath`. `scripts/check.sh` installs the root tooling with
+`npm ci` and runs the read-only formatting check before application validation.
+
+`.prettierignore` excludes generated output, dependency metadata, vendored workflow
+tooling, historical specifications and the immutable content baseline. SQL migrations
+are excluded because `MigrationRunner` verifies their exact bytes against stored
+SHA-256 checksums; formatting an applied migration would prevent startup. Gradle
+Kotlin scripts and other unsupported file types are outside Prettier's coverage;
+their indentation follows `.editorconfig`. Do not format generated Gradle wrappers.
+
+To update formatters intentionally, use `npm install --save-dev --save-exact` with
+the desired versions, commit both root manifests, rerun `npm run format`, and review
+the resulting diff before running `scripts/check.sh`.

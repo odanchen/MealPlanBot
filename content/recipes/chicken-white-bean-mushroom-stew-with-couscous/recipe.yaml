@@ -9,169 +9,126 @@ timing:
 preparationGuidance: "Before you start: Soak and fully cook the listed 200 g dry white beans according to their package directions. Use the entire drained batch in this recipe; cooked yield varies. The meal time below excludes soaking and bean cooking. If preparing them ahead, cool promptly and refrigerate until needed.\n\nUse chicken breast or boneless thigh, cut into bite-size pieces. Cook the dry white beans ahead as described below. Use 500 ml water with the bouillon cube, plus couscous cooking water according to its package. Add salt and pepper to taste."
 images: []
 ingredients:
-  -
-    ingredientId: "boneless-chicken"
+  - ingredientId: "boneless-chicken"
     quantity: "850"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "dry-white-beans"
+  - ingredientId: "dry-white-beans"
     quantity: "200"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "onions"
+  - ingredientId: "onions"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "carrots"
+  - ingredientId: "carrots"
     quantity: "2"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "mushrooms"
+  - ingredientId: "mushrooms"
     quantity: "500"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "garlic-cloves"
+  - ingredientId: "garlic-cloves"
     quantity: "3"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "tomato-paste"
+  - ingredientId: "tomato-paste"
     quantity: "1"
     unit: "tin-156ml"
     optional: false
     note: ""
-  -
-    ingredientId: "chicken-bouillon-cubes"
+  - ingredientId: "chicken-bouillon-cubes"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "dried-thyme"
+  - ingredientId: "dried-thyme"
     quantity: "1"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "dried-rosemary"
+  - ingredientId: "dried-rosemary"
     quantity: "1"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "fresh-parsley"
+  - ingredientId: "fresh-parsley"
     quantity: "1"
     unit: "bunch"
     optional: false
     note: ""
-  -
-    ingredientId: "dry-couscous"
+  - ingredientId: "dry-couscous"
     quantity: "300"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "neutral-oil"
+  - ingredientId: "neutral-oil"
     quantity: "25"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "salt"
+  - ingredientId: "salt"
     quantity: "7"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "black-pepper"
+  - ingredientId: "black-pepper"
     quantity: "2"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "lemons"
+  - ingredientId: "lemons"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
 sections:
-  -
-    id: "method"
+  - id: "method"
     title: "Method"
     steps:
-      -
-        id: "step-1"
+      - id: "step-1"
         content:
-          -
-            text: "0:00–0:15 — Chop and brown. Cut onion and carrot into a "
-          -
-            term: "small-dice"
+          - text: "0:00–0:15 — Chop and brown. Cut onion and carrot into a "
+          - term: "small-dice"
             label: "small dice"
-          -
-            text: " (¼-inch, about 6 mm cubes), slice mushrooms, then cut chicken separately into even pieces. Brown salted chicken in a Dutch oven in two batches; transfer out."
-      -
-        id: "step-2"
+          - text: " (¼-inch, about 6 mm cubes), slice mushrooms, then cut chicken separately into even pieces. Brown salted chicken in a Dutch oven in two batches; transfer out."
+      - id: "step-2"
         content:
-          -
-            text: "0:15–0:27 — Build base. "
-          -
-            term: "sweat"
+          - text: "0:15–0:27 — Build base. "
+          - term: "sweat"
             label: "Sweat"
-          -
-            text: " the onion and carrots (cook gently without browning) for 5 minutes, then "
-          -
-            term: "saute"
+          - text: " the onion and carrots (cook gently without browning) for 5 minutes, then "
+          - term: "saute"
             label: "sauté"
-          -
-            text: " mushrooms until their water mostly evaporates. Add garlic, tomato paste and herbs for 1 minute."
-      -
-        id: "step-3"
+          - text: " mushrooms until their water mostly evaporates. Add garlic, tomato paste and herbs for 1 minute."
+      - id: "step-3"
         content:
-          -
-            text: "0:27–0:42 — "
-          -
-            term: "simmer"
+          - text: "0:27–0:42 — "
+          - term: "simmer"
             label: "Simmer"
-          -
-            text: ". Dissolve the chicken bouillon cube in the water, then add it with the cooked, drained white beans and chicken. "
-          -
-            term: "simmer"
+          - text: ". Dissolve the chicken bouillon cube in the water, then add it with the cooked, drained white beans and chicken. "
+          - term: "simmer"
             label: "Simmer"
-          -
-            text: " 10–12 minutes until carrot is tender and chicken reaches 74°C. Crush a few beans against the pot to thicken; "
-          -
-            term: "reduce"
+          - text: " 10–12 minutes until carrot is tender and chicken reaches 74°C. Crush a few beans against the pot to thicken; "
+          - term: "reduce"
             label: "reduce"
-          -
-            text: " ("
-          -
-            term: "simmer"
+          - text: " ("
+          - term: "simmer"
             label: "simmer"
-          -
-            text: " uncovered to evaporate liquid) if necessary. This should be spoonable, not soupy."
-      -
-        id: "step-4"
+          - text: " uncovered to evaporate liquid) if necessary. This should be spoonable, not soupy."
+      - id: "step-4"
         content:
-          -
-            text: "0:38–0:45 — Couscous in parallel. Pour measured boiling water over salted couscous, cover 5 minutes and "
-          -
-            term: "fluff"
+          - text: "0:38–0:45 — Couscous in parallel. Pour measured boiling water over salted couscous, cover 5 minutes and "
+          - term: "fluff"
             label: "fluff"
-          -
-            text: "."
-      -
-        id: "step-5"
+          - text: "."
+      - id: "step-5"
         content:
-          -
-            text: "Finish. Add parsley and lemon. Spoon the thick stew over couscous."
+          - text: "Finish. Add parsley and lemon. Spoon the thick stew over couscous."

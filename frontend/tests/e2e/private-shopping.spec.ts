@@ -1,28 +1,75 @@
-import { test, expect } from '@playwright/test';
-import AxeBuilder from 'axe-core';
-test('private purchases persist through refresh and sign out, with independent additions and safe validation', async ({ page }) => {
- expect((await page.request.get('/api/lists')).status()).toBe(401);
- await page.goto('/lists'); await expect(page.getByRole('heading', { name: 'Your shopping lists' })).toBeVisible();
- await page.getByLabel('List name', { exact: true }).fill('Weekly groceries'); await page.getByRole('button', { name: 'Create list', exact: true }).click();
- await expect(page).toHaveURL(/\/lists\/[0-9a-f-]+/); const url = page.url();
- await expect(page.getByText('No meal schedule attached. Automatic additions are off.')).toBeVisible();
- await expect(page.getByText('Your list is empty. Add your first item above.')).toBeVisible();
- await page.getByLabel('Item name', { exact: true }).fill('Tomatoes'); await page.getByLabel('Quantity (optional)').fill('-1'); await page.getByLabel('Unit (optional)').selectOption('kg');
- await page.getByRole('button', { name: 'Add item', exact: true }).click(); await expect(page.getByRole('alert')).toContainText('positive decimal'); await expect(page.getByLabel('Item name', { exact: true })).toHaveValue('Tomatoes');
- await page.getByLabel('Quantity (optional)').fill('1.5'); await page.getByRole('button', { name: 'Add item', exact: true }).click();
- await expect(page.locator('.shopping-items input[type=checkbox]')).toHaveCount(1); await page.locator('.shopping-items input[type=checkbox]').click(); await expect(page.locator('.shopping-items input[type=checkbox]')).toBeChecked();
- await page.getByLabel('Item name', { exact: true }).fill('Tomatoes'); await page.getByRole('button', { name: 'Add item', exact: true }).click();
- await expect(page.locator('.shopping-items input[type=checkbox]')).toHaveCount(2); await expect(page.locator('.shopping-items input[type=checkbox]').nth(0)).not.toBeChecked(); await expect(page.locator('.shopping-items input[type=checkbox]').nth(1)).toBeChecked();
- await page.reload(); await expect(page.locator('.shopping-items input[type=checkbox]')).toHaveCount(2); await expect(page.locator('.shopping-items input[type=checkbox]').nth(1)).toBeChecked();
- await page.locator('.shopping-items input[type=checkbox]').nth(1).click(); await expect(page.locator('.shopping-items input[type=checkbox]').nth(1)).not.toBeChecked();
- await page.getByRole('button', { name: 'Remove Tomatoes', exact: true }).first().click(); await expect(page.getByRole('dialog')).toBeVisible(); await expect(page.getByRole('button', { name: 'Cancel', exact: true })).toBeFocused();
- await page.keyboard.press('Escape'); await expect(page.getByRole('dialog')).toHaveCount(0); await expect(page.getByRole('button', { name: 'Remove Tomatoes', exact: true }).first()).toBeFocused();
- await page.getByRole('button', { name: 'Remove Tomatoes', exact: true }).first().click(); await page.getByRole('button', { name: 'Remove item', exact: true }).click(); await expect(page.locator('.shopping-items input[type=checkbox]')).toHaveCount(1); await expect(page.getByLabel('Item name', { exact: true })).toBeFocused();
- await page.setViewportSize({ width: 320, height: 720 }); expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
- await page.addScriptTag({ content: AxeBuilder.source });
- const violations = await page.evaluate(async () => (await (window as unknown as { axe: { run: () => Promise<{ violations: { id: string }[] }> } }).axe.run()).violations.map(v => v.id)); expect(violations).toEqual([]);
- await page.screenshot({ path: 'test-results/us2-shopping-mobile.png', fullPage: true });
- await page.getByRole('button', { name: 'Sign out', exact: true }).click(); await expect(page.getByRole('heading', { name: 'Sign in to continue' })).toBeVisible(); expect((await page.request.get('/api/lists')).status()).toBe(401);
- await page.getByRole('button', { name: 'Sign in locally', exact: true }).last().click(); await expect(page.locator('.shopping-items input[type=checkbox]')).toHaveCount(1); expect(page.url()).toBe(url);
- await page.getByRole('link', { name: '← Shopping lists' }).click(); await expect(page.getByRole('link', { name: 'Weekly groceries', exact: true })).toHaveAttribute('href', new URL(url).pathname);
+import { test, expect } from "@playwright/test";
+import AxeBuilder from "axe-core";
+test("private purchases persist through refresh and sign out, with independent additions and safe validation", async ({
+  page,
+}) => {
+  expect((await page.request.get("/api/lists")).status()).toBe(401);
+  await page.goto("/lists");
+  await expect(page.getByRole("heading", { name: "Your shopping lists" })).toBeVisible();
+  await page.getByLabel("List name", { exact: true }).fill("Weekly groceries");
+  await page.getByRole("button", { name: "Create list", exact: true }).click();
+  await expect(page).toHaveURL(/\/lists\/[0-9a-f-]+/);
+  const url = page.url();
+  await expect(
+    page.getByText("No meal schedule attached. Automatic additions are off."),
+  ).toBeVisible();
+  await expect(page.getByText("Your list is empty. Add your first item above.")).toBeVisible();
+  await page.getByLabel("Item name", { exact: true }).fill("Tomatoes");
+  await page.getByLabel("Quantity (optional)").fill("-1");
+  await page.getByLabel("Unit (optional)").selectOption("kg");
+  await page.getByRole("button", { name: "Add item", exact: true }).click();
+  await expect(page.getByRole("alert")).toContainText("positive decimal");
+  await expect(page.getByLabel("Item name", { exact: true })).toHaveValue("Tomatoes");
+  await page.getByLabel("Quantity (optional)").fill("1.5");
+  await page.getByRole("button", { name: "Add item", exact: true }).click();
+  await expect(page.locator(".shopping-items input[type=checkbox]")).toHaveCount(1);
+  await page.locator(".shopping-items input[type=checkbox]").click();
+  await expect(page.locator(".shopping-items input[type=checkbox]")).toBeChecked();
+  await page.getByLabel("Item name", { exact: true }).fill("Tomatoes");
+  await page.getByRole("button", { name: "Add item", exact: true }).click();
+  await expect(page.locator(".shopping-items input[type=checkbox]")).toHaveCount(2);
+  await expect(page.locator(".shopping-items input[type=checkbox]").nth(0)).not.toBeChecked();
+  await expect(page.locator(".shopping-items input[type=checkbox]").nth(1)).toBeChecked();
+  await page.reload();
+  await expect(page.locator(".shopping-items input[type=checkbox]")).toHaveCount(2);
+  await expect(page.locator(".shopping-items input[type=checkbox]").nth(1)).toBeChecked();
+  await page.locator(".shopping-items input[type=checkbox]").nth(1).click();
+  await expect(page.locator(".shopping-items input[type=checkbox]").nth(1)).not.toBeChecked();
+  await page.getByRole("button", { name: "Remove Tomatoes", exact: true }).first().click();
+  await expect(page.getByRole("dialog")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Cancel", exact: true })).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(
+    page.getByRole("button", { name: "Remove Tomatoes", exact: true }).first(),
+  ).toBeFocused();
+  await page.getByRole("button", { name: "Remove Tomatoes", exact: true }).first().click();
+  await page.getByRole("button", { name: "Remove item", exact: true }).click();
+  await expect(page.locator(".shopping-items input[type=checkbox]")).toHaveCount(1);
+  await expect(page.getByLabel("Item name", { exact: true })).toBeFocused();
+  await page.setViewportSize({ width: 320, height: 720 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
+    true,
+  );
+  await page.addScriptTag({ content: AxeBuilder.source });
+  const violations = await page.evaluate(async () =>
+    (
+      await (
+        window as unknown as { axe: { run: () => Promise<{ violations: { id: string }[] }> } }
+      ).axe.run()
+    ).violations.map((v) => v.id),
+  );
+  expect(violations).toEqual([]);
+  await page.screenshot({ path: "test-results/us2-shopping-mobile.png", fullPage: true });
+  await page.getByRole("button", { name: "Sign out", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Sign in to continue" })).toBeVisible();
+  expect((await page.request.get("/api/lists")).status()).toBe(401);
+  await page.getByRole("button", { name: "Sign in locally", exact: true }).last().click();
+  await expect(page.locator(".shopping-items input[type=checkbox]")).toHaveCount(1);
+  expect(page.url()).toBe(url);
+  await page.getByRole("link", { name: "← Shopping lists" }).click();
+  await expect(page.getByRole("link", { name: "Weekly groceries", exact: true })).toHaveAttribute(
+    "href",
+    new URL(url).pathname,
+  );
 });

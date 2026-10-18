@@ -9,125 +9,94 @@ timing:
 preparationGuidance: "Use chicken breast or boneless thigh, sliced. Julienne the carrots, slice the onion and mince the garlic. Reserve 200–300 ml hot pasta water for the sauce. Chili flakes are an optional extra, not included in the shopping list."
 images: []
 ingredients:
-  -
-    ingredientId: "boneless-chicken"
+  - ingredientId: "boneless-chicken"
     quantity: "800"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "dry-pasta"
+  - ingredientId: "dry-pasta"
     quantity: "500"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "onions"
+  - ingredientId: "onions"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "garlic-cloves"
+  - ingredientId: "garlic-cloves"
     quantity: "3"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "carrots"
+  - ingredientId: "carrots"
     quantity: "2"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "fresh-spinach"
+  - ingredientId: "fresh-spinach"
     quantity: "175"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "smooth-peanut-butter"
+  - ingredientId: "smooth-peanut-butter"
     quantity: "120"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "soy-sauce"
+  - ingredientId: "soy-sauce"
     quantity: "45"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "vinegar"
+  - ingredientId: "vinegar"
     quantity: "15"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "honey"
+  - ingredientId: "honey"
     quantity: "7"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "neutral-oil"
+  - ingredientId: "neutral-oil"
     quantity: "25"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "salt"
+  - ingredientId: "salt"
     quantity: "5"
     unit: "g"
     optional: false
     note: ""
 sections:
-  -
-    id: "method"
+  - id: "method"
     title: "Method"
     steps:
-      -
-        id: "step-1"
+      - id: "step-1"
         content:
-          -
-            text: "0:00–0:08 — Boil and cut. Put a large pot of salted water on high heat. Cut chicken into strips, "
-          -
-            term: "julienne"
+          - text: "0:00–0:08 — Boil and cut. Put a large pot of salted water on high heat. Cut chicken into strips, "
+          - term: "julienne"
             label: "julienne"
-          -
-            text: " the carrots (thin matchsticks), slice the onion, and "
-          -
-            term: "mince"
+          - text: " the carrots (thin matchsticks), slice the onion, and "
+          - term: "mince"
             label: "mince"
-          -
-            text: " garlic (chop very finely)."
-      -
-        id: "step-2"
+          - text: " garlic (chop very finely)."
+      - id: "step-2"
         content:
-          -
-            text: "0:08–0:22 — Cook in parallel. Boil pasta according to package, reserving a mug of its starchy cooking water to "
-          -
-            term: "emulsify"
+          - text: "0:08–0:22 — Cook in parallel. Boil pasta according to package, reserving a mug of its starchy cooking water to "
+          - term: "emulsify"
             label: "emulsify"
-          -
-            text: " the sauce (help fat and water form a smooth mixture). In a wide pan, cook chicken in oil in two batches until browned and 74°C; set aside. Cook onion and carrots 5 minutes, then garlic 1 minute."
-      -
-        id: "step-3"
+          - text: " the sauce (help fat and water form a smooth mixture). In a wide pan, cook chicken in oil in two batches until browned and 74°C; set aside. Cook onion and carrots 5 minutes, then garlic 1 minute."
+      - id: "step-3"
         content:
-          -
-            text: "0:22–0:30 — Make sauce. Whisk peanut butter, soy sauce, vinegar, honey and 200 ml hot pasta water until smooth. Add more water if needed; it should pour easily."
-      -
-        id: "step-4"
+          - text: "0:22–0:30 — Make sauce. Whisk peanut butter, soy sauce, vinegar, honey and 200 ml hot pasta water until smooth. Add more water if needed; it should pour easily."
+      - id: "step-4"
         content:
-          -
-            text: "0:30–0:40 — Finish the pasta. Return chicken to the pan, add spinach to "
-          -
-            term: "wilt"
+          - text: "0:30–0:40 — Finish the pasta. Return chicken to the pan, add spinach to "
+          - term: "wilt"
             label: "wilt"
-          -
-            text: ", then add drained pasta and sauce. Toss over low heat until the sauce clings to the pasta; loosen with reserved water as needed. Adjust with water and lime or vinegar."
-      -
-        id: "step-5"
+          - text: ", then add drained pasta and sauce. Toss over low heat until the sauce clings to the pasta; loosen with reserved water as needed. Adjust with water and lime or vinegar."
+      - id: "step-5"
         content:
-          -
-            text: "Finish. Taste for acidity and salt; add lime or vinegar if needed."
+          - text: "Finish. Taste for acidity and salt; add lime or vinegar if needed."

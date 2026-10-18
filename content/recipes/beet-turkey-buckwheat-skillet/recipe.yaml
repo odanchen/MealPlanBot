@@ -9,132 +9,101 @@ timing:
 preparationGuidance: "Peel and coarsely grate the beets; thinly shred the cabbage. Cook buckwheat with water according to its package. Yogurt is optional but included in the shopping list. Add salt and pepper to taste."
 images: []
 ingredients:
-  -
-    ingredientId: "ground-turkey"
+  - ingredientId: "ground-turkey"
     quantity: "800"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "dry-buckwheat-groats"
+  - ingredientId: "dry-buckwheat-groats"
     quantity: "340"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "beets"
+  - ingredientId: "beets"
     quantity: "550"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "onions"
+  - ingredientId: "onions"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "cabbage"
+  - ingredientId: "cabbage"
     quantity: "350"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "garlic-cloves"
+  - ingredientId: "garlic-cloves"
     quantity: "2"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "smoked-paprika"
+  - ingredientId: "smoked-paprika"
     quantity: "2"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "ground-coriander"
+  - ingredientId: "ground-coriander"
     quantity: "2"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "lemons"
+  - ingredientId: "lemons"
     quantity: "1"
     unit: "count"
     optional: false
     note: ""
-  -
-    ingredientId: "fresh-dill"
+  - ingredientId: "fresh-dill"
     quantity: "1"
     unit: "bunch"
     optional: false
     note: ""
-  -
-    ingredientId: "plain-yogurt"
+  - ingredientId: "plain-yogurt"
     quantity: "200"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "olive-oil"
+  - ingredientId: "olive-oil"
     quantity: "25"
     unit: "ml"
     optional: false
     note: ""
-  -
-    ingredientId: "salt"
+  - ingredientId: "salt"
     quantity: "7"
     unit: "g"
     optional: false
     note: ""
-  -
-    ingredientId: "black-pepper"
+  - ingredientId: "black-pepper"
     quantity: "2"
     unit: "g"
     optional: false
     note: ""
 sections:
-  -
-    id: "method"
+  - id: "method"
     title: "Method"
     steps:
-      -
-        id: "step-1"
+      - id: "step-1"
         content:
-          -
-            text: "0:00–0:05 — Start buckwheat. Rinse and cook in salted water according to the package, generally 15–20 minutes; keep covered afterward."
-      -
-        id: "step-2"
+          - text: "0:00–0:05 — Start buckwheat. Rinse and cook in salted water according to the package, generally 15–20 minutes; keep covered afterward."
+      - id: "step-2"
         content:
-          -
-            text: "0:05–0:18 — Prep. Cut onion into a "
-          -
-            term: "small-dice"
+          - text: "0:05–0:18 — Prep. Cut onion into a "
+          - term: "small-dice"
             label: "small dice"
-          -
-            text: " (¼-inch, about 6 mm cubes), finely shred the cabbage into thin ribbons, and coarsely grate the peeled beets on a box grater. Use a separate board for raw turkey."
-      -
-        id: "step-3"
+          - text: " (¼-inch, about 6 mm cubes), finely shred the cabbage into thin ribbons, and coarsely grate the peeled beets on a box grater. Use a separate board for raw turkey."
+      - id: "step-3"
         content:
-          -
-            text: "0:18–0:28 — Brown turkey. Heat a large skillet with oil. "
-          -
-            term: "saute"
+          - text: "0:18–0:28 — Brown turkey. Heat a large skillet with oil. "
+          - term: "saute"
             label: "Sauté"
-          -
-            text: " (cook in a little hot oil while stirring) the turkey with onion, breaking it apart; season with salt, paprika and coriander. Cook until no pink remains and the turkey reaches 74°C."
-      -
-        id: "step-4"
+          - text: " (cook in a little hot oil while stirring) the turkey with onion, breaking it apart; season with salt, paprika and coriander. Cook until no pink remains and the turkey reaches 74°C."
+      - id: "step-4"
         content:
-          -
-            text: "0:28–0:43 — Cook vegetables. Add garlic, beets and cabbage plus 100 ml water. Cover for 7–9 minutes, then uncover and "
-          -
-            term: "reduce"
+          - text: "0:28–0:43 — Cook vegetables. Add garlic, beets and cabbage plus 100 ml water. Cover for 7–9 minutes, then uncover and "
+          - term: "reduce"
             label: "reduce"
-          -
-            text: " (evaporate) the excess moisture. The beets should be tender with a little bite."
-      -
-        id: "step-5"
+          - text: " (evaporate) the excess moisture. The beets should be tender with a little bite."
+      - id: "step-5"
         content:
-          -
-            text: "Finish. Stir in dill and lemon juice. Serve over buckwheat with yogurt mixed with lemon zest and a pinch of salt, if using."
+          - text: "Finish. Stir in dill and lemon juice. Serve over buckwheat with yogurt mixed with lemon zest and a pinch of salt, if using."

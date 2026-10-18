@@ -1,24 +1,188 @@
 package app.mealplan.schedule;
+
+import app.mealplan.domain.schedule.AdditionRecurrence;
+import app.mealplan.web.ApiErrors;
 import java.sql.*;
 import java.time.*;
 import java.util.*;
-import app.mealplan.domain.schedule.AdditionRecurrence;
-import app.mealplan.web.ApiErrors;
 import org.springframework.stereotype.Repository;
+
 @Repository
 public class OccurrenceRepository {
- public ScheduleAttachment active(Connection c,String list) throws SQLException {try(var q=c.prepareStatement("SELECT * FROM schedule_attachments WHERE list_id=? AND detached_at IS NULL")){q.setString(1,list);try(var r=q.executeQuery()){return r.next()?attachment(r):null;}}}
- public ScheduleAttachment attachment(Connection c,String id) throws SQLException {try(var q=c.prepareStatement("SELECT * FROM schedule_attachments WHERE id=?")){q.setString(1,id);try(var r=q.executeQuery()){if(!r.next())throw ApiErrors.notFound();return attachment(r);}}}
- public ScheduleOccurrence get(Connection c,String id) throws SQLException {try(var q=c.prepareStatement("SELECT * FROM schedule_occurrences WHERE id=?")){q.setString(1,id);try(var r=q.executeQuery()){if(!r.next())throw ApiErrors.notFound();return occurrence(r);}}}
- public ScheduleOccurrence latest(Connection c,String attachment) throws SQLException {try(var q=c.prepareStatement("SELECT * FROM schedule_occurrences WHERE attachment_id=? ORDER BY scheduled_at DESC,kind DESC LIMIT 1")){q.setString(1,attachment);try(var r=q.executeQuery()){return r.next()?occurrence(r):null;}}}
- public ScheduleOccurrence create(Connection c,ScheduleAttachment a,String kind,Instant scheduled,LocalDate from,LocalDate to) throws SQLException {
-  String id=UUID.randomUUID().toString();try(var q=c.prepareStatement("INSERT INTO schedule_occurrences(id,attachment_id,kind,scheduled_at,configuration_version,coverage_start_date,coverage_end_date_exclusive,time_zone,status) VALUES(?,?,?,?,?,?,?,?,'pending') ON CONFLICT DO NOTHING")){q.setString(1,id);q.setString(2,a.id());q.setString(3,kind);q.setLong(4,scheduled.toEpochMilli());q.setLong(5,a.configurationVersion());q.setString(6,from.toString());q.setString(7,to.toString());q.setString(8,a.addition().timeZone());q.executeUpdate();}
-  try(var q=c.prepareStatement("SELECT * FROM schedule_occurrences WHERE attachment_id=? AND kind=? AND "+(kind.equals("initial")?"1=1":"scheduled_at=?"))){q.setString(1,a.id());q.setString(2,kind);if(!kind.equals("initial"))q.setLong(3,scheduled.toEpochMilli());try(var r=q.executeQuery()){if(!r.next())throw ApiErrors.notFound();return occurrence(r);}}
- }
- public void finish(Connection c,String id,String status,String failure,Instant now) throws SQLException {try(var q=c.prepareStatement("UPDATE schedule_occurrences SET status=?,failure_code=?,completed_at=? WHERE id=?")){q.setString(1,status);q.setString(2,failure);if(status.equals("completed")||status.equals("skipped"))q.setLong(3,now.toEpochMilli());else q.setNull(3,Types.BIGINT);q.setString(4,id);q.executeUpdate();}}
- public List<ScheduleAttachment> due(Connection c,Instant now) throws SQLException {try(var q=c.prepareStatement("SELECT * FROM schedule_attachments WHERE enabled=1 AND detached_at IS NULL AND next_due_at<=? ORDER BY next_due_at LIMIT 100")){q.setLong(1,now.toEpochMilli());try(var r=q.executeQuery()){var result=new ArrayList<ScheduleAttachment>();while(r.next())result.add(attachment(r));return result;}}}
- public static ScheduleAttachment attachment(ResultSet r) throws SQLException {return new ScheduleAttachment(r.getString("id"),r.getString("list_id"),r.getString("source_schedule_id"),instant(r,"detached_at"),r.getBoolean("enabled"),new AdditionRecurrence(r.getString("interval_unit"),r.getInt("interval_count"),(Integer)r.getObject("weekday"),LocalTime.parse(r.getString("local_time")),r.getString("time_zone"),LocalDate.parse(r.getString("recurrence_start_date"))),instant(r,"next_due_at"),r.getLong("configuration_version"),r.getLong("version"),instant(r,"created_at"),date(r,"last_covered_start_date"),date(r,"last_covered_end_date_exclusive"));}
- private static ScheduleOccurrence occurrence(ResultSet r) throws SQLException {long source=r.getLong("source_schedule_version");Long version=r.wasNull()?null:source;return new ScheduleOccurrence(r.getString("id"),r.getString("attachment_id"),r.getString("kind"),instant(r,"scheduled_at"),r.getLong("configuration_version"),date(r,"coverage_start_date"),date(r,"coverage_end_date_exclusive"),r.getString("time_zone"),r.getString("content_revision"),version,r.getString("effective_template_id"),date(r,"effective_anchor_date"),r.getString("status"),r.getString("failure_code"),instant(r,"completed_at"));}
- public static Instant instant(ResultSet r,String column) throws SQLException {long value=r.getLong(column);return r.wasNull()?null:Instant.ofEpochMilli(value);}
- public static LocalDate date(ResultSet r,String column) throws SQLException {String value=r.getString(column);return value==null?null:LocalDate.parse(value);}
+
+    public ScheduleAttachment active(Connection c, String list) throws SQLException {
+        try (
+            var q = c.prepareStatement(
+                "SELECT * FROM schedule_attachments WHERE list_id=? AND detached_at IS NULL"
+            )
+        ) {
+            q.setString(1, list);
+            try (var r = q.executeQuery()) {
+                return r.next() ? attachment(r) : null;
+            }
+        }
+    }
+
+    public ScheduleAttachment attachment(Connection c, String id) throws SQLException {
+        try (var q = c.prepareStatement("SELECT * FROM schedule_attachments WHERE id=?")) {
+            q.setString(1, id);
+            try (var r = q.executeQuery()) {
+                if (!r.next()) throw ApiErrors.notFound();
+                return attachment(r);
+            }
+        }
+    }
+
+    public ScheduleOccurrence get(Connection c, String id) throws SQLException {
+        try (var q = c.prepareStatement("SELECT * FROM schedule_occurrences WHERE id=?")) {
+            q.setString(1, id);
+            try (var r = q.executeQuery()) {
+                if (!r.next()) throw ApiErrors.notFound();
+                return occurrence(r);
+            }
+        }
+    }
+
+    public ScheduleOccurrence latest(Connection c, String attachment) throws SQLException {
+        try (
+            var q = c.prepareStatement(
+                "SELECT * FROM schedule_occurrences WHERE attachment_id=? ORDER BY scheduled_at DESC,kind DESC LIMIT 1"
+            )
+        ) {
+            q.setString(1, attachment);
+            try (var r = q.executeQuery()) {
+                return r.next() ? occurrence(r) : null;
+            }
+        }
+    }
+
+    public ScheduleOccurrence create(
+        Connection c,
+        ScheduleAttachment a,
+        String kind,
+        Instant scheduled,
+        LocalDate from,
+        LocalDate to
+    ) throws SQLException {
+        String id = UUID.randomUUID().toString();
+        try (
+            var q = c.prepareStatement(
+                "INSERT INTO schedule_occurrences(id,attachment_id,kind,scheduled_at,configuration_version,coverage_start_date,coverage_end_date_exclusive,time_zone,status) VALUES(?,?,?,?,?,?,?,?,'pending') ON CONFLICT DO NOTHING"
+            )
+        ) {
+            q.setString(1, id);
+            q.setString(2, a.id());
+            q.setString(3, kind);
+            q.setLong(4, scheduled.toEpochMilli());
+            q.setLong(5, a.configurationVersion());
+            q.setString(6, from.toString());
+            q.setString(7, to.toString());
+            q.setString(8, a.addition().timeZone());
+            q.executeUpdate();
+        }
+        try (
+            var q = c.prepareStatement(
+                "SELECT * FROM schedule_occurrences WHERE attachment_id=? AND kind=? AND " +
+                    (kind.equals("initial") ? "1=1" : "scheduled_at=?")
+            )
+        ) {
+            q.setString(1, a.id());
+            q.setString(2, kind);
+            if (!kind.equals("initial")) q.setLong(3, scheduled.toEpochMilli());
+            try (var r = q.executeQuery()) {
+                if (!r.next()) throw ApiErrors.notFound();
+                return occurrence(r);
+            }
+        }
+    }
+
+    public void finish(Connection c, String id, String status, String failure, Instant now)
+        throws SQLException {
+        try (
+            var q = c.prepareStatement(
+                "UPDATE schedule_occurrences SET status=?,failure_code=?,completed_at=? WHERE id=?"
+            )
+        ) {
+            q.setString(1, status);
+            q.setString(2, failure);
+            if (status.equals("completed") || status.equals("skipped")) q.setLong(
+                3,
+                now.toEpochMilli()
+            );
+            else q.setNull(3, Types.BIGINT);
+            q.setString(4, id);
+            q.executeUpdate();
+        }
+    }
+
+    public List<ScheduleAttachment> due(Connection c, Instant now) throws SQLException {
+        try (
+            var q = c.prepareStatement(
+                "SELECT * FROM schedule_attachments WHERE enabled=1 AND detached_at IS NULL AND next_due_at<=? ORDER BY next_due_at LIMIT 100"
+            )
+        ) {
+            q.setLong(1, now.toEpochMilli());
+            try (var r = q.executeQuery()) {
+                var result = new ArrayList<ScheduleAttachment>();
+                while (r.next()) result.add(attachment(r));
+                return result;
+            }
+        }
+    }
+
+    public static ScheduleAttachment attachment(ResultSet r) throws SQLException {
+        return new ScheduleAttachment(
+            r.getString("id"),
+            r.getString("list_id"),
+            r.getString("source_schedule_id"),
+            instant(r, "detached_at"),
+            r.getBoolean("enabled"),
+            new AdditionRecurrence(
+                r.getString("interval_unit"),
+                r.getInt("interval_count"),
+                (Integer) r.getObject("weekday"),
+                LocalTime.parse(r.getString("local_time")),
+                r.getString("time_zone"),
+                LocalDate.parse(r.getString("recurrence_start_date"))
+            ),
+            instant(r, "next_due_at"),
+            r.getLong("configuration_version"),
+            r.getLong("version"),
+            instant(r, "created_at"),
+            date(r, "last_covered_start_date"),
+            date(r, "last_covered_end_date_exclusive")
+        );
+    }
+
+    private static ScheduleOccurrence occurrence(ResultSet r) throws SQLException {
+        long source = r.getLong("source_schedule_version");
+        Long version = r.wasNull() ? null : source;
+        return new ScheduleOccurrence(
+            r.getString("id"),
+            r.getString("attachment_id"),
+            r.getString("kind"),
+            instant(r, "scheduled_at"),
+            r.getLong("configuration_version"),
+            date(r, "coverage_start_date"),
+            date(r, "coverage_end_date_exclusive"),
+            r.getString("time_zone"),
+            r.getString("content_revision"),
+            version,
+            r.getString("effective_template_id"),
+            date(r, "effective_anchor_date"),
+            r.getString("status"),
+            r.getString("failure_code"),
+            instant(r, "completed_at")
+        );
+    }
+
+    public static Instant instant(ResultSet r, String column) throws SQLException {
+        long value = r.getLong(column);
+        return r.wasNull() ? null : Instant.ofEpochMilli(value);
+    }
+
+    public static LocalDate date(ResultSet r, String column) throws SQLException {
+        String value = r.getString(column);
+        return value == null ? null : LocalDate.parse(value);
+    }
 }

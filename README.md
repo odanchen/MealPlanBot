@@ -7,6 +7,7 @@ A household meal planner built with Java 25, Spring Boot, React and SQLite. Setu
 Use JDK 25 and Node 24.22.0 (`nvm use`). The repository includes the pinned Gradle wrapper; no global Gradle or database server is needed.
 
 ```sh
+npm ci
 npm ci --prefix frontend
 cd frontend
 npx playwright install chromium
@@ -19,6 +20,11 @@ cd ..
 Open http://127.0.0.1:8000. Local mode authenticates one stable fixture user and stores state in ignored `.local/mealplan/app.sqlite`. Local authentication requires no Google credentials or network access. The executable JAR is `backend/build/libs/mealplan-0.1.0.jar`.
 
 See [local development](docs/development.md) for dependency updates and [US1 verification](docs/validation/us1.md) for verified behavior and remaining limits.
+
+Format the repository with `npm run format`; verify formatting without writing with
+`npm run format:check`. The root lockfile pins Prettier and its Java/shell plugins.
+`scripts/check.sh` enforces formatting before running application checks. See
+[formatting setup](docs/development.md#formatting) for editor integration and exclusions.
 
 ## Recipe sources
 

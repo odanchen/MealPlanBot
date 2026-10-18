@@ -1,0 +1,26 @@
+# Dependencies, generated output and local state (also ignored by Git).
+**/node_modules/
+**/build/
+**/dist/
+**/.gradle/
+**/coverage/
+**/test-results/
+**/playwright-report/
+.local/
+
+# Vendored workflow tooling and historical planning artifacts.
+.agents/
+.specify/
+specs/
+
+# Generated dependency metadata and immutable content baseline.
+**/package-lock.json
+backend/gradle/
+backend/src/test/resources/content-baseline/
+
+# Applied migration bytes are SHA-256 checked by MigrationRunner.
+backend/src/main/resources/db/migrations/
+
+# The Gradle wrapper is generated upstream.
+backend/gradlew
+backend/gradlew.bat

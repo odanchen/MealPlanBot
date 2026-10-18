@@ -20,8 +20,7 @@ writes, and a removed item cannot be restored by a stale request.
 
 Create request IDs are scoped to user and operation. Their payload hashes and
 serialized responses commit in the same SQLite transaction as the mutation.
-Retries return the saved result for seven days, and conflicting payloads return
-409. A different key deliberately creates another independent entry. Replay uses
+Retries return the saved result for seven days, and conflicting payloads return 409. A different key deliberately creates another independent entry. Replay uses
 the original submitted payload before content-based ingredient resolution.
 
 The React catalogue/detail routes include labelled forms, inline errors, optional
