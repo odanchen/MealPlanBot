@@ -1,0 +1,126 @@
+schemaVersion: 1
+id: "skillet-chicken-rice-bowls-with-tomato-cucumber-salad"
+title: "Skillet Chicken Rice Bowls with Tomato Cucumber Salad"
+servings:
+  estimate: 5
+  note: "5–6 servings"
+timing:
+  guidance: "About 40–45 minutes, including preheating"
+preparationGuidance: "Use whole chicken breasts or boneless thighs. Cook rice with water according to its package. Reserve part of the olive oil for the salad dressing. Yogurt, garlic and dill make the optional sauce and are included in the shopping list. Add salt and pepper to taste."
+images: []
+ingredients:
+  -
+    ingredientId: "boneless-chicken"
+    quantity: "900"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "dry-rice"
+    quantity: "320"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "fresh-tomatoes"
+    quantity: "600"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "cucumbers"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "bell-peppers"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "salad-greens"
+    quantity: "100"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "lemons"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "olive-oil"
+    quantity: "30"
+    unit: "ml"
+    optional: false
+    note: ""
+  -
+    ingredientId: "paprika"
+    quantity: "2"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "dried-oregano"
+    quantity: "1"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "plain-yogurt"
+    quantity: "200"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "garlic-cloves"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "fresh-dill"
+    quantity: "1"
+    unit: "bunch"
+    optional: false
+    note: ""
+  -
+    ingredientId: "salt"
+    quantity: "7"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "black-pepper"
+    quantity: "2"
+    unit: "g"
+    optional: false
+    note: ""
+sections:
+  -
+    id: "method"
+    title: "Method"
+    steps:
+      -
+        id: "step-1"
+        content:
+          -
+            text: "0:00 — Start rice and oven. Heat the oven to 200°C. Rinse and cook rice according to the package; let it rest covered."
+      -
+        id: "step-2"
+        content:
+          -
+            text: "0:05–0:18 — Prep. Leave the chicken breasts or boneless thighs whole. Pat them dry and season with paprika, oregano, salt, pepper and a little oil. Dice the tomatoes, cucumber and pepper (cut into even cubes), and wash and dry the greens."
+      -
+        id: "step-3"
+        content:
+          -
+            text: "0:18–0:35 — Sear and finish. Heat a large oven-safe cast-iron skillet. Sear the chicken (brown the surface quickly in a hot pan) for about 2–3 minutes per side. Transfer the skillet to the oven for a few minutes, checking the thickest piece with a thermometer. Remove it as soon as it reaches 74°C; thicker pieces may need longer. Rest the chicken for 3–5 minutes, then slice it into strips."
+      -
+        id: "step-4"
+        content:
+          -
+            text: "Finish. Whisk lemon juice and the reserved olive oil for the salad. If using the optional sauce, stir yogurt with grated garlic and dill. Fluff the rice, dress the salad (toss it with the lemon dressing), and serve with the sliced chicken and sauce."

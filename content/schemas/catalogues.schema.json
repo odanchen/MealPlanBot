@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*$"
+          },
+          "minItems": 1
+        },
+        "ingredients": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "aliases": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "category": {
+                "type": "string",
+                "pattern": "^[a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*$"
+              }
+            },
+            "required": [
+              "name",
+              "aliases",
+              "category"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "categories",
+        "ingredients"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "terms": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "definition": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "label",
+              "definition"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "terms"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cycleLength": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "recipeId": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z][a-zA-Z0-9]*(?:-[a-zA-Z0-9]+)*$"
+                  }
+                },
+                "required": [
+                  "recipeId"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "rest": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "rest"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "title",
+        "cycleLength",
+        "slots"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+schemaVersion: 1
+id: "butternut-squash-turkey-bulgur-skillet"
+title: "Butternut Squash Turkey and Bulgur Skillet"
+servings:
+  estimate: 5
+  note: "5–6 servings"
+timing:
+  guidance: "50–55 minutes"
+preparationGuidance: "The squash amount is the raw peeled, deseeded flesh: buy it prepared, or obtain enough whole squash to weigh this amount after peeling and deseeding. No whole-to-peeled yield is assumed. Cook bulgur with water according to its package. Pumpkin seeds are an optional extra, not included in the shopping list."
+images: []
+ingredients:
+  -
+    ingredientId: "ground-turkey"
+    quantity: "850"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "raw-peeled-butternut-squash"
+    quantity: "900"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "dry-bulgur"
+    quantity: "300"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "onions"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "garlic-cloves"
+    quantity: "3"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "fresh-spinach"
+    quantity: "200"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "ground-cumin"
+    quantity: "4"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "smoked-paprika"
+    quantity: "2"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "ground-cinnamon"
+    quantity: "1"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "lemons"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "olive-oil"
+    quantity: "25"
+    unit: "ml"
+    optional: false
+    note: ""
+  -
+    ingredientId: "salt"
+    quantity: "7"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "black-pepper"
+    quantity: "2"
+    unit: "g"
+    optional: false
+    note: ""
+sections:
+  -
+    id: "method"
+    title: "Method"
+    steps:
+      -
+        id: "step-1"
+        content:
+          -
+            text: "0:00–0:12 — Start bulgur and dice. Cook bulgur according to package. Weigh the raw peeled, deseeded squash and cut it into even 1–1.5 cm cubes so it cooks quickly; dice onion and mince garlic (chop very finely). A helper may cube squash earlier that day and refrigerate it."
+      -
+        id: "step-2"
+        content:
+          -
+            text: "0:12–0:25 — Brown turkey. In a deep skillet or Dutch oven, cook turkey and onion in oil, breaking up meat. Add garlic and "
+          -
+            term: "bloom"
+            label: "bloom"
+          -
+            text: " the spices (briefly heat them in the pan to release aroma) for the final minute. Turkey should reach 74°C."
+      -
+        id: "step-3"
+        content:
+          -
+            text: "0:25–0:45 — Cook squash. Add squash, 150 ml water and a pinch of salt. Cover and "
+          -
+            term: "simmer"
+            label: "simmer"
+          -
+            text: " 10–12 minutes, then uncover and "
+          -
+            term: "reduce"
+            label: "reduce"
+          -
+            text: " (evaporate) the liquid for about 5 minutes. Test a cube with a fork; add a few minutes if needed."
+      -
+        id: "step-4"
+        content:
+          -
+            text: "0:45–0:55 — Finish. Fold in spinach until wilted, lemon zest and juice. Spoon over bulgur and scatter pumpkin seeds if using."

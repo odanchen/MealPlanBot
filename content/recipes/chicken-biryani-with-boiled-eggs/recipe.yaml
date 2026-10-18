@@ -1,0 +1,167 @@
+schemaVersion: 1
+id: "chicken-biryani-with-boiled-eggs"
+title: "Chicken Biryani with Boiled Eggs"
+servings:
+  estimate: 6
+  note: "6–8 servings"
+timing:
+  guidance: "2–3 hours including the minimum marinating time; overnight marinating is extra"
+preparationGuidance: "Cut chicken thighs into large pieces and slice the onions thinly. Use dry basmati rice. Crack the cardamom pods lightly. Reserve some lemon juice for the tomato-cucumber side, and divide the salt between chicken and rice to taste. Chili is an optional extra, not included in the shopping list."
+images: []
+ingredients:
+  -
+    ingredientId: "boneless-chicken-thighs"
+    quantity: "1.3"
+    unit: "kg"
+    optional: false
+    note: ""
+  -
+    ingredientId: "plain-yogurt"
+    quantity: "500"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "onions"
+    quantity: "3"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "garlic-cloves"
+    quantity: "5"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "ginger"
+    quantity: "30"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "dry-basmati-rice"
+    quantity: "555"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "eggs"
+    quantity: "6"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "garam-masala"
+    quantity: "4"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "ground-turmeric"
+    quantity: "2"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "ground-cumin"
+    quantity: "4"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "ground-coriander"
+    quantity: "4"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "cinnamon-sticks"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "cardamom-pods"
+    quantity: "5"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "whole-cloves"
+    quantity: "3"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "bay-leaves"
+    quantity: "3"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "fresh-cilantro"
+    quantity: "1"
+    unit: "bunch"
+    optional: false
+    note: ""
+  -
+    ingredientId: "lemons"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "cucumbers"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "fresh-tomatoes"
+    quantity: "300"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "neutral-oil"
+    quantity: "45"
+    unit: "ml"
+    optional: false
+    note: ""
+  -
+    ingredientId: "salt"
+    quantity: "12"
+    unit: "g"
+    optional: false
+    note: ""
+sections:
+  -
+    id: "method"
+    title: "Method"
+    steps:
+      -
+        id: "step-1"
+        content:
+          -
+            text: "Ahead or 0:00 — Marinate. Mix chicken with 300 g yogurt, garlic, ginger, ground spices, some of the measured salt and lemon juice, reserving the rest for rice and serving. Refrigerate 30 minutes to overnight; keep raw chicken cold."
+      -
+        id: "step-2"
+        content:
+          -
+            text: "0:30–1:10 — Infuse oil, brown onions, cook eggs and rice. Heat the measured oil in a wide Dutch oven. Add the cinnamon, cracked cardamom, whole cloves and bay leaves for 30–60 seconds to infuse the fat (release their aroma into the oil); lift them out before they darken and reserve. Caramelize the onions (cook them slowly until deeply golden) in the scented oil, working in batches; reserve half the onions. Lower the eggs into boiling water and cook until both whites and yolks are firm; timing depends on egg size and starting temperature, then transfer immediately to cold water to stop the cooking; peel when cool. Rinse basmati; parboil (partly boil) in salted water until about 70% cooked, with a firm centre, then drain."
+      -
+        id: "step-3"
+        content:
+          -
+            text: "1:10–1:35 — Cook chicken. Return the reserved whole spices to the Dutch oven with the marinated chicken and remaining onion. Cook over medium heat, stirring, until the chicken is nearly cooked through. Add a splash of water only if sticking."
+      -
+        id: "step-4"
+        content:
+          -
+            text: "1:35–2:05 — Dum (steam the layered rice and chicken under a tight lid). Spread partly cooked rice over chicken. Top with reserved onions and cilantro. Cover tightly; cook at very low heat 20–25 minutes, then rest 10 minutes. Check chicken reaches 74°C and rice is cooked; add a few spoonfuls of hot water and steam longer if needed."
+      -
+        id: "step-5"
+        content:
+          -
+            text: "Serve. Remove the cinnamon, cardamom, cloves and bay leaves you can find. Halve the eggs over portions; check that the whites and yolks are firm. Dice cucumber and tomatoes; season with lemon and serve separately with remaining yogurt."

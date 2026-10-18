@@ -1,0 +1,9 @@
+import { useEffect, useState } from 'react';
+import { schedules, type UserSchedule } from '../api/schedules';
+import { useViewerTimeZone } from '../hooks/useViewerTimeZone';
+export function UserSchedulesPage(){
+ const viewer=useViewerTimeZone();const [items,setItems]=useState<UserSchedule[]>([]);const [templates,setTemplates]=useState<{id:string;title:string}[]>([]);const [template,setTemplate]=useState('');const [anchor,setAnchor]=useState(viewer.today);const [error,setError]=useState('');const [busy,setBusy]=useState(false);
+ useEffect(()=>{let active=true;Promise.all([schedules.list(),schedules.templates()]).then(([list,catalogue])=>{if(active){setItems(list.schedules);setTemplates(catalogue.templates);setTemplate(catalogue.templates[0]?.id??'');}}).catch(e=>{if(active)setError(e.message);});return ()=>{active=false;};},[]);
+ async function create(e:React.SubmitEvent){e.preventDefault();setBusy(true);setError('');try{const result=await schedules.create(template,anchor);window.location.assign(`/schedules/${result.id}`);}catch(e){setError((e as Error).message);setBusy(false);}}
+ return <><h2>Your planner</h2><p>Choose a rotation and the date of its first meal. Any weekday works.</p>{error&&<p role="alert">{error}</p>}<ul>{items.map(s=><li key={s.id}><a href={`/schedules/${s.id}`}>{templates.find(t=>t.id===s.templateId)?.title??s.templateId} · starts {s.anchorDate}</a></li>)}</ul>{!items.length&&<p>No personal schedules yet.</p>}<form onSubmit={e=>{void create(e);}}><h3>Create a personal schedule</h3><label>Schedule template<select value={template} onChange={e=>setTemplate(e.target.value)} required>{templates.map(t=><option key={t.id} value={t.id}>{t.title}</option>)}</select></label><label>Start date<input type="date" required value={anchor} onChange={e=>setAnchor(e.target.value)}/></label><button disabled={busy||!template}>Create schedule</button></form></>;
+}

@@ -1,0 +1,26 @@
+schemaVersion: 1
+terms:
+  simmer:
+    label: "Simmer"
+    definition: "Cook liquid gently with occasional small bubbles rather than a rolling boil."
+  deglaze:
+    label: "Deglaze"
+    definition: "Add liquid to the hot pan and scrape up the browned bits."
+  braise:
+    label: "Braise"
+    definition: "Cook gently in a small amount of liquid until tender."
+  reduce:
+    label: "Reduce"
+    definition: "Simmer uncovered to evaporate liquid and concentrate flavour."
+  bloom:
+    label: "Bloom spices"
+    definition: "Warm spices in hot fat to release their aroma."
+  saute:
+    label: "Sauté"
+    definition: "Cook quickly in a little fat, stirring or tossing."
+  small-dice:
+    label: "Small dice"
+    definition: "Cut into roughly 6 mm cubes."
+  medium-dice:
+    label: "Medium dice"
+    definition: "Cut into roughly 1.2 cm cubes."

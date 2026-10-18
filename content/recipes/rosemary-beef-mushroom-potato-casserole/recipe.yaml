@@ -1,0 +1,119 @@
+schemaVersion: 1
+id: "rosemary-beef-mushroom-potato-casserole"
+title: "Rosemary Beef, Mushroom and Potato Casserole"
+servings:
+  estimate: 6
+  note: "6–8 servings"
+timing:
+  guidance: "About 3–4 hours, mostly unattended; judge by the beef's tenderness"
+preparationGuidance: "Cut beef into roughly 3 cm pieces and potatoes into 2–3 cm chunks. Slice mushrooms, cut onions into wedges and carrots on the bias. Use 125 ml water with the bouillon cube. Cornstarch is optional but included in the shopping list. Add salt and pepper to taste."
+images: []
+ingredients:
+  -
+    ingredientId: "boneless-beef"
+    quantity: "1.4"
+    unit: "kg"
+    optional: false
+    note: ""
+  -
+    ingredientId: "mushrooms"
+    quantity: "800"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "onions"
+    quantity: "2"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "carrots"
+    quantity: "500"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "potatoes"
+    quantity: "1.3"
+    unit: "kg"
+    optional: false
+    note: ""
+  -
+    ingredientId: "fresh-rosemary-sprigs"
+    quantity: "3"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "garlic-cloves"
+    quantity: "4"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "beef-bouillon-cubes"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "cornstarch"
+    quantity: "8"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "butter"
+    quantity: "40"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "neutral-oil"
+    quantity: "25"
+    unit: "ml"
+    optional: false
+    note: ""
+  -
+    ingredientId: "salt"
+    quantity: "7"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "black-pepper"
+    quantity: "3"
+    unit: "g"
+    optional: false
+    note: ""
+sections:
+  -
+    id: "method"
+    title: "Method"
+    steps:
+      -
+        id: "step-1"
+        content:
+          -
+            text: "Sear the beef. Heat a cast-iron or stainless-steel skillet with a little oil. Brown the beef in batches, seasoning with salt and pepper. Sear means to brown the surface quickly in a hot pan; the beef does not need to cook through. Transfer it directly into a large casserole baking dish."
+      -
+        id: "step-2"
+        content:
+          -
+            text: "Fill the casserole. Add mushrooms, onions, carrots, potatoes, garlic and rosemary to the dish. If using cornstarch, scatter it over the ingredients and toss thoroughly so no dry patches remain. Dissolve the bouillon cube in the 125 ml water and pour it in. Dot with butter and add a generous grind of black pepper. Toss once more and cover the dish tightly with its lid or foil."
+      -
+        id: "step-3"
+        content:
+          -
+            text: "Cook from a cold oven. Put the covered dish into the oven, then set it to 160°C; there is no need to preheat. Let it cook gently for roughly 3 hours before checking. This is a "
+          -
+            term: "braise"
+            label: "braise"
+          -
+            text: ": the covered ingredients slowly cook in the small amount of added liquid plus moisture released by the vegetables. The sauce should barely bubble, not boil vigorously."
+      -
+        id: "step-4"
+        content:
+          -
+            text: "Check and finish. The beef is ready when a fork slides in easily, and the potatoes and carrots are tender. If necessary, cover and cook longer, checking periodically; the time will vary with the cut of beef and the dish's depth. Stir from the bottom, remove the rosemary stems, and taste for salt and pepper. The released vegetable juices should form a small amount of glossy sauce. If it is thinner than you like, uncover for the last 10–15 minutes."

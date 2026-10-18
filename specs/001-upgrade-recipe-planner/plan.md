@@ -1,10 +1,10 @@
 # Implementation Plan: Upgrade Recipe Hosting and Shared Meal Shopping
 
-**Branch**: `main` | **Date**: 2026-10-18 | **Spec**: [spec.md](spec.md)
+**Branch**: `001-upgrade-recipe-planner` | **Date**: 2026-10-18 | **Spec**: [spec.md](spec.md)
 
 **Input**: Feature specification and Java/React, Google-only authentication, Raspberry Pi/Cloudflare Tunnel, and local-execution requirements. Build-tool amendment: use Gradle instead of Maven.
 
-**Status**: Phase 0/1 design complete and amended after the schedule-model review. Public/private journeys, live links, any-date anchors, initial batches, pre-anchor dates, and source deletion are resolved. Java 25 with Boot 4.1 is the selected baseline after confirmation of arm64; the earlier Java 17 alternative is compared in research.md. Setup reported feature identifier `001-upgrade-recipe-planner` as BRANCH; the actual Git branch remains `main`.
+**Status**: Phase 0/1 design complete and amended after the schedule-model review. Public/private journeys, live links, any-date anchors, initial batches, pre-anchor dates, and source deletion are resolved. Java 25 with Boot 4.1 is the selected baseline after confirmation of arm64; the earlier Java 17 alternative is compared in research.md. Setup reported feature identifier `001-upgrade-recipe-planner` as BRANCH; implementation now runs on the `001-upgrade-recipe-planner` feature branch.
 
 ## Summary
 

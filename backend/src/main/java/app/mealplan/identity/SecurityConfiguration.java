@@ -19,7 +19,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class SecurityConfiguration {
  @Bean SecurityFilterChain security(HttpSecurity http,RuntimeProperties runtime,Environment env,GoogleLoginHandler success) throws Exception {
   http.authorizeHttpRequests(auth -> auth
-   .requestMatchers(HttpMethod.GET,"/","/index.html","/assets/**","/recipes/**","/schedules","/schedules/**","/lists","/api/recipes","/api/recipes/**","/api/ingredients","/api/glossary","/api/session","/api/csrf","/signin-error","/auth/login","/oauth2/authorization/google","/login/oauth2/code/google").permitAll()
+   .requestMatchers(HttpMethod.GET,"/","/health","/index.html","/assets/**","/recipes/**","/schedules","/schedules/**","/lists","/api/recipes","/api/recipes/**","/api/ingredients","/api/glossary","/api/session","/api/csrf","/signin-error","/auth/login","/oauth2/authorization/google","/login/oauth2/code/google").permitAll()
    .requestMatchers(HttpMethod.POST,"/api/local-session").permitAll()
    .anyRequest().authenticated());
   http.csrf(Customizer.withDefaults());

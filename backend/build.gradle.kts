@@ -44,3 +44,11 @@ val stageFrontend = tasks.register<Sync>("stageFrontend") {
 sourceSets.main { resources.srcDir(layout.buildDirectory.dir("generated-resources/frontend")) }
 tasks.processResources { dependsOn(stageFrontend) }
 tasks.withType<Test>().configureEach { jvmArgs("--enable-native-access=ALL-UNNAMED") }
+
+val validateContent = tasks.register<JavaExec>("validateContent") {
+    dependsOn(tasks.classes)
+    classpath = sourceSets.main.get().runtimeClasspath
+    mainClass = "app.mealplan.cli.ContentValidationCommand"
+    args("--content-path", layout.projectDirectory.dir("../content").asFile.absolutePath)
+}
+tasks.check { dependsOn(validateContent) }

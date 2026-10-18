@@ -1,0 +1,47 @@
+schemaVersion: 1
+id: "three-week"
+title: "Three-week household rotation"
+cycleLength: 21
+slots:
+  -
+    recipeId: "red-wine-beef-stew-with-mashed-potatoes"
+  -
+    recipeId: "chicken-chickpea-potato-coconut-curry-with-rice"
+  -
+    recipeId: "beet-turkey-buckwheat-skillet"
+  -
+    recipeId: "beef-mushroom-pepper-stir-fry-with-rice"
+  -
+    recipeId: "chicken-peanut-pasta-with-carrot-spinach"
+  -
+    rest: true
+  -
+    rest: true
+  -
+    recipeId: "rosemary-beef-mushroom-potato-casserole"
+  -
+    recipeId: "beef-black-bean-chipotle-chili"
+  -
+    recipeId: "greek-chicken-bulgur-bowls-with-dill-yogurt"
+  -
+    recipeId: "chicken-mushroom-dill-pilaf"
+  -
+    recipeId: "broccoli-shrimp-pepper-noodles"
+  -
+    rest: true
+  -
+    rest: true
+  -
+    recipeId: "chicken-biryani-with-boiled-eggs"
+  -
+    recipeId: "butternut-squash-turkey-bulgur-skillet"
+  -
+    recipeId: "honey-mustard-pork-with-mash-green-beans"
+  -
+    recipeId: "chicken-white-bean-mushroom-stew-with-couscous"
+  -
+    recipeId: "skillet-chicken-rice-bowls-with-tomato-cucumber-salad"
+  -
+    rest: true
+  -
+    rest: true

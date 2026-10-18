@@ -1,9 +1,11 @@
 # Review of the supplied recipe content
 
-This review records editorial work on the fifteen original HTML/JSON recipe pairs.
-The original files, manifest and assets are retained as migration inputs. The
-Python runtime and its verification commands have been removed; the Java
-application does not yet load or serve these recipes.
+This review records editorial work on the fifteen supplied tutorials. Their complete
+text and purchasing quantities are captured in the Java content-only baseline.
+Each migrated tutorial now has one authoritative `recipe.yaml`; the former HTML,
+JSON and manifest copies have been removed after migration comparison passed.
+The historical navigation details below describe the original review. The new
+application uses stable slugs, shared rendering and wraparound recipe navigation.
 
 ## Corrections and editorial choices
 
@@ -51,11 +53,8 @@ been cooked or that their taste, serving yields and elapsed times are guaranteed
 
 ## Migration verification
 
-The removed Python tests previously checked headings, navigation, raw ingredient
-amounts and weekly shopping totals. Those tests are no longer available. The Java
-content baseline, comparison tests and validator remain planned in T018–T033.
-Keep the original HTML, JSON, manifest and assets until those checks verify that
-all fifteen tutorials, quantities and preparation guidance are preserved.
-
-Current application checks run through `./scripts/check.sh`; authoritative recipe
-validation will be included when T032 is implemented.
+`ContentMigrationTest` compares all fifteen recipes for titles, ingredient identities,
+exact quantities and purchase units, serving estimates, timing, preparation guidance
+and all 71 ordered steps. It also verifies all 21 relative meal/rest slots.
+`ContentValidationTest` checks atomic revision replacement and invalid source rejection.
+`./scripts/check.sh` runs these checks and the credential-free Java content validator.

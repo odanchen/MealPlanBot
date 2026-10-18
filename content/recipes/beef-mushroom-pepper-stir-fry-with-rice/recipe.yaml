@@ -1,0 +1,119 @@
+schemaVersion: 1
+id: "beef-mushroom-pepper-stir-fry-with-rice"
+title: "Beef Mushroom and Pepper Stir-Fry with Rice"
+servings:
+  estimate: 5
+  note: "5–6 servings"
+timing:
+  guidance: "45–50 minutes"
+preparationGuidance: "Use tender beef suitable for stir-frying, sliced thinly across the grain. The optional coating uses the white of the listed egg; save the yolk for another use. Use 100 ml water in the sauce and rice cooking water according to the package. Green onions are an optional extra, not included in the shopping list."
+images: []
+ingredients:
+  -
+    ingredientId: "stir-fry-beef"
+    quantity: "900"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "dry-rice"
+    quantity: "320"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "onions"
+    quantity: "2"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "mushrooms"
+    quantity: "350"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "bell-peppers"
+    quantity: "3"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "garlic-cloves"
+    quantity: "3"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "soy-sauce"
+    quantity: "75"
+    unit: "ml"
+    optional: false
+    note: ""
+  -
+    ingredientId: "cornstarch"
+    quantity: "8"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "eggs"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "vinegar"
+    quantity: "15"
+    unit: "ml"
+    optional: false
+    note: ""
+  -
+    ingredientId: "sugar"
+    quantity: "5"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "neutral-oil"
+    quantity: "30"
+    unit: "ml"
+    optional: false
+    note: ""
+  -
+    ingredientId: "black-pepper"
+    quantity: "2"
+    unit: "g"
+    optional: false
+    note: ""
+sections:
+  -
+    id: "method"
+    title: "Method"
+    steps:
+      -
+        id: "step-1"
+        content:
+          -
+            text: "0:00 — Start rice according to package directions."
+      -
+        id: "step-2"
+        content:
+          -
+            text: "0:05–0:18 — Slice and mix. Cut the beef into an émincé (thin slices), across the grain so the muscle fibres are short. For a light protective coating, if desired, toss the beef with egg white and a little of the measured soy sauce and cornstarch before its brief sear. Slice onions, mushrooms and peppers. Mix remaining soy sauce, starch, vinegar, sugar and water in a cup."
+      -
+        id: "step-3"
+        content:
+          -
+            text: "0:18–0:34 — Stir-fry and sear. Sear means brown rapidly over high heat. Heat cast iron or stainless pan until hot. Sear beef in 2–3 batches, 2–3 minutes per batch; transfer out. Cook onions, mushrooms and peppers in batches so they brown rather than steam."
+      -
+        id: "step-4"
+        content:
+          -
+            text: "0:34–0:43 — Combine. Add garlic for 30 seconds. Return beef and juices, pour in the re-stirred sauce, and toss until the thickened sauce lightly coats the beef and vegetables. Check the beef with a food thermometer: at least 63°C for whole-cut beef, or longer for your preferred doneness. If using mechanically tenderized beef, follow the package’s cooking directions. Cook the optional egg-white coating through."
+      -
+        id: "step-5"
+        content:
+          -
+            text: "Finish. Serve over rice, adding green onions if wanted."

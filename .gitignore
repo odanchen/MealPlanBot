@@ -38,3 +38,8 @@ venv/
 secrets/
 *.p12
 *.pfx
+
+# Compiled Java artifacts (retain the committed Gradle wrapper)
+*.class
+*.jar
+!backend/gradle/wrapper/gradle-wrapper.jar

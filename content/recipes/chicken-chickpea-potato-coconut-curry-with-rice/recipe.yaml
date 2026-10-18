@@ -1,0 +1,174 @@
+schemaVersion: 1
+id: "chicken-chickpea-potato-coconut-curry-with-rice"
+title: "Chicken Chickpea and Potato Coconut Curry with Rice"
+servings:
+  estimate: 5
+  note: "5–6 servings"
+timing:
+  guidance: "50–55 minutes"
+preparationGuidance: "Before you start: Soak and fully cook the listed 200 g dry chickpeas according to their package directions. Use the entire drained batch in this recipe; cooked yield varies. The meal time below excludes soaking and bean cooking. If preparing them ahead, cool promptly and refrigerate until needed.\n\nUse chicken breast or boneless thigh, cut into bite-size pieces. Cook the dry chickpeas ahead as described below. Add 250–350 ml water to the curry; measure rice cooking water according to its package. Cilantro is an optional extra, not included in the shopping list."
+images: []
+ingredients:
+  -
+    ingredientId: "boneless-chicken"
+    quantity: "900"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "dry-chickpeas"
+    quantity: "200"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "onions"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "carrots"
+    quantity: "2"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "potatoes"
+    quantity: "500"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "garlic-cloves"
+    quantity: "3"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "ginger"
+    quantity: "15"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "curry-powder"
+    quantity: "20"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "ground-cumin"
+    quantity: "2"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "whole-cloves"
+    quantity: "4"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "bay-leaves"
+    quantity: "2"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "ground-cinnamon"
+    quantity: "1"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "ground-hot-pepper"
+    quantity: "2"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "coconut-milk"
+    quantity: "400"
+    unit: "ml"
+    optional: false
+    note: ""
+  -
+    ingredientId: "dry-rice"
+    quantity: "320"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "neutral-oil"
+    quantity: "25"
+    unit: "ml"
+    optional: false
+    note: ""
+  -
+    ingredientId: "salt"
+    quantity: "7"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "lemons"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+sections:
+  -
+    id: "method"
+    title: "Method"
+    steps:
+      -
+        id: "step-1"
+        content:
+          -
+            text: "0:00 — Start rice. Rinse rice and put it on with measured water and salt. Bring to a boil, cover, lower heat and cook per package; rest covered 10 minutes."
+      -
+        id: "step-2"
+        content:
+          -
+            text: "0:05–0:18 — Cut and sweat. Cut onion and carrots into a "
+          -
+            term: "small-dice"
+            label: "small dice"
+          -
+            text: " (¼-inch, about 6 mm cubes). Cut potatoes into larger, roughly 1.5 cm cubes; cut chicken separately. Finely grate the ginger so it disperses and softens quickly. Sweat the onion and carrot (cook gently in oil without browning) for 5 minutes. Add garlic, ginger, curry powder, cumin, cloves, bay leaves, cinnamon and ground hot pepper; "
+          -
+            term: "bloom"
+            label: "bloom"
+          -
+            text: " the spices (stir them briefly in hot oil to release their aroma) for 1 minute."
+      -
+        id: "step-3"
+        content:
+          -
+            text: "0:18–0:35 — "
+          -
+            term: "simmer"
+            label: "Simmer"
+          -
+            text: ". Stir in potatoes, coconut milk and water. Cover and "
+          -
+            term: "simmer"
+            label: "simmer"
+          -
+            text: " 12–15 minutes, until potatoes are almost tender."
+      -
+        id: "step-4"
+        content:
+          -
+            text: "0:35–0:48 — Add chicken and beans. Add chicken and drained cooked chickpeas. "
+          -
+            term: "simmer"
+            label: "Simmer"
+          -
+            text: " 10–12 minutes, stirring, until chicken reaches 74°C and potato is tender. If using thigh chunks, allow a few more minutes."
+      -
+        id: "step-5"
+        content:
+          -
+            text: "Finish. Remove the bay leaves and visible cloves. Balance (adjust) with salt and lemon or lime, then spoon over rice."

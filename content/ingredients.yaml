@@ -1,0 +1,351 @@
+schemaVersion: 1
+categories:
+  - "spices"
+  - "liquids"
+  - "meats"
+  - "vegetables"
+  - "other"
+ingredients:
+  dijon-mustard:
+    name: "Dijon mustard"
+    aliases: []
+    category: "other"
+  bay-leaves:
+    name: "bay leaves"
+    aliases: []
+    category: "spices"
+  beef-bouillon-cubes:
+    name: "beef bouillon cubes"
+    aliases: []
+    category: "other"
+  beets:
+    name: "beets"
+    aliases: []
+    category: "vegetables"
+  bell-peppers:
+    name: "bell peppers"
+    aliases:
+      - "bell pepper"
+    category: "vegetables"
+  black-pepper:
+    name: "black pepper"
+    aliases: []
+    category: "spices"
+  boneless-beef:
+    name: "boneless beef"
+    aliases: []
+    category: "meats"
+  boneless-chicken:
+    name: "boneless chicken"
+    aliases: []
+    category: "meats"
+  boneless-chicken-thighs:
+    name: "boneless chicken thighs"
+    aliases: []
+    category: "meats"
+  butter:
+    name: "butter"
+    aliases: []
+    category: "other"
+  cabbage:
+    name: "cabbage"
+    aliases: []
+    category: "vegetables"
+  cardamom-pods:
+    name: "cardamom pods"
+    aliases: []
+    category: "spices"
+  carrots:
+    name: "carrots"
+    aliases:
+      - "carrot"
+    category: "vegetables"
+  celery:
+    name: "celery"
+    aliases: []
+    category: "vegetables"
+  chicken-bouillon-cubes:
+    name: "chicken bouillon cubes"
+    aliases: []
+    category: "other"
+  chili-flakes:
+    name: "chili flakes"
+    aliases: []
+    category: "spices"
+  cinnamon-sticks:
+    name: "cinnamon sticks"
+    aliases: []
+    category: "spices"
+  coconut-milk:
+    name: "coconut milk"
+    aliases: []
+    category: "liquids"
+  cornstarch:
+    name: "cornstarch"
+    aliases: []
+    category: "other"
+  cucumbers:
+    name: "cucumbers"
+    aliases: []
+    category: "vegetables"
+  curry-powder:
+    name: "curry powder"
+    aliases: []
+    category: "spices"
+  dried-chipotle-peppers:
+    name: "dried chipotle peppers"
+    aliases: []
+    category: "spices"
+  dried-oregano:
+    name: "dried oregano"
+    aliases: []
+    category: "spices"
+  dried-rosemary:
+    name: "dried rosemary"
+    aliases: []
+    category: "spices"
+  dried-thyme:
+    name: "dried thyme"
+    aliases: []
+    category: "spices"
+  dry-basmati-rice:
+    name: "dry basmati rice"
+    aliases: []
+    category: "other"
+  dry-black-beans:
+    name: "dry black beans"
+    aliases: []
+    category: "other"
+  dry-buckwheat-groats:
+    name: "dry buckwheat groats"
+    aliases: []
+    category: "other"
+  dry-bulgur:
+    name: "dry bulgur"
+    aliases: []
+    category: "other"
+  dry-chickpeas:
+    name: "dry chickpeas"
+    aliases: []
+    category: "other"
+  dry-couscous:
+    name: "dry couscous"
+    aliases: []
+    category: "other"
+  dry-noodles:
+    name: "dry noodles"
+    aliases: []
+    category: "other"
+  dry-pasta:
+    name: "dry pasta"
+    aliases: []
+    category: "other"
+  dry-red-wine:
+    name: "dry red wine"
+    aliases: []
+    category: "liquids"
+  dry-rice:
+    name: "dry rice"
+    aliases: []
+    category: "other"
+  dry-white-beans:
+    name: "dry white beans"
+    aliases: []
+    category: "other"
+  eggs:
+    name: "eggs"
+    aliases:
+      - "egg"
+    category: "other"
+  fresh-broccoli:
+    name: "fresh broccoli"
+    aliases: []
+    category: "vegetables"
+  fresh-cilantro:
+    name: "fresh cilantro"
+    aliases: []
+    category: "vegetables"
+  fresh-dill:
+    name: "fresh dill"
+    aliases: []
+    category: "vegetables"
+  fresh-green-beans:
+    name: "fresh green beans"
+    aliases: []
+    category: "vegetables"
+  fresh-parsley:
+    name: "fresh parsley"
+    aliases: []
+    category: "vegetables"
+  fresh-rosemary-sprigs:
+    name: "fresh rosemary sprigs"
+    aliases: []
+    category: "vegetables"
+  fresh-spinach:
+    name: "fresh spinach"
+    aliases: []
+    category: "vegetables"
+  fresh-tomatoes:
+    name: "fresh tomatoes"
+    aliases:
+      - "tomato"
+      - "tomatoes"
+    category: "vegetables"
+  garam-masala:
+    name: "garam masala"
+    aliases: []
+    category: "spices"
+  garlic-cloves:
+    name: "garlic cloves"
+    aliases:
+      - "garlic clove"
+    category: "vegetables"
+  ginger:
+    name: "ginger"
+    aliases: []
+    category: "vegetables"
+  green-onions:
+    name: "green onions"
+    aliases: []
+    category: "vegetables"
+  ground-beef:
+    name: "ground beef"
+    aliases: []
+    category: "meats"
+  ground-cinnamon:
+    name: "ground cinnamon"
+    aliases: []
+    category: "spices"
+  ground-coriander:
+    name: "ground coriander"
+    aliases: []
+    category: "spices"
+  ground-cumin:
+    name: "ground cumin"
+    aliases: []
+    category: "spices"
+  ground-hot-pepper:
+    name: "ground hot pepper"
+    aliases: []
+    category: "spices"
+  ground-turkey:
+    name: "ground turkey"
+    aliases: []
+    category: "meats"
+  ground-turmeric:
+    name: "ground turmeric"
+    aliases: []
+    category: "spices"
+  honey:
+    name: "honey"
+    aliases: []
+    category: "other"
+  lemons:
+    name: "lemons"
+    aliases:
+      - "lemon"
+    category: "vegetables"
+  limes:
+    name: "limes"
+    aliases:
+      - "lime"
+    category: "vegetables"
+  milk:
+    name: "milk"
+    aliases: []
+    category: "liquids"
+  mushrooms:
+    name: "mushrooms"
+    aliases:
+      - "mushroom"
+    category: "vegetables"
+  neutral-oil:
+    name: "neutral oil"
+    aliases: []
+    category: "liquids"
+  olive-oil:
+    name: "olive oil"
+    aliases: []
+    category: "liquids"
+  onions:
+    name: "onions"
+    aliases:
+      - "onion"
+    category: "vegetables"
+  paprika:
+    name: "paprika"
+    aliases: []
+    category: "spices"
+  plain-yogurt:
+    name: "plain yogurt"
+    aliases: []
+    category: "other"
+  pork-tenderloin:
+    name: "pork tenderloin"
+    aliases: []
+    category: "meats"
+  potatoes:
+    name: "potatoes"
+    aliases:
+      - "potato"
+    category: "vegetables"
+  raw-peeled-butternut-squash:
+    name: "raw peeled butternut squash"
+    aliases: []
+    category: "vegetables"
+  raw-peeled-shrimp:
+    name: "raw peeled shrimp"
+    aliases: []
+    category: "meats"
+  salad-greens:
+    name: "salad greens"
+    aliases: []
+    category: "vegetables"
+  salt:
+    name: "salt"
+    aliases: []
+    category: "spices"
+  sesame-oil:
+    name: "sesame oil"
+    aliases: []
+    category: "liquids"
+  smoked-paprika:
+    name: "smoked paprika"
+    aliases: []
+    category: "spices"
+  smooth-peanut-butter:
+    name: "smooth peanut butter"
+    aliases: []
+    category: "other"
+  soy-sauce:
+    name: "soy sauce"
+    aliases: []
+    category: "liquids"
+  stir-fry-beef:
+    name: "stir-fry beef"
+    aliases: []
+    category: "meats"
+  stock:
+    name: "stock"
+    aliases: []
+    category: "liquids"
+  sugar:
+    name: "sugar"
+    aliases: []
+    category: "other"
+  tomato-paste:
+    name: "tomato paste"
+    aliases: []
+    category: "other"
+  vinegar:
+    name: "vinegar"
+    aliases: []
+    category: "liquids"
+  whole-cloves:
+    name: "whole cloves"
+    aliases: []
+    category: "spices"
+  whole-star-anise:
+    name: "whole star anise"
+    aliases: []
+    category: "spices"

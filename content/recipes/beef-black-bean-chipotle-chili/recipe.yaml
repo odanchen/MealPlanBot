@@ -1,0 +1,168 @@
+schemaVersion: 1
+id: "beef-black-bean-chipotle-chili"
+title: "Beef Black Bean and Chipotle Chili"
+servings:
+  estimate: 5
+  note: "5–6 servings"
+timing:
+  guidance: "50–55 minutes"
+preparationGuidance: "Before you start: Soak and fully cook the listed 200 g dry black beans according to their package directions. Use the entire drained batch in this recipe; cooked yield varies. The meal time below excludes soaking and bean cooking. If preparing them ahead, cool promptly and refrigerate until needed.\n\nCook the dry black beans ahead as described below. Blend or finely chop the tomatoes. Soften and mince the chipotles. Rice is optional but included in the shopping list; use cooking water according to its package. Add chili flakes and salt to taste."
+images: []
+ingredients:
+  -
+    ingredientId: "ground-beef"
+    quantity: "850"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "dry-black-beans"
+    quantity: "200"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "onions"
+    quantity: "2"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "carrots"
+    quantity: "2"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "bell-peppers"
+    quantity: "2"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "garlic-cloves"
+    quantity: "4"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "fresh-tomatoes"
+    quantity: "750"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "tomato-paste"
+    quantity: "1"
+    unit: "tin-156ml"
+    optional: false
+    note: ""
+  -
+    ingredientId: "dried-chipotle-peppers"
+    quantity: "2"
+    unit: "count"
+    optional: false
+    note: ""
+  -
+    ingredientId: "ground-cumin"
+    quantity: "4"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "smoked-paprika"
+    quantity: "4"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "dried-oregano"
+    quantity: "1"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "chili-flakes"
+    quantity: "2"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "dry-rice"
+    quantity: "275"
+    unit: "g"
+    optional: true
+    note: ""
+  -
+    ingredientId: "neutral-oil"
+    quantity: "25"
+    unit: "ml"
+    optional: false
+    note: ""
+  -
+    ingredientId: "salt"
+    quantity: "7"
+    unit: "g"
+    optional: false
+    note: ""
+  -
+    ingredientId: "limes"
+    quantity: "1"
+    unit: "count"
+    optional: false
+    note: ""
+sections:
+  -
+    id: "method"
+    title: "Method"
+    steps:
+      -
+        id: "step-1"
+        content:
+          -
+            text: "0:00 — Start optional rice. Rinse and cook according to package. Put both chipotles in hot water to soften."
+      -
+        id: "step-2"
+        content:
+          -
+            text: "0:05–0:18 — Chop and brown. Cut onion, carrot and peppers into a "
+          -
+            term: "small-dice"
+            label: "small dice"
+          -
+            text: " (¼-inch, about 6 mm cubes). Brown beef in a Dutch oven, breaking it up. Drain excess fat if necessary."
+      -
+        id: "step-3"
+        content:
+          -
+            text: "0:18–0:30 — Build flavour. Add onion and carrot for 6 minutes, then bell peppers and garlic for 4 minutes. Stir in minced chipotles, tomato paste, chili flakes and spices for 1 minute to "
+          -
+            term: "bloom"
+            label: "bloom"
+          -
+            text: " the spices (release their aroma in the hot fat)."
+      -
+        id: "step-4"
+        content:
+          -
+            text: "0:30–0:50 — "
+          -
+            term: "simmer"
+            label: "Simmer"
+          -
+            text: ". Add blended fresh tomatoes and cooked black beans. "
+          -
+            term: "reduce"
+            label: "Reduce"
+          -
+            text: " ("
+          -
+            term: "simmer"
+            label: "simmer"
+          -
+            text: " uncovered to evaporate liquid), stirring occasionally, until thick enough to mound on a spoon. Add a splash of water only if it threatens to stick. Ground beef should reach 71°C."
+      -
+        id: "step-5"
+        content:
+          -
+            text: "Finish. Salt and add lime to taste. Serve as a thick chili or over rice."
