@@ -15,7 +15,8 @@ initial intervals complete empty without shifting the regular recurrence.
 
 One shared exact planner clips dates before the source anchor and before the last
 successfully covered exclusive end. Rest days and instruction-only links contribute
-no purchases; optional ingredients are excluded. Compatible quantities aggregate
+no purchases. Quantified optional purchasing ingredients are included; unquantified
+suggestions have no invented quantities. Compatible quantities aggregate
 inside each batch, while separate occurrences/manual entries remain separate.
 A bunch remains an explicit count and is never converted to an inferred mass.
 
@@ -80,7 +81,7 @@ A final focused lifecycle suite additionally verifies list-deletion cascades.
   entries, restores it and retries the same occurrence; it checks clipped previews,
   oversized query rejection and two independently aged manual entries.
 - Packaged commands: 22 dated meals include pre-anchor not_started; 21-day shopping
-  preview returns 84 distinct ingredient/unit totals with decimal string quantities.
+  preview returns distinct ingredient/unit totals with decimal string quantities.
 - Browser clock controls run serially against disposable state. Test-only controls
   remain outside packaged application classes. No dependency locks, checklist
   markers or production state changed.

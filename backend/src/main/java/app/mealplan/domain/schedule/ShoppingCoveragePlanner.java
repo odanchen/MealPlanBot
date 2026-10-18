@@ -14,7 +14,7 @@ public final class ShoppingCoveragePlanner {
   LocalDate from=candidateFrom.isBefore(anchor)?anchor:candidateFrom;if(coveredEnd!=null&&from.isBefore(coveredEnd))from=coveredEnd;
   if(!from.isBefore(candidateTo))return new Plan(from,from,List.of(),List.of());
   var meals=from.datesUntil(candidateTo).map(d->new MealDateResolver().resolve(template,anchor,d)).toList();var input=new ArrayList<IngredientAggregator.IngredientAmount>();
-  for(var meal:meals)if(meal.recipeId()!=null){var recipe=snapshot.recipes().get(meal.recipeId());if(recipe==null)throw new IllegalArgumentException("Missing required recipe");for(var i:recipe.ingredients())if(!i.optional()){if(!snapshot.ingredients().containsKey(i.ingredientId()))throw new IllegalArgumentException("Missing ingredient");input.add(new IngredientAggregator.IngredientAmount(i.ingredientId(),new Quantity(i.quantity(),i.unit())));}}
+  for(var meal:meals)if(meal.recipeId()!=null){var recipe=snapshot.recipes().get(meal.recipeId());if(recipe==null)throw new IllegalArgumentException("Missing required recipe");for(var i:recipe.ingredients()){if(!snapshot.ingredients().containsKey(i.ingredientId()))throw new IllegalArgumentException("Missing ingredient");input.add(new IngredientAggregator.IngredientAmount(i.ingredientId(),new Quantity(i.quantity(),i.unit())));}}
   return new Plan(from,candidateTo,meals,new IngredientAggregator().aggregate(input));
  }
 }
