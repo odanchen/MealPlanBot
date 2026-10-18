@@ -1,9 +1,10 @@
-# Raw purchase records
+# Original purchase records (migration input)
 
-Each manifest entry maps an ID to a UTF-8 HTML page and a JSON record within
-`content/recipes/`. All 15 real ingredient records are included. The separate
-synthetic record in `tests/fixtures/` is only for tests; never copy test data into
-the household menu. HTML still works independently of JSON.
+Each entry in the retained `content/manifest.json` maps an original numeric ID
+to an HTML tutorial and purchase JSON record in `content/recipes/`. All fifteen
+pairs are preserved for migration. This document describes the original format;
+the Java runtime does not yet load it. The new YAML content contract is in
+[content-format.md](../specs/001-upgrade-recipe-planner/contracts/content-format.md).
 
 A record has exactly two fields:
 
@@ -11,7 +12,7 @@ A record has exactly two fields:
 - `ingredients`: nonempty array (at most 200 entries), each with exactly `name`,
   `quantity`, and `unit`.
 
-`name` is a plain string of 1–100 characters. Use consistent, specific raw purchase
+`name` is a plain string of 1–100 characters. The original records use specific raw purchase
 names, such as `dry chickpeas`, `raw chicken`, and `tomato paste`. The normalized
 name (lowercase with collapsed whitespace) is the aggregation key. No synonym,
 plural, category, yield, density, or package-size inference occurs. Distinct
@@ -22,8 +23,8 @@ Unknown fields are rejected.
 
 `quantity` is a positive finite JSON number (not a string or boolean), up to 12
 digits with at most 6 decimal places. `unit` is one of `g`, `kg`, `ml`, `l`, `each`,
-`bunch`, or `tin_156ml`. Extend the validator deliberately for other units; never
-silently guess a conversion. kg becomes g and l becomes ml using decimal
+`bunch`, or `tin_156ml`. These are the original validator
+conventions, retained here to explain the source data. kg becomes g and l becomes ml using decimal
 arithmetic. Each, bunch, weight, volume and tins stay separate, even for the same
 ingredient. Use `each` for counted onions, for example.
 
@@ -31,13 +32,9 @@ Whenever `tomato paste` is present it must appear exactly once with quantity `1`
 and unit `tin_156ml`: one whole 156 ml tin per recipe. Tins aggregate as tins, never
 as a volume to round or convert. Any `tin_156ml` quantity must be whole.
 
-Run `mealplan validate-ingredients` to check every recipe. It exits 2 and lists
-all missing/invalid recipe IDs if any fail. `mealplan dry-run --date YYYY-MM-DD`
-requires all five records for the next Sunday–Thursday and exits 2 without a
-partial list otherwise. Validation details never echo file contents or secrets.
-
-The API exposes validated raw purchases (no unit conversion); totals exist only
-in shopping output. `ingredients_status` is `available`, `missing`, or `invalid`.
+The Python validation, preview and API implementations have been removed. Content
+comparison tests and Java validation remain planned in T018–T033; this document
+does not establish that the source records pass the new YAML schema.
 
 The shipped tutorial ingredient lists use these supplied raw amounts directly,
 including measured pantry ingredients. Optional items present in a record are

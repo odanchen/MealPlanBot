@@ -1,0 +1,10 @@
+server:
+  servlet:
+    session:
+      cookie:
+        secure: false
+mealplan:
+  deployment-target: ${DEPLOYMENT_TARGET:local}
+  fixture-auth: true
+  database-path: .local/mealplan/app.sqlite
+  public-base-url: http://127.0.0.1:8000

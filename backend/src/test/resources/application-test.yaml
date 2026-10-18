@@ -1,0 +1,11 @@
+server:
+  address: 127.0.0.1
+  port: 0
+mealplan:
+  deployment-target: test
+  # Each test supplies a disposable path through DynamicPropertySource.
+  database-path: ${TEST_DATABASE_PATH:}
+  fixture-auth: false
+logging:
+  level:
+    root: WARN

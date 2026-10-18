@@ -1,0 +1,5 @@
+mealplan:
+  deployment-target: ${DEPLOYMENT_TARGET:pi}
+  fixture-auth: false
+  database-path: ${DATABASE_PATH:/var/lib/mealplan/app.sqlite}
+  public-base-url: ${PUBLIC_BASE_URL:}

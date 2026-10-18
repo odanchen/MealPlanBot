@@ -1,7 +1,9 @@
 # Review of the supplied recipe content
 
-The 15 supplied HTML/JSON pairs are now connected to the manifest, APIs, menu
-and shopping job. No recipe body is parsed, rewritten or generated at runtime.
+This review records editorial work on the fifteen original HTML/JSON recipe pairs.
+The original files, manifest and assets are retained as migration inputs. The
+Python runtime and its verification commands have been removed; the Java
+application does not yet load or serve these recipes.
 
 ## Corrections and editorial choices
 
@@ -47,22 +49,13 @@ following [Health Canada's egg guidance](https://www.canada.ca/en/health-canada/
 These are editorial and consistency checks, not evidence that the recipes have
 been cooked or that their taste, serving yields and elapsed times are guaranteed.
 
-## Repeatable checks
+## Migration verification
 
-`mealplan validate-ingredients` validates all 15 purchase records. Tests verify
-that shipped HTML headings match manifest titles, schedule labels are correct,
-all local navigation/asset targets return successful HTTP responses, and visible
-ingredient amounts match the raw records. All three weekly shopping lists are
-built from the actual content and checked against Telegram's message size limit.
-Synthetic fixtures still exercise missing/invalid data without touching real data.
+The removed Python tests previously checked headings, navigation, raw ingredient
+amounts and weekly shopping totals. Those tests are no longer available. The Java
+content baseline, comparison tests and validator remain planned in T018–T033.
+Keep the original HTML, JSON, manifest and assets until those checks verify that
+all fifteen tutorials, quantities and preparation guidance are preserved.
 
-After adding or editing a recipe, update its HTML, JSON, manifest title, static
-menu and neighbouring navigation labels together, then run:
-
-```sh
-pytest -q
-mealplan validate-ingredients
-mealplan dry-run --date 2026-09-26
-mealplan dry-run --date 2026-10-03
-mealplan dry-run --date 2026-10-10
-```
+Current application checks run through `./scripts/check.sh`; authoritative recipe
+validation will be included when T032 is implemented.

@@ -1,0 +1,38 @@
+server:
+  address: 127.0.0.1
+  port: 8000
+  tomcat:
+    threads:
+      max: 16
+      min-spare: 2
+    max-connections: 64
+    accept-count: 32
+  forward-headers-strategy: none
+  servlet:
+    session:
+      timeout: 7d
+      persistent: false
+      cookie:
+        http-only: true
+        same-site: lax
+        secure: true
+spring:
+  application:
+    name: mealplan
+  mvc:
+    log-request-details: false
+  datasource:
+    # The application supplies its two-connection SQLite pool.
+    embedded-database-connection: none
+  autoconfigure:
+    exclude: org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration
+logging:
+  level:
+    org.springframework.security: WARN
+    org.springframework.web: WARN
+    com.zaxxer.hikari: WARN
+mealplan:
+  deployment-target: ${DEPLOYMENT_TARGET:production}
+  fixture-auth: false
+  database-path: ${DATABASE_PATH:/var/lib/mealplan/app.sqlite}
+  public-base-url: ${PUBLIC_BASE_URL:}
