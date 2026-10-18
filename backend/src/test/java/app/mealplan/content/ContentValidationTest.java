@@ -62,6 +62,36 @@ class ContentValidationTest {
     }
 
     @Test
+    void unsizedPackagesCannotBecomeAcceptedContent() throws Exception {
+        var root = copy();
+        var loader = new ContentLoader(
+            new MockEnvironment().withProperty("mealplan.content-path", root.toString())
+        );
+        var accepted = loader.snapshot();
+        var file = root.resolve("recipes/red-wine-beef-stew-with-mashed-potatoes/recipe.yaml");
+        var original = Files.readString(file);
+        for (String unit : new String[] { "package", "can" }) {
+            Files.writeString(file, original.replace("unit: \"kg\"", "unit: \"" + unit + "\""));
+            assertThatThrownBy(loader::reload).isInstanceOf(IllegalArgumentException.class);
+            assertThat(loader.snapshot()).isSameAs(accepted);
+        }
+        Files.writeString(file, original);
+        var restored = loader.reload();
+        assertThat(
+            new app.mealplan.domain.schedule.ShoppingCoveragePlanner()
+                .plan(
+                    restored,
+                    "three-week",
+                    java.time.LocalDate.of(2026, 10, 20),
+                    java.time.LocalDate.of(2026, 10, 20),
+                    java.time.LocalDate.of(2026, 10, 21),
+                    null
+                )
+                .ingredients()
+        ).isNotEmpty();
+    }
+
+    @Test
     void rejectsUnsafeOrIncompleteAuthoring() throws Exception {
         var root = copy();
         var file = root.resolve("recipes/red-wine-beef-stew-with-mashed-potatoes/recipe.yaml");

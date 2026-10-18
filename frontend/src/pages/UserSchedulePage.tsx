@@ -78,6 +78,21 @@ export function UserSchedulePage({ id }: { id: string }) {
       setBusy(false);
     }
   }
+  async function confirmDeletion() {
+    if (busy) return;
+    setBusy(true);
+    setError("");
+    try {
+      const current = await schedules.get(id);
+      setSchedule(current.schedule);
+      setLinkedLists(current.linkedLists);
+      setDeleting(true);
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
   return (
     <>
       <a href="/schedules">Your schedules</a>
@@ -122,7 +137,16 @@ export function UserSchedulePage({ id }: { id: string }) {
           <button disabled={busy}>Save start date</button>
         </form>
       )}
-      {schedule && <button onClick={() => setDeleting(true)}>Delete personal schedule</button>}
+      {schedule && (
+        <button
+          disabled={busy}
+          onClick={() => {
+            void confirmDeletion();
+          }}
+        >
+          Delete personal schedule
+        </button>
+      )}
       {deleting && (
         <DeleteUserScheduleDialog
           linkedLists={linkedLists}

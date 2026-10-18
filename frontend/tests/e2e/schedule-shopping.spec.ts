@@ -156,13 +156,24 @@ test("live import, repeat-safe generation, changed anchor, replacement and multi
       ).status(),
     ).toBe(200);
     await page.goto(`/schedules/${source}`);
+    await expect(page.getByRole("heading", { name: "Daily meals" })).toBeVisible();
+    // Another session links a list while this page remains open and focused.
+    const lateList = await createList(context, "Linked after page load");
+    expect(
+      (
+        await api(context, `/api/lists/${lateList}/schedule`, "PUT", { userScheduleId: source }, 0)
+      ).status(),
+    ).toBe(200);
     await page.getByRole("button", { name: "Delete personal schedule", exact: true }).click();
+    await expect(page.getByRole("dialog")).toContainText("Linked after page load");
     await expect(page.getByRole("dialog")).toContainText("Live meal purchases");
     await expect(page.getByRole("dialog")).toContainText("Second linked household");
     await page.getByRole("button", { name: "Delete schedule", exact: true }).click();
     await expect(page).toHaveURL("/schedules");
     expect((await state(context, list)).attachment).toBeNull();
     expect((await state(context, secondList)).attachment).toBeNull();
+    expect((await state(context, lateList)).attachment).toBeNull();
+    expect((await items(context, lateList)).length).toBeGreaterThan(0);
     expect((await items(context, list)).length).toBeGreaterThan(0);
     await api(context, "/__test/run-due");
     expect((await state(context, list)).attachment).toBeNull();

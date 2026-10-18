@@ -1,6 +1,7 @@
 # Dependencies, generated output and local state (also ignored by Git).
 **/node_modules/
 **/build/
+backend/bin/
 **/dist/
 **/.gradle/
 **/coverage/

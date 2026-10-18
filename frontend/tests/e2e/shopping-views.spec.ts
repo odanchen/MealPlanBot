@@ -86,6 +86,12 @@ test("every sort and bought grouping view retains all quantities and states thro
           .selectOption(sort);
         const grouping = page.getByRole("checkbox", { name: "Separate bought items", exact: true });
         if ((await grouping.isChecked()) !== group) await grouping.click();
+        await expect(page.getByRole("heading", { name: "Unbought", exact: true })).toHaveCount(
+          group ? 1 : 0,
+        );
+        await expect(page.getByRole("heading", { name: "Bought", exact: true })).toHaveCount(
+          group ? 1 : 0,
+        );
         const expected =
           sort === "alphabetical"
             ? group
@@ -109,11 +115,74 @@ test("every sort and bought grouping view retains all quantities and states thro
         await expect
           .poll(async () => rows.locator("label span").allTextContents())
           .toEqual(expected.map((name) => `${name} · 1 kg`));
+        const checkbox = page.getByRole("checkbox", { name: "apples · 1 kg", exact: true });
+        await checkbox.focus();
+        await checkbox.press("Space");
+        await expect(checkbox).not.toBeChecked();
+        await expect(checkbox).toBeFocused();
+        await expect(rows).toHaveCount(3);
+        const current = (await (await context.request.get(`/api/lists/${id}/entries`)).json())
+          .entries;
+        const apple = current.find((entry: { id: string }) => entry.id === ids[1]);
+        await mutate(
+          context,
+          `/api/lists/${id}/entries/${ids[1]}`,
+          "PATCH",
+          { bought: true },
+          apple.version,
+        );
+        await expect(checkbox).toBeChecked({ timeout: 5000 });
+        await expect(checkbox).toBeFocused();
       }
     const after = (await (await context.request.get(`/api/lists/${id}/entries`)).json()).entries;
-    expect(after).toEqual(before);
+    expect(after.map((entry: { version: number }) => ({ ...entry, version: 0 }))).toEqual(
+      before.map((entry: { version: number }) => ({ ...entry, version: 0 })),
+    );
     await expect(page.locator(".shopping-items time")).toHaveCount(0);
   } finally {
     await context.close();
+  }
+});
+
+test("a member sees archive policy changes on an unattached list", async ({ browser }) => {
+  const owner = await browser.newContext({
+    extraHTTPHeaders: { "X-Test-Principal": `policy-owner-${crypto.randomUUID()}` },
+  });
+  const member = await browser.newContext({
+    extraHTTPHeaders: { "X-Test-Principal": `policy-member-${crypto.randomUUID()}` },
+  });
+  try {
+    const list = await (
+      await mutate(owner, "/api/lists", "POST", { name: "Policy visibility" })
+    ).json();
+    const invitation = await (
+      await mutate(owner, `/api/lists/${list.id}/invitations`, "POST")
+    ).json();
+    await mutate(member, "/api/invitations/accept", "POST", {
+      token: invitation.link.split("token=")[1],
+    });
+    const page = await member.newPage();
+    await page.goto(`/lists/${list.id}`);
+    await expect(
+      page.getByText("Items archive after 7 elapsed days from creation.", { exact: true }),
+    ).toBeVisible();
+    await expect(page.getByRole("button", { name: "Save archive policy" })).toHaveCount(0);
+    expect(
+      (
+        await mutate(
+          owner,
+          `/api/lists/${list.id}/archive-policy`,
+          "PUT",
+          { ageLimit: { count: 2, unit: "week" } },
+          list.version,
+        )
+      ).status(),
+    ).toBe(200);
+    await expect(
+      page.getByText("Items archive after 14 elapsed days from creation.", { exact: true }),
+    ).toBeVisible({ timeout: 5000 });
+  } finally {
+    await owner.close();
+    await member.close();
   }
 });

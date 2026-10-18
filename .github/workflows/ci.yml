@@ -1,0 +1,42 @@
+name: Check and package
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
+        with:
+          distribution: temurin
+          java-version: "25"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            frontend/package-lock.json
+      - name: Verify committed wrapper
+        run: echo '3b8a25775a69158b5ad2b1d17a80a88dc7b40a352a73eb27d06c612a7ce68e98  backend/gradle/wrapper/gradle-wrapper.jar' | sha256sum --check --strict
+      - run: npm ci --prefix frontend
+      - run: cd frontend && npx playwright install --with-deps chromium
+      - run: ./scripts/check.sh
+      - run: ./scripts/build.sh
+      - run: ./scripts/test-release-integrity.sh
+      - run: ./scripts/test-release-recovery.sh
+      - run: ./scripts/test-packaged-boundaries.sh
+      - name: Verify dependency metadata stayed locked
+        run: git diff --exit-code -- backend/gradle.lockfile backend/gradle/verification-metadata.xml package-lock.json frontend/package-lock.json
+      - name: Publish trusted commit only
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: mealplan-${{ github.sha }}
+          path: build/releases/mealplan-${{ github.sha }}.zip
+          if-no-files-found: error
+          retention-days: 30

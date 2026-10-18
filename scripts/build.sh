@@ -5,4 +5,4 @@ cd "$ROOT"
 npm ci --prefix frontend
 npm --prefix frontend run build
 ./backend/gradlew -p backend bootJar
-printf '%s\n' "$ROOT/backend/build/libs/mealplan-0.1.0.jar"
+"$ROOT/scripts/package-release.sh" "$@"

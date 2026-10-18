@@ -1,0 +1,28 @@
+[Unit]
+Description=MealPlan Java web application
+After=network.target
+
+[Service]
+Type=simple
+User=mealplan
+Group=mealplan
+WorkingDirectory=/opt/mealplan
+EnvironmentFile=/etc/mealplan/mealplan.env
+EnvironmentFile=-/var/lib/mealplan/runtime.env
+Environment=DEPLOYMENT_TARGET=pi
+Environment=DATABASE_PATH=/var/lib/mealplan/app.sqlite
+StateDirectory=mealplan
+StateDirectoryMode=0700
+ExecStart=/usr/bin/java --enable-native-access=ALL-UNNAMED -Xms64m -Xmx256m -jar /var/lib/mealplan/current/app.jar --spring.profiles.active=pi --mealplan.fixture-auth=false --mealplan.deployment-target=pi --mealplan.content-path=/var/lib/mealplan/current/content
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+UMask=0077
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

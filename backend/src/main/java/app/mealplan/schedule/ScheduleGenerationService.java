@@ -3,7 +3,6 @@ package app.mealplan.schedule;
 import app.mealplan.content.*;
 import app.mealplan.domain.schedule.*;
 import app.mealplan.persistence.*;
-import java.sql.*;
 import java.time.*;
 import java.util.*;
 import org.springframework.stereotype.Service;
@@ -37,6 +36,14 @@ public class ScheduleGenerationService {
     }
 
     public void generate(String id) {
+        generate(id, false);
+    }
+
+    public void retryFailed(String id) {
+        generate(id, true);
+    }
+
+    private void generate(String id, boolean explicitRetry) {
         String attachmentId = db.read(c -> occurrences.get(c, id).attachmentId());
         synchronized (locks[Math.floorMod(attachmentId.hashCode(), locks.length)]) {
             db.write(c -> {
@@ -48,6 +55,18 @@ public class ScheduleGenerationService {
                     !a.enabled() ||
                     a.sourceScheduleId() == null ||
                     a.configurationVersion() != occurrence.configurationVersion()
+                ) {
+                    occurrences.finish(c, id, "skipped", null, clock.instant());
+                    return null;
+                }
+                // Recovery may encounter a durable pending row created before a long outage.
+                // Only the latest missed recurring period may materialize purchases.
+                var latestDue = a.addition().latestAtOrBefore(clock.instant());
+                if (
+                    !explicitRetry &&
+                    occurrence.kind().equals("recurring") &&
+                    latestDue != null &&
+                    occurrence.scheduledAt().isBefore(latestDue)
                 ) {
                     occurrences.finish(c, id, "skipped", null, clock.instant());
                     return null;

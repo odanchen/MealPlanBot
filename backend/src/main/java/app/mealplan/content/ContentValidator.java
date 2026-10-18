@@ -80,7 +80,7 @@ public final class ContentValidator {
                         new java.math.BigDecimal(i.quantity()).signum() > 0,
                     "Invalid quantity"
                 );
-                UnitRegistry.require(i.unit());
+                new Quantity(i.quantity(), i.unit());
             }
             require(!r.sections().isEmpty(), "Missing recipe sections");
             var sectionIds = new HashSet<String>();

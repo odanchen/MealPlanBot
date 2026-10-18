@@ -1,6 +1,6 @@
 # Local development
 
-The Java/React foundation is the only application runtime in this checkout. The legacy Python implementation has been removed; no installed production services have been changed. All six user stories are implemented, including recurring shopping, individual archival, cooking explanations and measurement/view controls; release/deployment tooling and operational acceptance remain in the backlog. Use JDK 25 (local/CI/Pi must share release 25), Node 24.22.0 (`nvm use`), and the committed backend Gradle 9.8.1 wrapper. No system Gradle or database server is required. SQLite JDBC 3.53.4.0 is the engine in every environment. Use a maintained Java 25 arm64 runtime on the Pi when deployment is implemented.
+The Java/React foundation is the only application runtime in this checkout. The legacy Python implementation has been removed; no installed production services have been changed. All six user stories are implemented, including recurring shopping, individual archival, cooking explanations and measurement/view controls; release packaging, CI, backup/recovery and deployment tooling are implemented; target-specific operational acceptance remains pending. Use JDK 25 (local/CI/Pi must share release 25), Node 24.22.0 (`nvm use`), and the committed backend Gradle 9.8.1 wrapper. No system Gradle or database server is required. SQLite JDBC 3.53.4.0 is the engine in every environment. Use a maintained Java 25 arm64 runtime on the Pi and verify it on the board before cutover.
 
 From the repository root:
 
@@ -11,7 +11,7 @@ cd frontend
 npx playwright install chromium
 cd ..
 ./scripts/check.sh
-./scripts/build.sh
+./scripts/build.sh --allow-dirty
 ./scripts/run-local.sh
 ```
 
@@ -76,3 +76,24 @@ their indentation follows `.editorconfig`. Do not format generated Gradle wrappe
 To update formatters intentionally, use `npm install --save-dev --save-exact` with
 the desired versions, commit both root manifests, rerun `npm run format`, and review
 the resulting diff before running `scripts/check.sh`.
+
+## Release and recovery checks
+
+A clean `scripts/build.sh` packages `build/releases/mealplan-FULL_SHA.zip`. Use
+`--allow-dirty` only for local development: its manifest records dirty source and
+normal verification/deployment rejects it. The bundle contains no mutable state or
+credentials. `bootJar` alone does not run tests; CI runs checks before publishing.
+
+Run `scripts/test-release-integrity.sh --clean-build` for an isolated clean-source
+build, unchanged lock/checksum metadata, repeatable bundles and tamper rejection.
+Run `scripts/test-release-recovery.sh` for real SQLite failed migrations and matched
+rollback using the production promotion transaction with controlled service/probe
+adapters. `scripts/test-packaged-boundaries.sh` starts a disposable Pi-profile JAR
+on loopback port 8000 and needs that port free. CI runs all three after checks/build.
+
+Java operator commands also include `package-release`, `verify-release`,
+`backup-database`, `restore-database` and `migrate-database`; scripts supply their
+required path/identity options. Backups bind to an exact release manifest and validate
+all applied migration checksums. Never use production state for local checks.
+See [deployment](deployment.md) for provisioning, artifact credentials, service
+hardening, retention, restoration and acceptance still requiring external access.

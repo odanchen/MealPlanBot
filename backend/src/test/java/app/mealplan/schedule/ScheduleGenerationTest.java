@@ -13,6 +13,108 @@ class ScheduleGenerationTest extends ScheduleShoppingSupport {
     ScheduleGenerationService generation;
 
     @Test
+    void explicitRetryOfOldFailedRecurringBatchClipsAlreadyCoveredDates() throws Exception {
+        for (boolean covered : new boolean[] { false, true }) {
+            clock.set(java.time.Instant.parse("2026-10-20T16:00:00Z"));
+            String list = list(),
+                source = source("2026-10-20");
+            configure(list, source, "retry-late", 0, "").andExpect(status().isOk());
+            setTemplate(source, "missing-template");
+            clock.set(java.time.Instant.parse("2026-10-24T13:00:00Z"));
+            generation.due();
+            var repo = new OccurrenceRepository();
+            String failed = db.read(c -> repo.latest(c, repo.active(c, list).id()).id());
+            assertThat(db.<String>read(c -> repo.get(c, failed).status())).isEqualTo("failed");
+            setTemplate(source, "three-week");
+            clock.set(java.time.Instant.parse("2026-10-31T13:00:00Z"));
+            if (covered) generation.due();
+            int before = count(list);
+            for (int i = 0; i < 2; i++) {
+                mvc.perform(
+                    post("/api/lists/" + list + "/schedule/retry")
+                        .with(user("owner"))
+                        .with(csrf())
+                        .contentType("application/json")
+                        .content("{\"occurrenceId\":\"" + failed + "\"}")
+                ).andExpect(status().isOk());
+                assertThat(db.<String>read(c -> repo.get(c, failed).status())).isEqualTo(
+                    "completed"
+                );
+                if (i == 0) {
+                    if (covered) assertThat(count(list)).isEqualTo(before);
+                    else assertThat(count(list)).isGreaterThan(before);
+                    before = count(list);
+                } else assertThat(count(list)).isEqualTo(before);
+            }
+        }
+    }
+
+    private void setTemplate(String source, String template) {
+        db.write(c -> {
+            try (var q = c.prepareStatement("UPDATE user_schedules SET template_id=? WHERE id=?")) {
+                q.setString(1, template);
+                q.setString(2, source);
+                q.executeUpdate();
+            }
+            return null;
+        });
+    }
+
+    @Test
+    void restartSkipsAnOldPendingRecurringBatchAfterSeveralMissedPeriods() throws Exception {
+        String list = list(),
+            source = source("2026-10-20");
+        configure(list, source, "crash-recovery", 0, "").andExpect(status().isOk());
+        var occurrences = new OccurrenceRepository();
+        String old = db.write(c -> {
+            var a = occurrences.active(c, list);
+            var due = a.nextDueAt();
+            var next = a.addition().nextAfter(due);
+            var occurrence = occurrences.create(
+                c,
+                a,
+                "recurring",
+                due,
+                a.addition().date(due),
+                a.addition().date(next)
+            );
+            try (
+                var q = c.prepareStatement(
+                    "UPDATE schedule_attachments SET next_due_at=? WHERE id=?"
+                )
+            ) {
+                q.setLong(1, next.toEpochMilli());
+                q.setString(2, a.id());
+                q.executeUpdate();
+            }
+            return occurrence.id();
+        });
+        clock.set(java.time.Instant.parse("2026-11-21T14:00:00Z"));
+        generation.due();
+        assertThat(db.<String>read(c -> occurrences.get(c, old).status())).isEqualTo("skipped");
+        assertThat(
+            db.<Integer>read(c -> {
+                try (
+                    var q = c.prepareStatement(
+                        "SELECT count(*) FROM shopping_entries WHERE occurrence_id=?"
+                    )
+                ) {
+                    q.setString(1, old);
+                    try (var r = q.executeQuery()) {
+                        return r.getInt(1);
+                    }
+                }
+            })
+        ).isZero();
+        mvc.perform(get("/api/lists/" + list + "/schedule").with(user("owner")))
+            .andExpect(jsonPath("$.latest.coverageStartDate").value("2026-11-21"))
+            .andExpect(jsonPath("$.latest.status").value("completed"));
+        int once = count(list);
+        generation.due();
+        assertThat(count(list)).isEqualTo(once);
+    }
+
+    @Test
     void recurrenceEditsPreserveCoverageAndViewerZonesOnlyClipDisplay() throws Exception {
         String list = list(),
             source = source("2026-10-20");

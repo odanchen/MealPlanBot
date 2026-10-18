@@ -1,7 +1,6 @@
 package app.mealplan.cli;
 
 import app.mealplan.domain.schedule.*;
-import java.util.*;
 
 public final class ShoppingPreviewCommand {
 

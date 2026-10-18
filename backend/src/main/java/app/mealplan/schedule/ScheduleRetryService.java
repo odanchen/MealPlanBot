@@ -37,6 +37,6 @@ public class ScheduleRetryService {
             ) throw ApiErrors.invalid("Only a failed occurrence can be retried");
             return null;
         });
-        generation.generate(id);
+        generation.retryFailed(id);
     }
 }

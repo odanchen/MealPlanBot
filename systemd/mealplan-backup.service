@@ -1,0 +1,18 @@
+[Unit]
+Description=Verified daily MealPlan SQLite snapshot
+After=mealplan-web.service
+
+[Service]
+Type=oneshot
+User=mealplan
+Group=mealplan
+Environment=STATE_DIR=/var/lib/mealplan
+Environment=RELEASE_DIR=/var/lib/mealplan/current
+StateDirectory=mealplan
+StateDirectoryMode=0700
+ExecStart=/bin/bash /var/lib/mealplan/current/scripts/backup.sh daily
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+UMask=0077

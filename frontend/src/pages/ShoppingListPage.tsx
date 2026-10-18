@@ -6,7 +6,7 @@ import { ArchivePolicySettings } from "../components/ArchivePolicySettings";
 import { useLiveShoppingList } from "../hooks/useLiveShoppingList";
 import { ListSharingPanel } from "../components/ListSharingPanel";
 import { ListMembershipActions } from "../components/ListMembershipActions";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { shopping, type ShoppingEntry, type Addition } from "../api/shopping";
 import { ApiError, newIdempotencyKey } from "../api/client";
 import { useSession } from "../auth/SessionProvider";
@@ -54,6 +54,20 @@ export function ShoppingListPage({ id }: { id: string }) {
   const [removing, setRemoving] = useState<ShoppingEntry | null>(null);
   const focusAfterRemoval = useRef(false);
   const nameInput = useRef<HTMLInputElement>(null);
+  const purchaseFocus = useRef<string | null>(null);
+  useLayoutEffect(() => {
+    if (!busy && purchaseFocus.current && document.activeElement === document.body) {
+      document.getElementById(purchaseFocus.current)?.focus();
+    }
+    return () => {
+      const active = document.activeElement;
+      if (active instanceof HTMLElement && active.dataset.purchaseControl) {
+        purchaseFocus.current = active.id;
+      } else if (active !== document.body) {
+        purchaseFocus.current = null;
+      }
+    };
+  });
   const pending = useRef<{ payload: string; key: string } | null>(null);
   useEffect(() => {
     if (!removing && focusAfterRemoval.current) {
@@ -119,6 +133,7 @@ export function ShoppingListPage({ id }: { id: string }) {
       )}
       {list ? (
         <>
+          <p>Items archive after {list.itemAgeLimitSeconds / 86400} elapsed days from creation.</p>
           {!live.data?.schedule.attachment && (
             <p>No meal schedule attached. Automatic additions are off.</p>
           )}
@@ -181,22 +196,34 @@ export function ShoppingListPage({ id }: { id: string }) {
           {entries.length === 0 ? (
             <p>Your list is empty. Add your first item above.</p>
           ) : (
-            <ul className="shopping-items">
-              {entries.map((entry) => (
-                <ShoppingItemRow
-                  key={entry.id}
-                  entry={entry}
-                  disabled={busy || !live.connected}
-                  onBought={(bought) => {
-                    void mutate(() => shopping.bought(id, entry, bought));
-                  }}
-                  onRemove={() => {
-                    setError("");
-                    setRemoving(entry);
-                  }}
-                />
+            <>
+              {(groupBought ? [false, true] : [null]).map((bought) => (
+                <section
+                  key={String(bought)}
+                  aria-label={bought === null ? "All purchases" : bought ? "Bought" : "Unbought"}
+                >
+                  {bought !== null && <h4>{bought ? "Bought" : "Unbought"}</h4>}
+                  <ul className="shopping-items">
+                    {entries
+                      .filter((entry) => bought === null || (entry.boughtAt !== null) === bought)
+                      .map((entry) => (
+                        <ShoppingItemRow
+                          key={entry.id}
+                          entry={entry}
+                          disabled={busy || !live.connected}
+                          onBought={(bought) => {
+                            void mutate(() => shopping.bought(id, entry, bought));
+                          }}
+                          onRemove={() => {
+                            setError("");
+                            setRemoving(entry);
+                          }}
+                        />
+                      ))}
+                  </ul>
+                </section>
               ))}
-            </ul>
+            </>
           )}
           {live.data?.schedule.attachment && (
             <ListSchedulePreview

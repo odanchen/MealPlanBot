@@ -14,6 +14,8 @@ export function ShoppingItemRow({
     <li className="shopping-row">
       <label className={entry.boughtAt ? "bought" : ""}>
         <input
+          id={`purchase-${entry.id}`}
+          data-purchase-control="true"
           type="checkbox"
           checked={entry.boughtAt !== null}
           disabled={disabled}
