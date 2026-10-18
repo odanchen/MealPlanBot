@@ -12,7 +12,7 @@ public record ContentSnapshot(String revision,Path root,Map<String,RecipeDocumen
   var r=recipes.get(id);if(r==null)return null;
   var sections=r.sections().stream().map(section->new RecipeDocument.Section(section.id(),section.title(),section.steps().stream().map(step->new RecipeDocument.Step(step.id(),step.content().stream().map(segment->{
    var result=new LinkedHashMap<>(segment);
-   if(segment.containsKey("term")){var term=terms.get(segment.get("term"));result.putIfAbsent("label",term.label());result.putIfAbsent("explanation",term.definition());}
+   if(!segment.containsKey("text")&&!segment.containsKey("recipe"))result.putAll(ExplanationResolver.resolve(segment,this));
    if(segment.containsKey("recipe"))result.putIfAbsent("label",recipes.get(segment.get("recipe")).title());
    return (Map<String,Object>)result;
   }).toList())).toList())).toList();

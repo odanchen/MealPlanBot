@@ -118,9 +118,19 @@ sections:
         id: "step-3"
         content:
           -
-            text: "0:18–0:35 — Sear and finish. Heat a large oven-safe cast-iron skillet. Sear the chicken (brown the surface quickly in a hot pan) for about 2–3 minutes per side. Transfer the skillet to the oven for a few minutes, checking the thickest piece with a thermometer. Remove it as soon as it reaches 74°C; thicker pieces may need longer. Rest the chicken for 3–5 minutes, then slice it into strips."
+            text: "0:18–0:35 — "
+          -
+            term: "sear"
+            label: "Sear"
+          -
+            text: " and finish. Heat a large oven-safe cast-iron skillet. Sear the chicken (brown the surface quickly in a hot pan) for about 2–3 minutes per side. Transfer the skillet to the oven for a few minutes, checking the thickest piece with a thermometer. Remove it as soon as it reaches 74°C; thicker pieces may need longer. Rest the chicken for 3–5 minutes, then slice it into strips."
       -
         id: "step-4"
         content:
           -
-            text: "Finish. Whisk lemon juice and the reserved olive oil for the salad. If using the optional sauce, stir yogurt with grated garlic and dill. Fluff the rice, dress the salad (toss it with the lemon dressing), and serve with the sliced chicken and sauce."
+            text: "Finish. Whisk lemon juice and the reserved olive oil for the salad. If using the optional sauce, stir yogurt with grated garlic and dill. "
+          -
+            term: "fluff"
+            label: "Fluff"
+          -
+            text: " the rice, dress the salad (toss it with the lemon dressing), and serve with the sliced chicken and sauce."

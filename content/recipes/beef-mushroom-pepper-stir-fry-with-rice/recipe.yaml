@@ -96,12 +96,19 @@ sections:
         id: "step-1"
         content:
           -
-            text: "0:00 — Start rice according to package directions."
+            recipe: "simple-rice"
+            label: "0:00 — Start rice according to package directions."
+            section: "method"
       -
         id: "step-2"
         content:
           -
-            text: "0:05–0:18 — Slice and mix. Cut the beef into an émincé (thin slices), across the grain so the muscle fibres are short. For a light protective coating, if desired, toss the beef with egg white and a little of the measured soy sauce and cornstarch before its brief sear. Slice onions, mushrooms and peppers. Mix remaining soy sauce, starch, vinegar, sugar and water in a cup."
+            text: "0:05–0:18 — Slice and mix. Cut the beef into an émincé (thin slices), across the grain so the muscle fibres are short. For a light protective coating, if desired, toss the beef with egg white and a little of the measured soy sauce and cornstarch before its brief "
+          -
+            term: "sear"
+            label: "sear"
+          -
+            text: ". Slice onions, mushrooms and peppers. Mix remaining soy sauce, starch, vinegar, sugar and water in a cup."
       -
         id: "step-3"
         content:

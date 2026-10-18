@@ -1,0 +1,32 @@
+schemaVersion: 1
+id: simple-rice
+title: Simple rice
+servings:
+  estimate: 2
+  note: "2 servings as a side"
+timing:
+  prepMinutes: 5
+  cookMinutes: 20
+  guidance: "Follow the cooking time on your rice package, then rest covered for 10 minutes."
+preparationGuidance: "Use your rice package's water ratio and cooking time when they differ. The ingredient quantities below are a standalone example; when cooking for another recipe, use that parent recipe's listed rice quantity."
+images: []
+ingredients:
+  - ingredientId: dry-rice
+    quantity: "200"
+    unit: g
+  - ingredientId: water
+    quantity: "400"
+    unit: ml
+sections:
+  - id: method
+    title: Rice method
+    steps:
+      - id: rinse
+        content:
+          - text: "Rinse rice until the water is mostly clear. Put it in a pan with measured water according to its package and salt to taste."
+      - id: cook
+        content:
+          - text: "Bring to a boil, cover, lower the heat and cook according to the package. Rest covered for 10 minutes, then "
+          - term: fluff
+            label: fluff
+          - text: " gently before serving."

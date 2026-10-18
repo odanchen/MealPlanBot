@@ -112,9 +112,19 @@ sections:
         id: "step-3"
         content:
           -
-            text: "0:22–0:35 — Sear. Sear means brown rapidly in a hot pan. Heat a wide skillet and cook chicken in batches, turning, until browned and 74°C. Rest 3 minutes."
+            text: "0:22–0:35 — "
+          -
+            term: "sear"
+            label: "Sear"
+          -
+            text: ". Sear means brown rapidly in a hot pan. Heat a wide skillet and cook chicken in batches, turning, until browned and 74°C. Rest 3 minutes."
       -
         id: "step-4"
         content:
           -
-            text: "0:35–0:45 — Finish. Fluff the bulgur with a fork. Serve with chicken, cool vegetables and dill yogurt sauce."
+            text: "0:35–0:45 — Finish. "
+          -
+            term: "fluff"
+            label: "Fluff"
+          -
+            text: " the bulgur with a fork. Serve with chicken, cool vegetables and dill yogurt sauce."

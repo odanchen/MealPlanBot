@@ -17,7 +17,7 @@ class RecipeScheduleContractTest {
  @DynamicPropertySource static void properties(DynamicPropertyRegistry p){p.add("mealplan.database-path",()->DIR.resolve("app.sqlite").toString());}
  @Autowired MockMvc mvc;
  @Test void recipesArePublicAndSchedulesArePrivate() throws Exception {
-  mvc.perform(get("/api/recipes")).andExpect(status().isOk()).andExpect(jsonPath("$.recipes.length()").value(15));
+  mvc.perform(get("/api/recipes")).andExpect(status().isOk()).andExpect(jsonPath("$.recipes.length()").value(16));
   mvc.perform(get("/api/recipes/red-wine-beef-stew-with-mashed-potatoes")).andExpect(status().isOk()).andExpect(jsonPath("$.recipe.title").value("Red Wine Beef Stew with Mashed Potatoes")).andExpect(jsonPath("$.recipe.images").isEmpty());
   mvc.perform(get("/api/recipes/1")).andExpect(status().isNotFound());
   mvc.perform(get("/api/schedule-templates")).andExpect(status().isUnauthorized());

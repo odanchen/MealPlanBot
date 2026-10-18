@@ -107,7 +107,12 @@ sections:
         id: "step-2"
         content:
           -
-            text: "0:15–0:30 — Sear pork. Sear means brown the surface quickly in a hot pan. Cook pork in a large skillet in batches, 2–3 minutes per side. Transfer to a plate. Cook onions and carrots in the same skillet for 5–6 minutes."
+            text: "0:15–0:30 — "
+          -
+            term: "sear"
+            label: "Sear"
+          -
+            text: " pork. Sear means brown the surface quickly in a hot pan. Cook pork in a large skillet in batches, 2–3 minutes per side. Transfer to a plate. Cook onions and carrots in the same skillet for 5–6 minutes."
       -
         id: "step-3"
         content:

@@ -126,12 +126,19 @@ sections:
         id: "step-1"
         content:
           -
-            text: "0:00 — Start rice. Rinse rice and put it on with measured water and salt. Bring to a boil, cover, lower heat and cook per package; rest covered 10 minutes."
+            recipe: "simple-rice"
+            label: "0:00 — Start rice. Rinse rice and put it on with measured water and salt. Bring to a boil, cover, lower heat and cook per package; rest covered 10 minutes."
+            section: "method"
       -
         id: "step-2"
         content:
           -
-            text: "0:05–0:18 — Cut and sweat. Cut onion and carrots into a "
+            text: "0:05–0:18 — Cut and "
+          -
+            term: "sweat"
+            label: "sweat"
+          -
+            text: ". Cut onion and carrots into a "
           -
             term: "small-dice"
             label: "small dice"

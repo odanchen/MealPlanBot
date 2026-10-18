@@ -96,7 +96,10 @@ sections:
         id: "step-1"
         content:
           -
-            text: "Sear the beef. Heat a cast-iron or stainless-steel skillet with a little oil. Brown the beef in batches, seasoning with salt and pepper. Sear means to brown the surface quickly in a hot pan; the beef does not need to cook through. Transfer it directly into a large casserole baking dish."
+            term: "sear"
+            label: "Sear"
+          -
+            text: " the beef. Heat a cast-iron or stainless-steel skillet with a little oil. Brown the beef in batches, seasoning with salt and pepper. Sear means to brown the surface quickly in a hot pan; the beef does not need to cook through. Transfer it directly into a large casserole baking dish."
       -
         id: "step-2"
         content:

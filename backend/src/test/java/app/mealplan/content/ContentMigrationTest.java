@@ -8,7 +8,7 @@ class ContentMigrationTest {
  @Test void allTutorialContentAndRelativeSlotsArePreserved() throws Exception {
   var baseline=new JsonMapper().readTree(getClass().getResourceAsStream("/content-baseline/recipes.json"));
   var snapshot=ContentLoader.load(ContentLoader.defaultRoot());
-  assertThat(snapshot.recipes()).hasSize(15);
+  assertThat(snapshot.recipes()).hasSize(16);
   var slugs=new ArrayList<String>();
   for(var original:baseline){
    String slug=original.get("slug").asString();slugs.add(slug);var recipe=snapshot.recipes().get(slug);

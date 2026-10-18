@@ -39,11 +39,7 @@ public final class ContentValidator {
        if(seg.containsKey("section"))require(target.sections().stream().anyMatch(x->x.id().equals(string(seg,"section"))),"Unknown section reference");
        if(seg.containsKey("label"))text(string(seg,"label"));
       }else{
-       keys(seg,Set.of("term","label","explanation"),Set.of());
-       var term=seg.containsKey("term")?s.terms().get(string(seg,"term")):null;
-       require(!seg.containsKey("term")||term!=null,"Unknown term reference");
-       require(term!=null||(seg.containsKey("label")&&seg.containsKey("explanation")),"Incomplete standalone explanation");
-       if(seg.containsKey("label"))text(string(seg,"label"));if(seg.containsKey("explanation"))text(string(seg,"explanation"));
+       ExplanationResolver.resolve(seg,s);
       }
      }
     }

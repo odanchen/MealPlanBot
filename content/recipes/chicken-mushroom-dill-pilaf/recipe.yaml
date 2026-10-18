@@ -124,12 +124,22 @@ sections:
         id: "step-2"
         content:
           -
-            text: "0:15–0:28 — Infuse and brown. Heat oil in a wide Dutch oven. Add the whole cloves and star-anise point for about 30 seconds to infuse the oil (release their aroma into the fat). Lift them out and reserve. Brown salted chicken in two batches; remove. Sauté (cook in a little oil while stirring) onion, carrot and mushrooms until the mushroom water has largely evaporated."
+            text: "0:15–0:28 — Infuse and brown. Heat oil in a wide Dutch oven. Add the whole cloves and star-anise point for about 30 seconds to infuse the oil (release their aroma into the fat). Lift them out and reserve. Brown salted chicken in two batches; remove. "
+          -
+            term: "saute"
+            label: "Sauté"
+          -
+            text: " (cook in a little oil while stirring) onion, carrot and mushrooms until the mushroom water has largely evaporated."
       -
         id: "step-3"
         content:
           -
-            text: "0:28–0:35 — Toast. Add garlic, paprika, cumin and ground hot pepper; "
+            text: "0:28–0:35 — "
+          -
+            term: "toast-grains"
+            label: "Toast"
+          -
+            text: ". Add garlic, paprika, cumin and ground hot pepper; "
           -
             term: "bloom"
             label: "bloom"
@@ -144,4 +154,9 @@ sections:
         id: "step-5"
         content:
           -
-            text: "Finish. Find and remove the two cloves and star-anise point. Fluff with dill and black pepper. If your rice package specifies a different liquid ratio, use that ratio, accounting for the small amount of tomato juice."
+            text: "Finish. Find and remove the two cloves and star-anise point. "
+          -
+            label: "Fluff"
+            explanation: "Separate the cooked grains gently with a fork rather than compressing them."
+          -
+            text: " with dill and black pepper. If your rice package specifies a different liquid ratio, use that ratio, accounting for the small amount of tomato juice."

@@ -24,3 +24,39 @@ terms:
   medium-dice:
     label: "Medium dice"
     definition: "Cut into roughly 1.2 cm cubes."
+  sweat:
+    label: "Sweat"
+    definition: "Cook vegetables gently in a little fat until softened, without browning."
+  fluff:
+    label: "Fluff"
+    definition: "Separate cooked grains gently with a fork rather than pressing them together."
+  sear:
+    label: "Sear"
+    definition: "Brown the surface quickly in a hot pan; finish cooking as directed by the recipe."
+  toast-grains:
+    label: "Toast"
+    definition: "Stir grains briefly in the pan so they heat and become lightly coated before adding liquid."
+  marinate:
+    label: "Marinate"
+    definition: "Leave food in its seasoned mixture for the specified time; keep raw chicken refrigerated."
+  caramelize:
+    label: "Caramelize"
+    definition: "Cook onions slowly until they become deeply golden and sweet, stirring to avoid burning."
+  parboil:
+    label: "Parboil"
+    definition: "Boil only partway; the food will finish cooking in a later step."
+  dum:
+    label: "Dum"
+    definition: "Steam the layered rice and chicken over very low heat under a tight lid, then check both are fully cooked."
+  julienne:
+    label: "Julienne"
+    definition: "Cut into thin, even matchsticks."
+  mince:
+    label: "Mince"
+    definition: "Chop very finely."
+  emulsify:
+    label: "Emulsify"
+    definition: "Mix fat and water into a smooth, combined sauce, using the starchy pasta water as directed."
+  wilt:
+    label: "Wilt"
+    definition: "Heat leafy greens just until they soften and collapse."

@@ -117,7 +117,12 @@ sections:
         id: "step-3"
         content:
           -
-            text: "0:18–0:28 — Brown turkey. Heat a large skillet with oil. Sauté (cook in a little hot oil while stirring) the turkey with onion, breaking it apart; season with salt, paprika and coriander. Cook until no pink remains and the turkey reaches 74°C."
+            text: "0:18–0:28 — Brown turkey. Heat a large skillet with oil. "
+          -
+            term: "saute"
+            label: "Sauté"
+          -
+            text: " (cook in a little hot oil while stirring) the turkey with onion, breaking it apart; season with salt, paprika and coriander. Cook until no pink remains and the turkey reaches 74°C."
       -
         id: "step-4"
         content:

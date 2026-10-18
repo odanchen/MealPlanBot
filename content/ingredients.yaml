@@ -349,3 +349,7 @@ ingredients:
     name: "whole star anise"
     aliases: []
     category: "spices"
+  water:
+    name: "Water"
+    aliases: []
+    category: "liquids"

@@ -124,7 +124,17 @@ sections:
         id: "step-2"
         content:
           -
-            text: "0:15–0:27 — Build base. Sweat the onion and carrots (cook gently without browning) for 5 minutes, then sauté mushrooms until their water mostly evaporates. Add garlic, tomato paste and herbs for 1 minute."
+            text: "0:15–0:27 — Build base. "
+          -
+            term: "sweat"
+            label: "Sweat"
+          -
+            text: " the onion and carrots (cook gently without browning) for 5 minutes, then "
+          -
+            term: "saute"
+            label: "sauté"
+          -
+            text: " mushrooms until their water mostly evaporates. Add garlic, tomato paste and herbs for 1 minute."
       -
         id: "step-3"
         content:
@@ -154,7 +164,12 @@ sections:
         id: "step-4"
         content:
           -
-            text: "0:38–0:45 — Couscous in parallel. Pour measured boiling water over salted couscous, cover 5 minutes and fluff."
+            text: "0:38–0:45 — Couscous in parallel. Pour measured boiling water over salted couscous, cover 5 minutes and "
+          -
+            term: "fluff"
+            label: "fluff"
+          -
+            text: "."
       -
         id: "step-5"
         content:

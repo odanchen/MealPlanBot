@@ -90,12 +90,27 @@ sections:
         id: "step-1"
         content:
           -
-            text: "0:00–0:08 — Boil and cut. Put a large pot of salted water on high heat. Cut chicken into strips, julienne the carrots (thin matchsticks), slice the onion, and mince garlic (chop very finely)."
+            text: "0:00–0:08 — Boil and cut. Put a large pot of salted water on high heat. Cut chicken into strips, "
+          -
+            term: "julienne"
+            label: "julienne"
+          -
+            text: " the carrots (thin matchsticks), slice the onion, and "
+          -
+            term: "mince"
+            label: "mince"
+          -
+            text: " garlic (chop very finely)."
       -
         id: "step-2"
         content:
           -
-            text: "0:08–0:22 — Cook in parallel. Boil pasta according to package, reserving a mug of its starchy cooking water to emulsify the sauce (help fat and water form a smooth mixture). In a wide pan, cook chicken in oil in two batches until browned and 74°C; set aside. Cook onion and carrots 5 minutes, then garlic 1 minute."
+            text: "0:08–0:22 — Cook in parallel. Boil pasta according to package, reserving a mug of its starchy cooking water to "
+          -
+            term: "emulsify"
+            label: "emulsify"
+          -
+            text: " the sauce (help fat and water form a smooth mixture). In a wide pan, cook chicken in oil in two batches until browned and 74°C; set aside. Cook onion and carrots 5 minutes, then garlic 1 minute."
       -
         id: "step-3"
         content:
@@ -105,7 +120,12 @@ sections:
         id: "step-4"
         content:
           -
-            text: "0:30–0:40 — Finish the pasta. Return chicken to the pan, add spinach to wilt, then add drained pasta and sauce. Toss over low heat until the sauce clings to the pasta; loosen with reserved water as needed. Adjust with water and lime or vinegar."
+            text: "0:30–0:40 — Finish the pasta. Return chicken to the pan, add spinach to "
+          -
+            term: "wilt"
+            label: "wilt"
+          -
+            text: ", then add drained pasta and sauce. Toss over low heat until the sauce clings to the pasta; loosen with reserved water as needed. Adjust with water and lime or vinegar."
       -
         id: "step-5"
         content:

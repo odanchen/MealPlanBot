@@ -2,10 +2,11 @@ import { test, expect } from '@playwright/test';
 test('public tutorials and private personal schedule work against the local SQLite backend', async ({page})=>{
  expect((await page.request.get('/api/user-schedules')).status()).toBe(401);
  await page.goto('/');await expect(page.getByRole('heading',{name:'Recipes for everyday cooking'})).toBeVisible();
- const entries=page.locator('.recipe-grid a');await expect(entries).toHaveCount(15);
+ const entries=page.locator('.recipe-grid a');await expect(entries).toHaveCount(16);
  const catalogue=await entries.evaluateAll(links=>links.map(link=>({url:link.getAttribute('href')!,title:link.textContent!})));
  for(const recipe of catalogue){await page.goto(recipe.url);await expect(page.getByRole('heading',{name:recipe.title,exact:true})).toBeVisible();await expect(page.locator('.steps li').first()).toBeVisible();await expect(page.locator('img')).toHaveCount(0);}
  await page.setViewportSize({width:320,height:720});await page.screenshot({path:'test-results/us1-recipe-mobile.png',fullPage:true});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);await page.setViewportSize({width:1280,height:800});
+ await page.goto(catalogue.filter(recipe=>!recipe.url.endsWith('/simple-rice')).at(-1)!.url);
  await page.getByRole('link',{name:'Next recipe →'}).click();await expect(page.getByRole('heading',{name:catalogue[0].title,exact:true})).toBeVisible();
  await page.goto('/schedules');await expect(page.getByRole('heading',{name:'Your planner'})).toBeVisible();
  await page.getByLabel('Start date',{exact:true}).fill('2026-01-07');await page.getByRole('button',{name:'Create schedule',exact:true}).click();await expect(page).toHaveURL(/\/schedules\/[0-9a-f-]+/);
