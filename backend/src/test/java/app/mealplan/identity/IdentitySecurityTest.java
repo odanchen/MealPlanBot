@@ -33,7 +33,7 @@ class IdentitySecurityTest {
   var context=org.springframework.security.core.context.SecurityContextHolder.createEmptyContext();
   context.setAuthentication(app.mealplan.support.SqliteTestSupport.principal("00000000-0000-4000-8000-000000000001"));
   session.setAttribute("SPRING_SECURITY_CONTEXT",context);
-  mvc.perform(get("/api/lists").session(session)).andExpect(status().isNotFound());
+  mvc.perform(get("/api/lists").session(session)).andExpect(status().isOk()).andExpect(jsonPath("$.lists").isEmpty());
   mvc.perform(post("/api/logout").session(session).with(org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf())).andExpect(status().isNoContent());
   org.assertj.core.api.Assertions.assertThat(session.isInvalid()).isTrue();
  }
