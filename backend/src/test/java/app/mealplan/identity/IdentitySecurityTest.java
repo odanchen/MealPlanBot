@@ -20,6 +20,10 @@ class IdentitySecurityTest {
  @DynamicPropertySource static void database(DynamicPropertyRegistry properties) { properties.add("mealplan.database-path",() -> DIRECTORY.resolve("app.sqlite").toString()); }
  @Autowired MockMvc mvc;
  @Autowired IdentityService identities;
+ @Test void browserFixtureHeadersAndEndpointsAreUnavailableInTheApplication() throws Exception {
+  mvc.perform(get("/api/lists").header("X-Test-Principal","pretend-owner")).andExpect(status().isUnauthorized());
+  mvc.perform(post("/__test/advance").param("hours","72").with(org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.authentication(app.mealplan.support.SqliteTestSupport.principal("00000000-0000-4000-8000-000000000001"))).with(org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf())).andExpect(status().isNotFound());
+ }
  @Test void emailChangesPreserveUuidAndMatchingEmailsDoNotMerge() {
   var first=identities.resolve("https://accounts.google.com","subject-a","First","old@example.com");
   var changed=identities.resolve("accounts.google.com","subject-a","Renamed","shared@example.com");

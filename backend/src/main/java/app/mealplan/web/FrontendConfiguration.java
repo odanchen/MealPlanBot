@@ -5,6 +5,6 @@ import org.springframework.web.servlet.config.annotation.*;
 @Configuration(proxyBeanMethods=false)
 public class FrontendConfiguration implements WebMvcConfigurer {
  @Override public void addViewControllers(ViewControllerRegistry registry) {
-  for(String path:new String[]{"/recipes/{slug}","/schedules","/schedules/{id}","/lists","/lists/{id}"}) registry.addViewController(path).setViewName("forward:/index.html");
+  for(String path:new String[]{"/recipes/{slug}","/schedules","/schedules/{id}","/lists","/lists/{id}","/lists/{id}/archive","/join"}) registry.addViewController(path).setViewName("forward:/index.html");
  }
 }

@@ -1,6 +1,6 @@
 # Local development
 
-The Java/React foundation is the only application runtime in this checkout. The legacy Python implementation has been removed; no installed production services have been changed. Recipe migration and application features remain in the backlog. Use JDK 25 (local/CI/Pi must share release 25), Node 24.22.0 (`nvm use`), and the committed backend Gradle 9.8.1 wrapper. No system Gradle or database server is required. SQLite JDBC 3.53.4.0 is the engine in every environment. Use a maintained Java 25 arm64 runtime on the Pi when deployment is implemented.
+The Java/React foundation is the only application runtime in this checkout. The legacy Python implementation has been removed; no installed production services have been changed. Recipe migration, personal schedules, private shopping and household sharing are implemented; automation and the remaining stories are in the backlog. Use JDK 25 (local/CI/Pi must share release 25), Node 24.22.0 (`nvm use`), and the committed backend Gradle 9.8.1 wrapper. No system Gradle or database server is required. SQLite JDBC 3.53.4.0 is the engine in every environment. Use a maintained Java 25 arm64 runtime on the Pi when deployment is implemented.
 
 From the repository root:
 
@@ -19,3 +19,10 @@ Checks include lint, TypeScript, component/accessibility, Chromium, and all back
 Normal commands use strict Gradle locks and SHA-256 verification without changing metadata. Intentional dependency updates require review: edit exact versions, then run `./backend/gradlew -p backend check bootJar --write-locks --write-verification-metadata sha256`, inspect all changed modules/versions and checksums, and rerun ordinary checks/builds. Initial verification metadata trusts HTTPS downloads from Maven Central and the Gradle plugin portal; review the graph rather than claiming independently audited upstream binaries. The wrapper JAR is extracted from the checksum-verified official distribution and matches its published wrapper SHA-256 `3b8a25775a69158b5ad2b1d17a80a88dc7b40a352a73eb27d06c612a7ce68e98`.
 
 Tests use disposable SQLite and test-only principals, never Google/Telegram or production state. Real Google/Pi acceptance is deferred to the corresponding later tasks. The independent Pi deployment target must be set by its service; do not point the new app at production until the full cutover is approved.
+
+Browser tests launch `BrowserTestApplication` from the test runtime classpath prepared
+by `./backend/gradlew -p backend prepareBrowserTests`. Playwright contexts supply
+`X-Test-Principal` headers for isolated test accounts; test-only endpoints control the
+clock and seed archived entries. Those classes/endpoints are absent from the executable
+JAR. The browser launcher uses disposable loopback/local state and the `browser-test`
+profile. `scripts/run-local.sh` continues to use the one local fixture account.

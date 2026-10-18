@@ -52,3 +52,12 @@ val validateContent = tasks.register<JavaExec>("validateContent") {
     args("--content-path", layout.projectDirectory.dir("../content").asFile.absolutePath)
 }
 tasks.check { dependsOn(validateContent) }
+
+// Browser identities and controlled state are available only on the test classpath.
+tasks.register("prepareBrowserTests") {
+    dependsOn(tasks.testClasses)
+    val target = layout.buildDirectory.file("browser-test-classpath.txt")
+    outputs.file(target)
+    inputs.files(sourceSets.test.get().runtimeClasspath)
+    doLast { target.get().asFile.writeText(sourceSets.test.get().runtimeClasspath.asPath) }
+}
