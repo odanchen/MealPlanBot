@@ -26,7 +26,7 @@ public class ShoppingRepository {
   try(var q=c.prepareStatement("SELECT * FROM shopping_entries WHERE list_id=? AND id=?")){q.setString(1,list);q.setString(2,id);try(var r=q.executeQuery()){if(!r.next())throw ApiErrors.notFound();return entryRow(r);}}
  }
  public List<ShoppingEntry> entries(Connection c,String list,String state,String sort,boolean group) throws SQLException {
-  String order=(group?"(bought_at IS NOT NULL),":"")+(sort.equals("alphabetical")?"display_name COLLATE NOCASE,":"")+"created_at,id";
+  String order=ShoppingEntryQueries.order(sort,group);
   try(var q=c.prepareStatement("SELECT * FROM shopping_entries WHERE list_id=? AND archived_at IS "+(state.equals("active")?"NULL":"NOT NULL")+(state.equals("active")?" AND created_at> ?-(SELECT item_age_limit_seconds*1000 FROM shopping_lists WHERE id=?)":"")+" ORDER BY "+order)){q.setString(1,list);if(state.equals("active")){q.setLong(2,clock.instant().toEpochMilli());q.setString(3,list);}try(var r=q.executeQuery()){var result=new ArrayList<ShoppingEntry>();while(r.next())result.add(entryRow(r));return result;}}
  }
  public ShoppingEntry add(Connection c,String user,String list,String name,String ingredient,String quantity,String unit,Instant now) throws SQLException {

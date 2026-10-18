@@ -20,13 +20,11 @@ public class ShoppingEntryService {
   String amount=null;if(input.quantity()!=null){try{amount=new Quantity(input.quantity(),input.unit()).decimalText();}catch(IllegalArgumentException e){throw ApiErrors.invalid("Enter a positive decimal quantity and a supported unit; packages require an explicit size");}}
   var snapshot=content.snapshot();String ingredient=input.ingredientId();
   if(ingredient!=null&&!snapshot.ingredients().containsKey(ingredient))throw ApiErrors.invalid("Unknown ingredient");
-  // Resolve only exact normalized canonical names or curated aliases; never fuzzy-match products.
-  if(ingredient==null){String normalized=normalize(name);for(var item:snapshot.ingredients().entrySet())if(normalize(item.getValue().name()).equals(normalized)||item.getValue().aliases().stream().anyMatch(alias->normalize(alias).equals(normalized))){ingredient=item.getKey();break;}}
+  if(ingredient==null)ingredient=new app.mealplan.content.IngredientCatalogue(snapshot).resolve(name);
   var valid=new Addition(name,ingredient,amount,input.unit());
   return repository.add(connection,user,list,valid.name(),valid.ingredientId(),valid.quantity(),valid.unit(),clock.instant());
   });
  });}
- private static String normalize(String value){return value.strip().toLowerCase(Locale.ROOT).replaceAll("\\s+"," ");}
  public ShoppingEntry bought(String user,String list,String entry,Boolean bought,String match){return db.write(c->{access.member(c,user,list);ItemAgePolicy.materialize(c,list,clock.instant());var current=repository.entry(c,list,entry);VersionPreconditions.check(match,current.version());if(bought==null)throw ApiErrors.invalid("Bought must be true or false");if(current.archivedAt()!=null)throw ApiErrors.invalid("Archived entries cannot be changed");if((current.boughtAt()!=null)==bought)return current;
   try(var q=c.prepareStatement("UPDATE shopping_entries SET bought_at=?,version=version+1 WHERE id=? AND list_id=?")){if(bought)q.setLong(1,clock.instant().toEpochMilli());else q.setNull(1,java.sql.Types.BIGINT);q.setString(2,entry);q.setString(3,list);q.executeUpdate();}return repository.entry(c,list,entry);
  });}

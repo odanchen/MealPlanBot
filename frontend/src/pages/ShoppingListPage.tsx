@@ -1,3 +1,4 @@
+import { ShoppingViewControls } from '../components/ShoppingViewControls';
 import { listSchedules } from '../api/listSchedules';
 import { ListScheduleSettings } from '../components/ListScheduleSettings';
 import { ListSchedulePreview } from '../components/ListSchedulePreview';
@@ -14,8 +15,8 @@ import { ConfirmDialog } from '../components/ConfirmDialog';
 import { ShoppingItemRow } from '../components/ShoppingItemRow';
 const units = ['g', 'kg', 'oz', 'lb', 'ml', 'l', 'us-cup', 'us-tbsp', 'us-tsp', 'us-fl-oz', 'count', 'clove', 'tin-156ml'];
 export function ShoppingListPage({ id }: { id: string }) {
- const { refresh } = useSession();
- const load = useCallback(async (signal: AbortSignal) => { const [list, result, schedule] = await Promise.all([shopping.detail(id, signal), shopping.entries(id, signal), listSchedules.state(id, signal)]); return { list, entries: result.entries, schedule }; }, [id]);
+ const { refresh } = useSession();const [sort,setSort]=useState<'alphabetical'|'chronological'>('alphabetical');const [groupBought,setGroupBought]=useState(true);
+ const load = useCallback(async (signal: AbortSignal) => { const [list, result, schedule] = await Promise.all([shopping.detail(id, signal), shopping.entries(id, signal, sort, groupBought), listSchedules.state(id, signal)]); return { list, entries: result.entries, schedule }; }, [id,sort,groupBought]);
  const live = useLiveShoppingList(load); const list = live.data?.list; const entries = live.data?.entries ?? []; const [name, setName] = useState(''); const [quantity, setQuantity] = useState(''); const [unit, setUnit] = useState('');
  const [error, setError] = useState(''); const [busy, setBusy] = useState(false); const [removing, setRemoving] = useState<ShoppingEntry | null>(null);
  const focusAfterRemoval = useRef(false); const nameInput = useRef<HTMLInputElement>(null); const pending = useRef<{ payload: string; key: string } | null>(null);
@@ -40,7 +41,7 @@ export function ShoppingListPage({ id }: { id: string }) {
  <FormField label="Item name">{field => <input id={field} ref={nameInput} required maxLength={200} value={name} onChange={event => setName(event.target.value)} />}</FormField>
  <FormField label="Quantity (optional)" hint="Supply both quantity and unit, or leave both empty.">{(field, hint) => <input id={field} aria-describedby={hint} inputMode="decimal" value={quantity} onChange={event => setQuantity(event.target.value)} />}</FormField>
  <FormField label="Unit (optional)">{field => <select id={field} value={unit} onChange={event => setUnit(event.target.value)}><option value="">No unit</option>{units.map(value => <option key={value} value={value}>{value}</option>)}</select>}</FormField><button disabled={busy || !live.connected}>Add item</button></form>
- <p><a href={`/lists/${id}/archive`}>View archive</a></p><h3>Purchases</h3>{entries.length === 0 ? <p>Your list is empty. Add your first item above.</p> : <ul className="shopping-items">{entries.map(entry => <ShoppingItemRow key={entry.id} entry={entry} disabled={busy || !live.connected} onBought={bought => { void mutate(() => shopping.bought(id, entry, bought)); }} onRemove={() => { setError(''); setRemoving(entry); }} />)}</ul>}
+ <p><a href={`/lists/${id}/archive`}>View archive</a></p><h3>Purchases</h3><ShoppingViewControls sort={sort} groupBought={groupBought} onSort={setSort} onGroup={setGroupBought}/>{entries.length === 0 ? <p>Your list is empty. Add your first item above.</p> : <ul className="shopping-items">{entries.map(entry => <ShoppingItemRow key={entry.id} entry={entry} disabled={busy || !live.connected} onBought={bought => { void mutate(() => shopping.bought(id, entry, bought)); }} onRemove={() => { setError(''); setRemoving(entry); }} />)}</ul>}
  {live.data?.schedule.attachment && <ListSchedulePreview key={live.data.schedule.attachment.id} id={id} state={live.data.schedule} owner={list.owner} disabled={!live.connected || busy} onSaved={live.refresh} />}
  {list.owner && live.data && <><ListScheduleSettings list={list} state={live.data.schedule} disabled={!live.connected || busy} onSaved={live.refresh} /><ArchivePolicySettings list={list} disabled={!live.connected || busy} onSaved={live.refresh} /></>}
  {list.owner && <ListSharingPanel id={id} disabled={!live.connected || busy} />}<ListMembershipActions list={list} disabled={!live.connected || busy} />

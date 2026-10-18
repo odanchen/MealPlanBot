@@ -16,6 +16,7 @@ public final class UnitRegistry {
         Map.entry("bunch",unit("count-bunch","bunch","1")));
     private UnitRegistry() {}
     public static Map<String,Unit> definitions() { return UNITS; }
+    public static String label(String id) {return switch(id){case "us-cup"->"US cup";case "us-tbsp"->"US tablespoon";case "us-tsp"->"US teaspoon";case "us-fl-oz"->"US fluid ounce";case "oz"->"oz (weight)";case "count"->"each";case "tin-156ml"->"tin (156 ml)";default->id;};}
     public static Unit require(String id) {
         var result=UNITS.get(id); if(result==null) throw new IllegalArgumentException("Unsupported unit"); return result;
     }

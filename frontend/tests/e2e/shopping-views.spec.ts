@@ -1,0 +1,25 @@
+import { test, expect, type BrowserContext } from '@playwright/test';
+async function mutate(context:BrowserContext,path:string,method:string,data?:unknown,version?:number){const csrf=await(await context.request.get('/api/csrf')).json();return context.request.fetch(path.startsWith('/__test')?`http://127.0.0.1:8000${path}`:path,{method,data,headers:{[csrf.headerName]:csrf.token,'Idempotency-Key':crypto.randomUUID(),...(version===undefined?{}:{'If-Match':`"${version}"`})}});}
+test('recipe measurement changes preserve canonical quantities and count/package labels',async({page})=>{
+ const metric=await(await page.request.get('/api/recipes/red-wine-beef-stew-with-mashed-potatoes?measurementSystem=metric')).json();
+ await page.goto('/recipes/red-wine-beef-stew-with-mashed-potatoes');const beef=page.locator('[data-ingredient-id="boneless-beef"]');await expect(beef).toContainText('1.4 kg');await expect(page.locator('[data-ingredient-id]')).toHaveCount(metric.recipe.ingredients.length);
+ await page.getByRole('combobox',{name:'Measurement system',exact:true}).selectOption('us');await expect(beef).toContainText('3.086 lb');await expect(beef).toHaveAttribute('data-canonical-quantity','1.4');await expect(beef).toHaveAttribute('data-canonical-unit','kg');await expect(page.locator('[data-ingredient-id="tomato-paste"]')).toContainText('tin (156 ml)');await expect(page.locator('[data-ingredient-id="onions"]')).toContainText('2 each');await expect(page.locator('[data-ingredient-id="dry-red-wine"]')).toContainText('US cup');
+ const us=await(await page.request.get('/api/recipes/red-wine-beef-stew-with-mashed-potatoes?measurementSystem=us')).json();expect(us.recipe.ingredients).toEqual(metric.recipe.ingredients);
+ await page.getByRole('combobox',{name:'Measurement system',exact:true}).selectOption('metric');await expect(beef).toContainText('1.4 kg');await expect(page.locator('[data-ingredient-id]')).toHaveCount(metric.recipe.ingredients.length);
+});
+test('every sort and bought grouping view retains all quantities and states through live refresh',async({browser})=>{
+ const context=await browser.newContext({extraHTTPHeaders:{'X-Test-Principal':`views-${crypto.randomUUID()}`}});
+ try{
+  const created=await mutate(context,'/api/lists','POST',{name:'View combinations'});expect(created.status()).toBe(201);const id=(await created.json()).id as string;const ids:string[]=[];
+  for(const name of ['Zucchini','apples','Bananas']){const result=await mutate(context,`/api/lists/${id}/entries`,'POST',{name,quantity:'1',unit:'kg'});expect(result.status()).toBe(201);ids.push((await result.json()).id);await mutate(context,'/__test/advance?hours=1','POST');}
+  expect((await mutate(context,`/api/lists/${id}/entries/${ids[1]}`,'PATCH',{bought:true},0)).status()).toBe(200);
+  const before=(await(await context.request.get(`/api/lists/${id}/entries`)).json()).entries;const page=await context.newPage();await page.goto(`/lists/${id}`);const rows=page.locator('.shopping-items > li');await expect(rows).toHaveCount(3);
+  for(const sort of ['alphabetical','chronological'])for(const group of [false,true]){
+   await page.getByRole('combobox',{name:'Sort purchases',exact:true}).selectOption(sort);const grouping=page.getByRole('checkbox',{name:'Separate bought items',exact:true});if(await grouping.isChecked()!==group)await grouping.click();
+   const expected=sort==='alphabetical'?(group?['Bananas','Zucchini','apples']:['apples','Bananas','Zucchini']):(group?['Zucchini','Bananas','apples']:['Zucchini','apples','Bananas']);
+   await expect.poll(async()=>rows.locator('label span').allTextContents()).toEqual(expected.map(name=>`${name} · 1 kg`));await expect(rows).toHaveCount(3);await expect(page.getByRole('checkbox',{name:'apples · 1 kg',exact:true})).toBeChecked();
+   await page.getByRole('combobox',{name:'Sort purchases',exact:true}).focus();await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await expect(page.getByRole('combobox',{name:'Sort purchases',exact:true})).toBeFocused();await expect.poll(async()=>rows.locator('label span').allTextContents()).toEqual(expected.map(name=>`${name} · 1 kg`));
+  }
+  const after=(await(await context.request.get(`/api/lists/${id}/entries`)).json()).entries;expect(after).toEqual(before);await expect(page.locator('.shopping-items time')).toHaveCount(0);
+ }finally{await context.close();}
+});

@@ -1,0 +1,5 @@
+export type IngredientDisplay = { ingredientId: string; name: string; category?: string; quantity: string; unit: string; displayQuantity: string; displayUnit: string; displayUnitLabel: string; optional: boolean; note: string };
+export function IngredientGroups({ ingredients, categories }: { ingredients: IngredientDisplay[]; categories: string[] }) {
+ const order = [...new Set([...categories, 'other'])]; const category = (ingredient: IngredientDisplay) => ingredient.category && order.includes(ingredient.category) ? ingredient.category : 'other';
+ return <>{order.filter(group => ingredients.some(item => category(item) === group)).map(group => <section key={group}><h3>{group}</h3><ul>{ingredients.filter(item => category(item) === group).map((item,index) => <li key={`${item.ingredientId}-${index}`} data-ingredient-id={item.ingredientId} data-canonical-quantity={item.quantity} data-canonical-unit={item.unit}><span>{item.displayQuantity} {item.displayUnitLabel} {item.name}</span>{item.note && ` — ${item.note}`}{item.optional && ' (optional)'}</li>)}</ul></section>)}</>;
+}

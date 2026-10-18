@@ -1,6 +1,6 @@
 # Local development
 
-The Java/React foundation is the only application runtime in this checkout. The legacy Python implementation has been removed; no installed production services have been changed. Recipe migration, personal schedules, private shopping and household sharing are implemented; automation and the remaining stories are in the backlog. Use JDK 25 (local/CI/Pi must share release 25), Node 24.22.0 (`nvm use`), and the committed backend Gradle 9.8.1 wrapper. No system Gradle or database server is required. SQLite JDBC 3.53.4.0 is the engine in every environment. Use a maintained Java 25 arm64 runtime on the Pi when deployment is implemented.
+The Java/React foundation is the only application runtime in this checkout. The legacy Python implementation has been removed; no installed production services have been changed. All six user stories are implemented, including recurring shopping, individual archival, cooking explanations and measurement/view controls; release/deployment tooling and operational acceptance remain in the backlog. Use JDK 25 (local/CI/Pi must share release 25), Node 24.22.0 (`nvm use`), and the committed backend Gradle 9.8.1 wrapper. No system Gradle or database server is required. SQLite JDBC 3.53.4.0 is the engine in every environment. Use a maintained Java 25 arm64 runtime on the Pi when deployment is implemented.
 
 From the repository root:
 
@@ -26,3 +26,12 @@ by `./backend/gradlew -p backend prepareBrowserTests`. Playwright contexts suppl
 clock and seed archived entries. Those classes/endpoints are absent from the executable
 JAR. The browser launcher uses disposable loopback/local state and the `browser-test`
 profile. `scripts/run-local.sh` continues to use the one local fixture account.
+
+Ingredient display equivalences and ordering rules are documented in
+[measurements.md](measurements.md). Trusted previews run without credentials or a
+database, for example:
+
+```sh
+java -jar backend/build/libs/mealplan-0.1.0.jar preview-meals --template-id three-week --anchor-date 2026-10-20 --start-date 2026-10-20 --days 21
+java -jar backend/build/libs/mealplan-0.1.0.jar preview-shopping --template-id three-week --anchor-date 2026-10-20 --start-date 2026-10-20 --days 21
+```
