@@ -38,8 +38,11 @@ public final class BrowserTestApplication {
  }
  @RestController @Profile("browser-test")
  public static class FixtureController {
-  private final MutableClock clock;private final SqliteDatabase db;
-  FixtureController(MutableClock clock,SqliteDatabase db){this.clock=clock;this.db=db;}
+  private final MutableClock clock;private final SqliteDatabase db;private final app.mealplan.schedule.ScheduleGenerationService generation;
+  FixtureController(MutableClock clock,SqliteDatabase db,app.mealplan.schedule.ScheduleGenerationService generation){this.clock=clock;this.db=db;this.generation=generation;}
+  @PostMapping("/__test/clock") public void setClock(@RequestParam String instant){clock.set(Instant.parse(instant));}
+  @PostMapping("/__test/run-due") public void due(){generation.due();}
+  @PostMapping("/__test/sources/{id}/template") public void template(@PathVariable String id,@RequestParam String templateId){db.write(c->{try(var q=c.prepareStatement("UPDATE user_schedules SET template_id=? WHERE id=?")){q.setString(1,templateId);q.setString(2,id);q.executeUpdate();}return null;});}
   @PostMapping("/__test/advance") public void advance(@RequestParam long hours){clock.advance(Duration.ofHours(hours));}
   @PostMapping("/__test/entries/{id}/archive") public void archive(@PathVariable String id){db.write(c->{try(var q=c.prepareStatement("UPDATE shopping_entries SET archived_at=?,version=version+1 WHERE id=?")){q.setLong(1,clock.instant().toEpochMilli());q.setString(2,id);q.executeUpdate();}return null;});}
  }

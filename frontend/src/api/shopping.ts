@@ -1,5 +1,5 @@
 import { request } from './client';
-export type ShoppingList = { id: string; name: string; ownerUserId: string; owner: boolean; createdAt: string; itemAgeLimitSeconds: number; version: number; schedule: null };
+export type ShoppingList = { id: string; name: string; ownerUserId: string; owner: boolean; createdAt: string; itemAgeLimitSeconds: number; version: number; schedule: { id: string; enabled: boolean; nextDueAt: string } | null };
 export type ShoppingEntry = { id: string; listId: string; name: string; ingredientId: string | null; quantity: string | null; unit: string | null; createdAt: string; boughtAt: string | null; archivedAt: string | null; version: number };
 export type Addition = { name: string; quantity?: string; unit?: string };
 const path = (id: string) => `/api/lists/${encodeURIComponent(id)}`;

@@ -13,7 +13,7 @@ public final class UnitRegistry {
         Map.entry("count",unit("count","count","1")), Map.entry("clove",unit("count-clove","clove","1")),
         Map.entry("package",unit("package","package","1")), Map.entry("can",unit("package","can","1")),
         Map.entry("tin-156ml",unit("package-tin-156ml","tin-156ml","1")),
-        Map.entry("bunch",unit("package","bunch","1")));
+        Map.entry("bunch",unit("count-bunch","bunch","1")));
     private UnitRegistry() {}
     public static Map<String,Unit> definitions() { return UNITS; }
     public static Unit require(String id) {
